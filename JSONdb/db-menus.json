@@ -1,0 +1,329 @@
+{
+    "automat_bank": {
+        "titel": "Bankautomat",
+        "items": [
+            {
+                "name": "benutzen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "none",
+                "call": "",
+                "data": ""
+            }
+        ]
+    },
+    "automat_condome": {
+        "titel": "Condom Automat",
+        "items": [
+            {
+                "name": "Condom XS kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Packung Condome XS"
+            },
+            {
+                "name": "Condom XXL kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Packung Condome XXL"
+            }
+        ]
+    },
+    "automat_getraenke": {
+        "titel": "Getränke Automat",
+        "items": [
+            {
+                "name": "eCola kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "eCola"
+            },
+            {
+                "name": "Sprunk kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Sprunk"
+            }
+        ]
+    },
+    "automat_kaffee": {
+        "titel": "Kaffee Automat",
+        "items": [
+            {
+                "name": "Kaffee kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Kaffee"
+            }
+        ]
+    },
+    "automat_snacks": {
+        "titel": "Snack Automat",
+        "items": [
+            {
+                "name": "Schokoriegel kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Schokoriegel"
+            },
+            {
+                "name": "Bonbons kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Packung Bonbons"
+            }
+        ]
+    },
+    "automat_wasser": {
+        "titel": "Wasser Spender",
+        "items": [
+            {
+                "name": "Wasser kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Wasserflasche"
+            }
+        ]
+    },
+    "automat_zigaretten": {
+        "titel": "Zigaretten Automat",
+        "items": [
+            {
+                "name": "Redwood Red kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Packung Redwood Red"
+            },
+            {
+                "name": "Redwood Gold kaufen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "automat",
+                "data": "Packung Redwood Gold"
+            }
+        ]
+    },
+    "kontainer_muell": {
+        "titel": "Müllkontainer",
+        "items": [
+            {
+                "name": "Müll dursuchen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "muell_durchsuchen",
+                "data": ""
+            }
+        ]
+    },
+    "parkuhr": {
+        "titel": "Parkuhr",
+        "items": [
+            {
+                "name": "Parkuhr aufbrechen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "none",
+                "call": "",
+                "data": ""
+            }
+        ]
+    },
+    "sitzen_bank": {
+        "titel": "Bank",
+        "items": [
+            {
+                "name": "Sitzen",
+                "img": "img/empty.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "sitzen_bank",
+                "data": "S"
+            },
+            {
+                "name": "Aufstehen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "sitzen_bank",
+                "data": "A"
+            }
+        ]
+    },
+    "sitzen_stuhl": {
+        "titel": "Stuhl",
+        "items": [
+            {
+                "name": "Sitzen",
+                "img": "img/empty.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "sitzen_bank",
+                "data": "S"
+            },
+            {
+                "name": "Aufstehen",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "sitzen_bank",
+                "data": "A"
+            }
+        ]
+    },
+    "F3_menu": {
+        "titel": "T8M - Menu",
+        "items": [
+            {
+                "name": "T8UG",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "client",
+                "call": "T8UG:client:createWindow",
+                "data": ""
+            },
+            {
+                "name": "Teleport",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": ""
+            },
+            {
+                "name": "Sub-Menu",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "submenu",
+                "call": "",
+                "data": {
+                    "titel": "T8M - Menu | Submenu",
+                    "items": [
+                        {
+                            "name": "Löschen",
+                            "img": "img/loschen.png",
+                            "keepOpen": false,
+                            "target": "none",
+                            "call": "",
+                            "data": ""
+                        },
+                        {
+                            "name": "Flieger",
+                            "img": "img/senden.png",
+                            "keepOpen": false,
+                            "target": "",
+                            "call": "",
+                            "data": ""
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "insidevehicle_menu": {
+        "titel": "Fahrzeug",
+        "items": [
+            {
+                "name": "Motor starten/stoppen",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Quicktune",
+                "img": "img/loschen.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "vehicle_quicktune",
+                "data": ""
+            },
+            {
+                "name": "Reparieren",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "vehicle_repair",
+                "data": ""
+            }
+        ]
+    },
+    "vehicle_menu": {
+        "titel": "Fahrzeug",
+        "items": [
+            {
+                "name": "Schlüssel benutzen",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Kofferaum Benutzen",
+                "img": "img/loschen.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Tanken",
+                "img": "img/idee.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            }
+        ]
+    },
+    "player_menu": {
+        "titel": "Person",
+        "items": [
+            {
+                "name": "Gegenstand geben",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Ausweis Zeigen",
+                "img": "img/loschen.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Anstupsen",
+                "img": "img/idee.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
+            }
+        ]
+    }
+}

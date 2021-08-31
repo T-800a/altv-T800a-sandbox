@@ -1,0 +1,127 @@
+:root {
+   --color-bg: darkslateblue;
+   --color-fg: whitesmoke;
+}
+
+* {
+   box-sizing: border-box;
+   margin-top: 0px;
+   font-family: 'Source Code Pro', monospace;
+}
+
+@media only screen and (max-height: 720px) {
+   :root { font-size: 12px; }
+}
+@media only screen and (min-height: 721px) and (max-height: 1080px) {
+   :root { font-size: 16px; }
+}
+@media only screen and (min-height: 1081px) and (max-height: 1440px) {
+   :root { font-size: 20px; }
+}
+@media only screen and (min-height: 1441px) {
+   :root { font-size: 24px; }
+}
+
+body {
+   font-size: 1em;
+}
+
+nav { 
+   position: absolute;
+   top: 50%;
+   left: 60%;
+   transform: translate(50%, -50%);
+   background: rgba(50, 50, 50, 0.5);
+   border: 0;
+   margin: 0;
+   font-size: 0;
+   text-align: left;
+}
+
+
+nav ul {
+   padding: 0;
+   margin: 0;
+   list-style: none;
+   position: relative;
+   z-index: 99999;
+}
+   
+nav ul li {
+   margin: 0px;
+   display: block;
+   border-left: 3px solid rgba(100, 100, 100, 0.5);
+}
+
+nav a {
+   display: block;
+   padding: 0 10px;	
+   color: #fff;
+   font-size: 1.25rem;
+   line-height: 2rem;
+   width: 20rem;
+   text-decoration: none;
+}
+nav ul li a img {
+   height: 1.25rem;
+   vertical-align: middle;
+   filter: invert(100%);
+}
+
+nav a:hover { 
+   background-color: #666; 
+}
+
+nav ul li:first-child {
+   background: none;
+}
+
+nav li:hover + li {
+   background-image: none;
+}
+
+nav ul li:hover a {
+   background-color: #666;
+}
+
+.active {
+   background-color: #666;
+}
+
+nav ul li:hover > ul {
+   display: block;
+   text-align: left;
+}
+
+nav ul ul {
+   display: none;
+   position: absolute; 
+}
+
+nav ul ul li {
+   border-top: 1px solid #454545;
+   width: 15rem;
+   float: none;
+   display: list-item;
+   position: relative;
+}
+
+nav ul ul li:first-child {
+   border-top: none;
+}
+
+nav ul ul li a {
+   line-height: 2rem;
+}
+
+nav li.dropable li a {
+   background-image: none;
+}
+
+nav li.dropable li a:hover {
+   background: #333;
+}
+
+.titel {
+   background-color: rgba(50, 50, 50, 0.25);
+}
