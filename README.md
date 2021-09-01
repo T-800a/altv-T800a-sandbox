@@ -12,19 +12,19 @@ this is just my quirky take on a interaction menu
 ```npm install --save simple-json-db```
 
 ### Menu
-press [E] to interact with objects (proximity or raycast)
-press [X] to interact inside vehicle
+press ```E``` to interact with objects (proximity or raycast)
+press ```X``` to interact inside vehicle
 
-press [W] or [D] to move up in menu
-press [S] or [A] to move down in menu
+press ```W``` or ```D``` to move up in menu
+press ```S``` or ```A``` to move down in menu
 
-press [Left Mouse] to execute selected
-press [Right Mouse] to close menu
+press ```Left Mouse``` to execute selected
+press ```Right Mouse``` to close menu
 
 
 
 ## T8UG
 positon loggin tool for alt:V
-open via T8INT: press [F3] and select the menu entry
-open via chat commant: /t8ug
+open via T8INT: press ```F3``` and select the menu entry
+open via chat commant: ```/t8ug```
 
