@@ -6,6 +6,7 @@ i am not a programmer by trade, this is just a hobby to keep me busy
 
 ## T8INT
 ![T8INT](img/img_t8int.png?raw=true "interaction menu")
+
 interaction menu for alt:V \
 this is just my quirky take on an interaction menu
 
@@ -26,6 +27,7 @@ press ```Right Mouse``` to close menu
 
 ## T8UG
 ![T8UG](img/img_t8ug.png?raw=true "pos logging tool")
+
 positon loggin tool for alt:V \
 open via T8INT: press ```F3``` and select the menu entry \
 open via chat commant: ```/t8ug```\
