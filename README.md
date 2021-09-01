@@ -10,6 +10,8 @@ I am not a programmer by trade, this is just a hobby to keep me busy. And these 
 interaction menu for alt:V \
 this is just my quirky take on an interaction menu
 
+**Dependencies:** alt, natives, chat
+
 ### requires: Simple JSONdb
 ```npm install --save simple-json-db```
 
@@ -31,7 +33,10 @@ press ```Right Mouse``` to close menu
 ## T8UG
 ![T8UG](img/img_t8ug.png?raw=true "pos logging tool")
 
-positon loggin tool for alt:V \
+positon loggin tool for alt:V
+
+**Dependencies:** alt, natives, chat
+
 open via T8INT: press ```F3``` and select the menu entry \
 open via chat commant: ```/t8ug```\
 press ```NUM 0``` to log a position \
