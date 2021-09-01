@@ -31,7 +31,7 @@ press ```Right Mouse``` to close menu
 positon loggin tool for alt:V \
 open via T8INT: press ```F3``` and select the menu entry \
 open via chat commant: ```/t8ug```\
-press ```NUM 0``` to log a position
-press ```NUM 3``` to spawn a ped on last logged position with logged 'heading/yawn'
+press ```NUM 0``` to log a position \
+press ```NUM 3``` to spawn a ped on last logged position with logged 'heading/yawn' \
 press ```NUM ,``` to focus the webview and activate the mouse
 
