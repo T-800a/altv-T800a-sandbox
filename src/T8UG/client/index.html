@@ -1,0 +1,51 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="style.css">
+      
+      <title>T8ug</title>
+   </head>
+   <body>
+
+      <div id="app" class="mainContainer">
+         <div class="container debugContainer">
+            <div class="item"><button onclick="closeWebview();">X</button></div>
+            <div class="item double left"><b>T8UG</b></div>
+            <div class="item">X:</div>
+            <div class="item double"><input type="text" id="input-x" name="x" v-model="pos.x"></div>
+            <div class="item">Y:</div>
+            <div class="item double"><input type="text" id="input-y" name="y" v-model="pos.y"></div>
+            <div class="item">Z:</div>
+            <div class="item double"><input type="text" id="input-z" name="z" v-model="pos.z"></div>
+            <div class="item">R:</div>
+            <div class="item double"><input type="text" id="input-r" name="r" v-model="pos.r"></div>
+            <div class="item">H:</div>
+            <div class="item double"><input type="text" id="input-h" name="h" v-model="pos.h"></div>
+            <div class="item tripple left small">
+               <p>
+                  NUM 0 - Position Speichern<br>
+                  NUM 3 - Test Ped Spawnen<br>
+                  NUM , - Maus aktiviern
+               </p>
+            </div>
+         </div>
+         <div class="container">
+            <select v-model="logTyp_selected" name="logtyp">
+               <option v-for="option in logTyp_options" :value="option.value">
+                  {{ option.text }}
+               </option>
+            </select>
+         </div>
+         <div class="container">
+            <textarea v-model="log" id="textarea-log" class="log" readonly></textarea>
+            <button onclick="clearLog();">Log Löschen!</button>
+         </div>
+      </div>
+
+   </body>
+   <script type="text/javascript" src="vue.global.prod.js"></script>
+   <script type="text/javascript" src="webview.js"></script>
+</html>
+
+

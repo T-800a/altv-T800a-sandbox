@@ -212,33 +212,43 @@
             {
                 "name": "Sub-Menu",
                 "img": "img/senden.png",
-                "keepOpen": true,
+                "keepOpen": false,
                 "target": "submenu",
                 "call": "",
-                "data": {
-                    "titel": "T8M - Menu | Submenu",
-                    "items": [
-                        {
-                            "name": "Löschen",
-                            "img": "img/loschen.png",
-                            "keepOpen": false,
-                            "target": "none",
-                            "call": "",
-                            "data": ""
-                        },
-                        {
-                            "name": "Flieger",
-                            "img": "img/senden.png",
-                            "keepOpen": false,
-                            "target": "",
-                            "call": "",
-                            "data": ""
-                        }
-                    ]
-                }
+                "data": "F3_submenu"
             }
         ]
     },
+    "F3_submenu": {
+        "titel": "T8M - Menu | Submenu",
+        "items": [
+            {
+                "name": "Hallo",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "none",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Welt",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "",
+                "call": "",
+                "data": ""
+            },
+            {
+                "name": "Zurück",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "submenu",
+                "call": "",
+                "data": "F3_menu"
+            }
+        ]
+    },
+
     "insidevehicle_menu": {
         "titel": "Fahrzeug",
         "items": [

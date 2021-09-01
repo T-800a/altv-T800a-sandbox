@@ -1,0 +1,105 @@
+:root {
+   --color-bg: darkslateblue;
+   --color-fg: whitesmoke;
+}
+
+* {
+   box-sizing: border-box;
+   margin-top: 0px;
+   font-family: "Courier New", Courier, monospace;
+}
+
+body {
+   font-size: 26px;
+   color: var(--color-fg);
+
+}
+
+.mainContainer {
+   position: absolute;
+   top:  50%;
+   right: 0%;
+   transform: translate(0%, -50%);
+}
+
+.container {
+   width: 10em;
+   padding: 0.5em;
+   margin: 0.5em;
+   align-items: center;
+   background-color: var(--color-bg);
+   opacity: 0.75;
+   border-radius: 0.5em;
+}
+
+.debugContainer { 
+   display: grid;
+   grid-template-columns: 0.5fr 1fr 1fr;
+   grid-template-rows: auto;
+   column-gap: 0.5em;
+   row-gap: 0.5em;
+}
+
+.item {
+   text-align: center;
+   justify-self: stretch;
+}
+
+.double {
+   grid-column: span 2;
+}
+
+.tripple {
+   grid-column: span 3;
+}
+
+.left {
+   text-align: left;
+}
+
+.small {
+   font-size: .5em;
+}
+
+input {
+   width: 100%;
+   height: 1.5em;
+   font-size: 1em;
+   text-align: right;
+   color: var(--color-fg);
+   background-color: var(--color-bg);
+   border: .1em solid violet ;
+   border-radius: .5em;
+}
+
+input:hover { outline-color: var(--color-fg); }
+input:focus { outline-color: grey; }
+input:active { outline-color: var(--color-bg); }
+
+select, textarea {
+   width: 100%;
+   text-align: left;
+   color: var(--color-fg);
+   background-color: var(--color-bg);
+   border: .1em solid violet ;
+   border-radius: .5em;
+}
+
+.log {
+   height: 10em;
+   font-size: .5em;
+}
+
+button {
+   font-size: .5em;
+   text-align: right;
+   color: var(--color-fg);
+   background-color: var(--color-bg);
+   border: .1em solid violet ;
+   border-radius: .5em;
+   margin-top: .2em;
+}
+
+button:hover { border-color: var(--color-fg); }
+button:focus { border-color: darkviolet; }
+button:active { border-color: darkviolet; }

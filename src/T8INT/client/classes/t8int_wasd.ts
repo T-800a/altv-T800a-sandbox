@@ -43,6 +43,15 @@ export class T8INT_WASDmenu {
       let call       = this.menu_obj.items[this.item].call;
       let data       = this.menu_obj.items[this.item].data;
 
+      if ( target == "T8INT" ){
+         alt.emitServer( "T8INT:CLI>SRV:interaction", call, data, this.intResult );
+      };
+
+      if ( target == "submenu" ){
+         this.close();
+         alt.emitServer('T8INT:CLI>SRV:requestMenu', 9999, data );
+      };
+
       if ( target == "client" ){
          alt.emit( call, data, this.intResult );
       };
@@ -51,20 +60,11 @@ export class T8INT_WASDmenu {
          alt.emitServer( call, data, this.intResult );
       };
 
-      if ( target == "T8INT" ){
-         alt.emitServer( "T8INT:CLI>SRV:interaction", call, data, this.intResult );
-      };
-
       if( !keepOpen ){
          this.close();
       };
 
-      if ( target == "submenu" ){
 
-         let submenuJSON = JSON.stringify(data);
-         this.close();
-         this.open( submenuJSON );
-      };
    };
 
    open( dataJSON:string ){   

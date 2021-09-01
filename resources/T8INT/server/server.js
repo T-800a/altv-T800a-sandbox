@@ -28,9 +28,9 @@ alt.onClient('T8INT:CLI>SRV:requestMenu', (player, entityType, entityHash)=>{
         }
         return;
     }
-    if (entityType === 101) {
-        if (DBM.has("F3_menu")) {
-            let interaction = JSON.stringify(DBM.get("F3_menu"));
+    if (entityType === 9999) {
+        if (DBM.has(entityHash)) {
+            let interaction = JSON.stringify(DBM.get(entityHash));
             alt.emitClient(player, 'T8INT:SRV>CLI:openMenu', interaction);
         }
     }

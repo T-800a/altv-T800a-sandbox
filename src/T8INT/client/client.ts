@@ -102,7 +102,7 @@ alt.on("keyup", function (key:number) {
    // [ F3 ] >>
       if ( key == 114 ) {   
          if ( !WASDMENU.webview ) {
-            alt.emitServer('T8INT:CLI>SRV:requestMenu', 101, 'none' );
+            alt.emitServer('T8INT:CLI>SRV:requestMenu', 9999, 'F3_menu' );
          };
          return;
       };

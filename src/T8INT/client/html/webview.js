@@ -4,7 +4,7 @@ const app = Vue.createApp({
    data() {
       return {
          data :{
-            /*
+/*            
             titel: "DEBUG MENU",
             items: [
                {
@@ -32,7 +32,7 @@ const app = Vue.createApp({
                   data: ""
                },
             ]
-            */
+*/          
          }
       }
    }

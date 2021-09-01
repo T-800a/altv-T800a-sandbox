@@ -103,7 +103,7 @@ intResult:object = {
         veh.setMod(22, 1); // Xenon
         veh.primaryColor = 50; // Metallic Racing Green
         veh.secondaryColor = 1; // Metallic Graphite Black 
-        veh.pearlColor = 92; // Metallic Lime 
+        veh.pearlColor = 51; // Metallic Sea Green  
         veh.wheelColor = 158; // Pure Gold 
         chat.send(player, `Dein Fahrzeug [${veh.numberPlateText}] wurde gepimpt (du cheater).`);
     }
