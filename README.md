@@ -1,7 +1,7 @@
 # altv-T800a-sandbox
-welcome to my sandbox. \
-these are not finished/polished resources \
-i am not a programmer by trade, this is just a hobby to keep me busy
+welcome to my sandbox! \
+These are **not** finished/polished resources. \
+I am not a programmer by trade, this is just a hobby to keep me busy. And these are my first half decent things I made with js, typescript and a little bit of vue for alt:V.
 
 
 ## T8INT
@@ -12,6 +12,9 @@ this is just my quirky take on an interaction menu
 
 ### requires: Simple JSONdb
 ```npm install --save simple-json-db```
+
+*You need to copy the JSONdb folder to your server root.* \
+It contains Json files with demo menus and object hashes for interaction.
 
 ### Menu
 press ```E``` to interact with objects (proximity or raycast) \
