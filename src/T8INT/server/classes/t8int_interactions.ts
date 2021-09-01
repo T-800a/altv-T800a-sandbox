@@ -9,7 +9,8 @@ intResult:object = {
    entity: null, 
    entityType: 0, 
    entityHash: 0, 
-   entityID: 0 
+   entityID: 0 ,
+   nearGasPump: false,
 };
 */
 

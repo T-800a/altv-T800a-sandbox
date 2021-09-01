@@ -188,5 +188,33 @@
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
         "INT3D": false
+    },
+    "1339433404": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "1694452750": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "1933174915": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "2287735495": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "3825272565": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "4130089803": {
+        "titel": "Zapfsäule",
+        "gaspump": true
+    },
+    "3832150195": {
+        "titel": "Zapfsäule",
+        "gaspump": true
     }
 }

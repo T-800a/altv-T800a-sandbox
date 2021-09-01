@@ -303,7 +303,8 @@
                 "keepOpen": true,
                 "target": "none",
                 "call": "",
-                "data": ""
+                "data": "",
+                "flag": "neargaspump"
             }
         ]
     },

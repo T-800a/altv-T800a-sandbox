@@ -9,16 +9,21 @@ export class T8INT_WASDmenu {
    n:number             = 0;
    item:number          = 0;
    menu_obj:any         = {};
-   intResult:object     = { 
+   intResult:any     = { 
       isHit: false, 
       pos: { x:0, y:0, z:0 }, 
       rot: { x:0, y:0, z:0 }, 
       entity: null, 
       entityType: 0, 
       entityHash: 0, 
-      entityID: 0 
+      entityID: 0, 
+      nearGasPump: false,
    };
 
+   updateIntResult( newResult, nearGasPump:boolean = false ){
+      this.intResult = newResult;
+      this.intResult.nearGasPump = nearGasPump;
+   };
 
    close(){
       if (this.focused){ 

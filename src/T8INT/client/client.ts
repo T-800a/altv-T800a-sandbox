@@ -49,39 +49,39 @@ alt.on("keyup", function (key:number) {
    // [ E ] >>
       if ( key == 69 && !WASDMENU.webview ) {
 
-         WASDMENU.intResult      = emtpyResult;
+         WASDMENU.updateIntResult( emtpyResult );
 
    // Player not in Vehicle
          if(!(alt.Player.local.vehicle)) {
             let result = Raycast.line(1.5, 2.5);
             if ( result ){
-               WASDMENU.intResult = result;
+               WASDMENU.updateIntResult( result, INT3D.isNearGasPump());
                let distance = alt.Player.local.pos.distanceTo( natives.getEntityCoords(result.entity, true) );
                alt.log('>> T8INT >> RAYCAST >> entityHash: ' + result.entityHash + ' entityType: ' + result.entityType + ' entityID: ' + result.entityID + ' distance: ' + distance + ' nearestObject: ' + INT3D.nearestObject.entityHash );
 
    // Player targets Person
                if ( result.isHit && result.entityType === 1 && distance < 1.5 ){
-                  alt.emitServer('T8INT:CLI>SRV:requestMenu', result.entityType, result.entityHash );
+                  alt.emitServer('T8INT:CLI>SRV:requestMenu', 1, WASDMENU.intResult );
                   return;
                };
    // Player targets Vehicle
                if ( result.isHit && result.entityType === 2 && distance < 4.5 ){
-                  alt.emitServer('T8INT:CLI>SRV:requestMenu', result.entityType, result.entityHash );
+                  alt.emitServer('T8INT:CLI>SRV:requestMenu', 2, WASDMENU.intResult );
                   
                   return;
                };
    // Player targets Object
                if ( result.isHit && result.entityType === 3 && distance < 1.8 && INT3D.nearestObject.entityHash === 0 ){
-                  alt.emitServer('T8INT:CLI>SRV:requestMenu', result.entityType, result.entityHash );
+                  alt.emitServer('T8INT:CLI>SRV:requestMenu', 3, WASDMENU.intResult );
                   return;
                };
             };
 
    // Interactable Object is near player
             if ( INT3D.nearestObject.entityHash > 0 ){
-               alt.emitServer('T8INT:CLI>SRV:requestMenu', 3, INT3D.nearestObject.entityHash );
-               WASDMENU.intResult = INT3D.nearestObject;
                alt.log( JSON.parse(INT3D.nearestObject.entity))
+               WASDMENU.updateIntResult( INT3D.nearestObject );
+               alt.emitServer('T8INT:CLI>SRV:requestMenu', 3, WASDMENU.intResult );
                return; 
             };
          };
@@ -92,8 +92,8 @@ alt.on("keyup", function (key:number) {
    // [ X ] >>
       if ( key == 88 ) {
          if ( alt.Player.local.vehicle && !WASDMENU.webview ) {
-            WASDMENU.intResult = INT3D.nearestObject;
-            alt.emitServer('T8INT:CLI>SRV:requestMenu', 99, 'none' );
+            WASDMENU.updateIntResult( INT3D.nearestObject );
+            alt.emitServer('T8INT:CLI>SRV:requestMenu', 99, WASDMENU.intResult );
             return;
          };
       };
@@ -119,13 +119,14 @@ alt.onServer('T8INT:SRV>CLI:openMenu', ( dataJSON ) => {
 });
 
 // initialize 3D interactions when server sends Hash array
-alt.onServer('T8INT:SRV>CLI:initINT3D', ( dataJSON ) => {
+alt.onServer('T8INT:SRV>CLI:initINT3D', ( JSONhashes, JSONgaspumps ) => {
 
-   let hasharray = JSON.parse(dataJSON);
-   alt.log(`>> T8INT:SRV>CLI:initINT3D >> hashes >> ${hasharray}`);
-   alt.log(`>> T8INT:SRV>CLI:initINT3D >> hashes >> ${hasharray.length}`);
+   let arrayHashes = JSON.parse(JSONhashes);
+   let arrayGasPumps = JSON.parse(JSONgaspumps);
+   alt.log(`>> T8INT:SRV>CLI:initINT3D >> arrayHashes.length: ${arrayHashes.length}`);
+   alt.log(`>> T8INT:SRV>CLI:initINT3D >> arrayGasPumps.length: ${arrayGasPumps.length}`);
    // INT3D.init([ 1805980844, 3232156621, 3666247552, 3079285877, 3059710928, 2533307946, 525667351 ]);
-   INT3D.init( hasharray );
+   INT3D.init( arrayHashes, arrayGasPumps );
 });
 
 

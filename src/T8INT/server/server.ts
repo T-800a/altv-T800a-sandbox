@@ -10,28 +10,31 @@ const DBO = new JSONdb('./JSONdb/db-objects.json');
 
 
 alt.onClient('T8INT:CLI>SRV:requestINT3D', player => {
-   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> ' + player.name );
    
    let fullJSON = DBO.JSON();
    let int3Darray = [];
+   let gasPumpArray = [];
 
    for ( let key in fullJSON ) {
       let element = fullJSON[key];
-      if ( "INT3D" in element && element["INT3D"]){
-         int3Darray.push(key);
-      };
+      if ( "INT3D" in element && element["INT3D"]){ int3Darray.push(key); };
+      if ( "gaspump" in element && element["gaspump"]){ gasPumpArray.push(key); };
    };
 
-   let int3DJSON = JSON.stringify(int3Darray);
-   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> ' + int3DJSON );
-   alt.emitClient( player, 'T8INT:SRV>CLI:initINT3D', int3DJSON );
+   alt.emitClient( player, 'T8INT:SRV>CLI:initINT3D', JSON.stringify(int3Darray), JSON.stringify(gasPumpArray) );
+
+   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> ' + player.name );
+   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> int3Darray: ' + JSON.stringify(int3Darray) );
+   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> gasPumpArray: ' + JSON.stringify(gasPumpArray) );
 });
 
 
-alt.onClient('T8INT:CLI>SRV:requestMenu', ( player, entityType, entityHash ) => {
-   // alt.log( '>> T8INT:CLI>SRV:requestMenu >> ' + player.name, entityType, entityHash );
+alt.onClient('T8INT:CLI>SRV:requestMenu', ( player, type:number = 0, result:any = {}) => {
+   // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> type: ${type} result: ${JSON.stringify(result)}`);
 
-   if (entityType === 99 ){
+   let hash = result.entityHash;
+
+   if (type === 99 ){
       if ( DBM.has("insidevehicle_menu") ){
          let interaction = JSON.stringify(DBM.get("insidevehicle_menu"));
          alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction);
@@ -39,35 +42,56 @@ alt.onClient('T8INT:CLI>SRV:requestMenu', ( player, entityType, entityHash ) => 
       return;
    };
 
-   if (entityType === 9999 ){
-      if ( DBM.has(entityHash) ){
-         let interaction = JSON.stringify(DBM.get(entityHash));
+   if (type === 9999 && ( typeof result === "string" )){
+      if ( DBM.has( result ) ){
+         let interaction = JSON.stringify(DBM.get( result ));
          alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction );
       };
    };
 
-   if (entityType === 3 ){
-      if ( DBO.has(entityHash) ){
-         let object = DBO.get(entityHash);
+   if (type === 3 ){
+      if ( DBO.has( hash ) ){
+         let object = DBO.get( hash );
          let menu = object["menu"];
          if ( DBM.has( menu ) ){
             let interaction = JSON.stringify(DBM.get( menu ));
-            alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction);
+            alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction );
          };
       };
       return;
    };
-   if (entityType === 2 ){
+
+   if (type === 2 ){
       if ( DBM.has("vehicle_menu") ){
-         let interaction = JSON.stringify(DBM.get("vehicle_menu"));
-         alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction);
+
+         // bin zu dumm um das ander hinzubekommen (clon ohne refernz)
+         let vehMenu = JSON.stringify(DBM.get("vehicle_menu"));
+         let menu:any = JSON.parse(vehMenu);
+
+         if ( !result.nearGasPump ){
+            for ( let key in menu.items ) {
+               let element = menu.items[key];
+               if ( "flag" in element && element["flag"] == "neargaspump" ) { 
+
+                  let index = menu.items.indexOf(element);
+                  if (index > -1) {
+                     menu.items.splice(index, 1);
+                  };
+               };
+            };
+         };
+
+         // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> vehMenu: ${vehMenu}`);
+         // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> menu: ${JSON.stringify(menu)}`);
+
+         alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', JSON.stringify( menu ));
       };
       return;
    };
-   if (entityType === 1 ){
+   if (type === 1 ){
       if ( DBM.has("player_menu") ){
          let interaction = JSON.stringify(DBM.get("player_menu"));
-         alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction);
+         alt.emitClient( player, 'T8INT:SRV>CLI:openMenu', interaction );
       };
       return;
    };

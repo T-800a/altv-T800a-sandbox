@@ -1,5 +1,9 @@
 import alt from 'alt-client';
 export class T8INT_WASDmenu {
+    updateIntResult(newResult, nearGasPump = false) {
+        this.intResult = newResult;
+        this.intResult.nearGasPump = nearGasPump;
+    }
     close() {
         if (this.focused) {
             alt.toggleGameControls(true);
@@ -112,7 +116,8 @@ export class T8INT_WASDmenu {
             entity: null,
             entityType: 0,
             entityHash: 0,
-            entityID: 0
+            entityID: 0,
+            nearGasPump: false
         };
     }
 }

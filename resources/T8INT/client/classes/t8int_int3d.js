@@ -1,8 +1,9 @@
 import alt from 'alt-client';
 import natives from 'natives';
 export class T8INT_Interactions3D {
-    init(input) {
-        this.hashes = input;
+    init(inputHashes, inputHashesGasPump) {
+        this.hashes = inputHashes;
+        this.hashesGasPump = inputHashesGasPump;
     }
     findNearest() {
         let _p = alt.Player.local.pos;
@@ -95,6 +96,21 @@ export class T8INT_Interactions3D {
             };
         }
     }
+    isNearGasPump() {
+        let _p = alt.Player.local.pos;
+        let _obj = null;
+        let _range = 3;
+        if (this.hashesGasPump.length < 1) {
+            return false;
+        }
+        for (const _el of this.hashesGasPump){
+            let _obj1 = natives.getClosestObjectOfType(_p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true);
+            if (_obj1) {
+                return true;
+            }
+        }
+        return false;
+    }
     draw3D() {
         let fontType = 4;
         let object = this.nearestObject;
@@ -128,6 +144,7 @@ export class T8INT_Interactions3D {
     }
     constructor(){
         this.hashes = [];
+        this.hashesGasPump = [];
         // nearestObject = { pos: alt.Player.local.pos, rot: alt.Player.local.rot, hash: 0, obj: null };
         this.nearestObject = {
             isHit: false,

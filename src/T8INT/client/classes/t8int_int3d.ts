@@ -4,13 +4,16 @@ import * as chat from "chat";
 
 export class T8INT_Interactions3D {
 
-   hashes:any = [];
+   hashes:[] = [];
+   hashesGasPump:[] = [];
+
    // nearestObject = { pos: alt.Player.local.pos, rot: alt.Player.local.rot, hash: 0, obj: null };
    nearestObject = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };
 
-   init( input:any ){
+   init( inputHashes, inputHashesGasPump ){
 
-      this.hashes = input;
+      this.hashes = inputHashes;
+      this.hashesGasPump = inputHashesGasPump;
    };
 
    findNearest(){
@@ -65,6 +68,21 @@ export class T8INT_Interactions3D {
          // this.nearestObject = { pos: _p, rot: _r, hash: 0, obj: null };
          this.nearestObject = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };
       };
+   };
+
+   isNearGasPump(){
+      let _p = alt.Player.local.pos;
+      let _obj = null;
+      let _range = 2.0;
+
+      if ( this.hashesGasPump.length < 1 ){ return false; };
+
+      for (const _el of this.hashesGasPump ) { 
+         let _obj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true );
+         if ( _obj ){ return true; };
+      };
+
+      return false;
    };
 
    draw3D(){
