@@ -1,7 +1,7 @@
 import alt from 'alt-client';
 import natives from 'natives';
 import { playAnimation } from './utility';
-export class T8INT_Interactions {
+export class Interactions {
     init() {
         alt.onServer('T8INT:CLI:interaction', (call, data)=>{
             this[call](data);

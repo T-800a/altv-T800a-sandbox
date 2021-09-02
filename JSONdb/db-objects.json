@@ -2,219 +2,226 @@
     "73774428": {
         "titel": "Zigaretten Automat",
         "menu": "automat_zigaretten",
-        "INT3D": true
+        "INTOBJ": true
     },
     "218085040": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "506770882": {
         "titel": "Bankautomat",
         "menu": "automat_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "525667351": {
         "titel": "Stuhl",
         "menu": "sitzen_stuhl",
-        "INT3D": true
+        "INTOBJ": true
     },
     "666561306": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "682791951": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "684389648": {
         "titel": "Condom Automat",
         "menu": "automat_condome",
-        "INT3D": true
+        "INTOBJ": true
     },
     "690372739": {
         "titel": "Kaffee Automat",
         "menu": "automat_kaffee",
-        "INT3D": true
+        "INTOBJ": true
     },
     "992069095": {
         "titel": "Getränke Automat",
         "menu": "automat_getraenke",
-        "INT3D": true
+        "INTOBJ": true
     },
     "1099892058": {
         "titel": "Wasser Spender",
         "menu": "automat_wasser",
-        "INT3D": true
+        "INTOBJ": true
     },
     "1114264700": {
         "titel": "Getränke Automat",
         "menu": "automat_getraenke",
-        "INT3D": true
+        "INTOBJ": true
     },
     "1138027619": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "1437508529": {
         "titel": "Mülleimer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "1511880420": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "1614656839": {
         "titel": "Mülleimer",
         "menu": "kontainer_muell",
-        "INT3D": true
+        "INTOBJ": true
     },
     "1748268526": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "1805980844": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "1964400974": {
         "titel": "Wasser Spender",
         "menu": "automat_wasser",
-        "INT3D": true
+        "INTOBJ": true
     },
     "2108567945": {
         "titel": "Parkuhr",
         "menu": "parkuhr",
-        "INT3D": true
+        "INTOBJ": true
     },
     "2354728673": {
         "titel": "Parkuhr",
         "menu": "parkuhr",
-        "INT3D": true
+        "INTOBJ": true
     },
     "2533307946": {
         "titel": "Stuhl",
         "menu": "sitzen_stuhl",
-        "INT3D": true
+        "INTOBJ": true
     },
     "2603322528": {
         "titel": "Wasser Spender",
         "menu": "automat_wasser",
-        "INT3D": true
+        "INTOBJ": true
     },
     "2930269768": {
         "titel": "Bankautomat",
         "menu": "automat_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3059710928": {
         "titel": "Stuhl",
         "menu": "sitzen_stuhl",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3079285877": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3168729781": {
         "titel": "Bankautomat",
         "menu": "automat_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3198190107": {
         "titel": "Mülleimer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "3232156621": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3260933171": {
         "titel": "Snack Automat",
         "menu": "automat_snacks",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3424098598": {
         "titel": "Bankautomat",
         "menu": "automat_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3552768664": {
         "titel": "Wasser Spender",
         "menu": "automat_wasser",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3640564381": {
         "titel": "Snack Automat",
         "menu": "automat_snacks",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3666247552": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "3891075673": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "4088277111": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "4195466914": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "4223549947": {
         "titel": "Bank",
         "menu": "sitzen_bank",
-        "INT3D": true
+        "INTOBJ": true
     },
     "4236481708": {
         "titel": "Müllkontainer",
         "menu": "kontainer_muell",
-        "INT3D": false
+        "INTOBJ": false
     },
     "1339433404": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "1694452750": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "1933174915": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "2287735495": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "3825272565": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "4130089803": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     },
     "3832150195": {
         "titel": "Zapfsäule",
-        "gaspump": true
+        "gaspump": true,
+        "range": 1.5
     }
 }

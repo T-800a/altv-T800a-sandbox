@@ -1,23 +1,10 @@
 import alt from 'alt-server';
 import * as chat from "chat";
 
-/*
-intResult:object = { 
-   isHit: false, 
-   pos: { x:0, y:0, z:0 }, 
-   rot: { x:0, y:0, z:0 }, 
-   entity: null, 
-   entityType: 0, 
-   entityHash: 0, 
-   entityID: 0 ,
-   nearGasPump: false,
-};
-*/
-
-export class T8INT_Interactions {
+export class ServerInteractions {
 
    init(){
-      alt.onClient('T8INT:CLI>SRV:interaction', ( player, call, data, intResult ) => {
+      alt.onClient('T8INT:CLI>SRV:interaction', ( player, call, data, intResult:InteractionObj ) => {
 
          alt.log(`T8INT >> ${player.name} >> interaction >> call: ${call} >> data: ${data} >> intResult: ${JSON.stringify(intResult)}`);
          this[call]( player, call, data, intResult );
@@ -55,7 +42,7 @@ export class T8INT_Interactions {
       player.pos = random;
    };
 
-   vehicle_repair( player, call, data, intResult ){
+   vehicle_repair( player, call, data, intResult:InteractionObj ){
 
       let veh = alt.Vehicle.getByID( intResult.entityID );
       veh.repair();
@@ -63,7 +50,7 @@ export class T8INT_Interactions {
    };
 
 
-   vehicle_quicktune( player, call, data, intResult ){
+   vehicle_quicktune( player, call, data, intResult:InteractionObj ){
 
       let veh = alt.Vehicle.getByID( intResult.entityID );
       veh.repair();

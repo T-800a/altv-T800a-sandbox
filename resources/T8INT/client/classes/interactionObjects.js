@@ -1,9 +1,9 @@
 import alt from 'alt-client';
 import natives from 'natives';
-export class T8INT_Interactions3D {
-    init(inputHashes, inputHashesGasPump) {
-        this.hashes = inputHashes;
-        this.hashesGasPump = inputHashesGasPump;
+export class InteractionObjects {
+    init(arrayHashes, arrayGasPumps) {
+        this.hashes = arrayHashes;
+        this.hashesGasPump = arrayGasPumps;
     }
     findNearest() {
         let _p = alt.Player.local.pos;
@@ -42,11 +42,10 @@ export class T8INT_Interactions3D {
             return;
         }
         let _obj = null;
-        let _ha = this.hashes;
-        let _range = 1;
         // find closest object to the player
-        for (const _el of _ha){
-            let _newobj = natives.getClosestObjectOfType(_p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true);
+        //  _el ->  0: Hash, 1:range
+        for (const _el of this.hashes){
+            let _newobj = natives.getClosestObjectOfType(_p.x, _p.y, _p.z, _el[1], parseInt(_el[0]), false, true, true);
             if (!_obj && _newobj) {
                 _obj = _newobj;
             }
@@ -98,14 +97,14 @@ export class T8INT_Interactions3D {
     }
     isNearGasPump() {
         let _p = alt.Player.local.pos;
-        let _obj = null;
-        let _range = 3;
+        let _range = 2;
         if (this.hashesGasPump.length < 1) {
             return false;
         }
+        //  _el ->  0: Hash, 1:range
         for (const _el of this.hashesGasPump){
-            let _obj1 = natives.getClosestObjectOfType(_p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true);
-            if (_obj1) {
+            let _obj = natives.getClosestObjectOfType(_p.x, _p.y, _p.z, _el[1], parseInt(_el[0]), false, true, true);
+            if (_obj) {
                 return true;
             }
         }

@@ -4,6 +4,7 @@ let counter = 1;
 const app = Vue.createApp({
    data() {
       return {
+         key: "",
          pos :{
             x: "0",
             y: "0",
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
          
          let _log = view.log;
          let _newlog = msg + '\n'
-
          view.pos = {
             x: msg[0],
             y: msg[1],
@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
          view.log = _log + _newlog;
       });
+
+      alt.on('T8UG:CEF:updateKey', msg => { view.key = msg; });
    };
 });
 

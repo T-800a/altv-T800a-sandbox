@@ -1,5 +1,5 @@
 import alt from 'alt-client';
-export class T8INT_WASDmenu {
+export class WASDmenu {
     updateIntResult(newResult, nearGasPump = false) {
         this.intResult = newResult;
         this.intResult.nearGasPump = nearGasPump;
@@ -95,12 +95,12 @@ export class T8INT_WASDmenu {
         this.webview.emit('T8INT:CLI>CEF:focus', `item-${this.item}`);
     }
     constructor(){
-        this.webview = null;
         this.focused = false;
         this.n = 0;
         this.item = 0;
         this.menu_obj = {
         };
+        this.webview = null;
         this.intResult = {
             isHit: false,
             pos: {

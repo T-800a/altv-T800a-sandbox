@@ -1,31 +1,32 @@
 import alt from 'alt-server';
 import JSONdb from 'simple-json-db';
 import * as chat from "chat";
-import { T8INT_Interactions } from './classes/t8int_interactions';
+import { ServerInteractions } from './classes/serverInteractions';
 
-let INTER = new T8INT_Interactions();
+let INTER = new ServerInteractions();
 
 const DBM = new JSONdb('./JSONdb/db-menus.json');
 const DBO = new JSONdb('./JSONdb/db-objects.json');
 
 
-alt.onClient('T8INT:CLI>SRV:requestINT3D', player => {
+alt.onClient('T8INT:CLI>SRV:requestINTOBJ', player => {
    
    let fullJSON = DBO.JSON();
-   let int3Darray = [];
+   let intObjarray = [];
    let gasPumpArray = [];
 
    for ( let key in fullJSON ) {
       let element = fullJSON[key];
-      if ( "INT3D" in element && element["INT3D"]){ int3Darray.push(key); };
-      if ( "gaspump" in element && element["gaspump"]){ gasPumpArray.push(key); };
+      let range = ( "range" in element ) ? element["range"] : 1;
+      if ( "INTOBJ" in element && element["INTOBJ"]){ intObjarray.push([ key, range ]); };
+      if ( "gaspump" in element && element["gaspump"]){ gasPumpArray.push([ key, range ]); };
    };
 
-   alt.emitClient( player, 'T8INT:SRV>CLI:initINT3D', JSON.stringify(int3Darray), JSON.stringify(gasPumpArray) );
+   alt.emitClient( player, 'T8INT:SRV>CLI:initINTOBJ', JSON.stringify(intObjarray), JSON.stringify(gasPumpArray) );
 
-   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> ' + player.name );
-   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> int3Darray: ' + JSON.stringify(int3Darray) );
-   alt.log( '>> T8INT:CLI>SRV:requestINT3D >> gasPumpArray: ' + JSON.stringify(gasPumpArray) );
+   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> ' + player.name );
+   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> intObjarray: ' + JSON.stringify(intObjarray) );
+   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> gasPumpArray: ' + JSON.stringify(gasPumpArray) );
 });
 
 
@@ -147,18 +148,18 @@ chat.registerCmd("ni", (player, args) => {
 
    let name = "NEUES OBJECT";
    let menu = "new_menu";
-   let doint3d = true;
+   let isIntObj = true;
    
    if( args[1] ){ name = args[1]};
    if( args[2] ){ menu = args[2]};
-   if( args[3] === "y" ){ doint3d = true; };
-   if( args[3] === "n" ){ doint3d = false; };
+   if( args[3] === "y" ){ isIntObj = true; };
+   if( args[3] === "n" ){ isIntObj = false; };
 
    if( DBO.has(args[0]) ){ chat.send(player, `>> es existiert bereits ein Eintrag für den Modelhash ${args[0]}`); return; };
    DBO.set( args[0], {
       titel: name,
       menu:  menu,
-      INT3D: doint3d
+      INTOBJ: isIntObj
    });
 
    chat.send(player, `>> neuen Eintrag für den Modelhash ${args[0]} erstellt`);

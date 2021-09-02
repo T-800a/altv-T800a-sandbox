@@ -44,6 +44,8 @@ alt.on("keyup", function (key) {
    // Fenster wurde geöffnet
    if ( webview ){
 
+      webview.emit('T8UG:CEF:updateKey', key );
+
       // NUM KOMMA
       if ( key == 110 ) {
          if ( !webviewFocused ){
@@ -61,7 +63,7 @@ alt.on("keyup", function (key) {
    
    // NUM 0
       if (key === 96 ) {
-         webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray());
+         webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray( key ));
       };
    
    // NUM 3

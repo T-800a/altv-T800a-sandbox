@@ -2,18 +2,18 @@ import alt from 'alt-client';
 import natives from 'natives';
 import * as chat from "chat";
 
-export class T8INT_Interactions3D {
+export class InteractionObjects {
 
-   hashes:[] = [];
-   hashesGasPump:[] = [];
+   private hashes:[] = [];
+   private hashesGasPump:[] = [];
 
    // nearestObject = { pos: alt.Player.local.pos, rot: alt.Player.local.rot, hash: 0, obj: null };
-   nearestObject = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };
+   public nearestObject:InteractionObj = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };
 
-   init( inputHashes, inputHashesGasPump ){
+   init( arrayHashes:[], arrayGasPumps:[] ){
 
-      this.hashes = inputHashes;
-      this.hashesGasPump = inputHashesGasPump;
+      this.hashes = arrayHashes;
+      this.hashesGasPump = arrayGasPumps;
    };
 
    findNearest(){
@@ -40,12 +40,11 @@ export class T8INT_Interactions3D {
       };
 
       let _obj = null;
-      let _ha = this.hashes;
-      let _range = 1.0;
 
    // find closest object to the player
-      for (const _el of _ha ) { 
-         let _newobj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true );
+   //  _el ->  0: Hash, 1:range
+      for (const _el of this.hashes ) { 
+         let _newobj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _el[1], parseInt(_el[0]), false, true, true );
          if ( !_obj && _newobj ){ _obj = _newobj; };
          if ( _obj && _newobj ){
             let _od = alt.Player.local.pos.distanceTo( natives.getEntityCoords( _obj, true) );
@@ -72,13 +71,13 @@ export class T8INT_Interactions3D {
 
    isNearGasPump(){
       let _p = alt.Player.local.pos;
-      let _obj = null;
       let _range = 2.0;
 
       if ( this.hashesGasPump.length < 1 ){ return false; };
 
+       //  _el ->  0: Hash, 1:range
       for (const _el of this.hashesGasPump ) { 
-         let _obj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _range, parseInt(_el), false, true, true );
+         let _obj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _el[1], parseInt(_el[0]), false, true, true );
          if ( _obj ){ return true; };
       };
 

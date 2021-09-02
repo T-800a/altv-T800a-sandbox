@@ -1,15 +1,17 @@
-import alt from 'alt-client';
+import alt, { WebView } from 'alt-client';
 import natives from 'natives';
 import * as chat from "chat";
 
-export class T8INT_WASDmenu {
+
+export class WASDmenu {
    
-   webview:any          = null;
-   focused:boolean      = false;
-   n:number             = 0;
-   item:number          = 0;
-   menu_obj:any         = {};
-   intResult:any     = { 
+   private focused:boolean          = false;
+   private n:number                 = 0;
+   private item:number              = 0;
+   private menu_obj:any             = {};
+
+   public webview:any               = null;
+   public intResult:InteractionObj  = { 
       isHit: false, 
       pos: { x:0, y:0, z:0 }, 
       rot: { x:0, y:0, z:0 }, 
@@ -20,7 +22,7 @@ export class T8INT_WASDmenu {
       nearGasPump: false,
    };
 
-   updateIntResult( newResult, nearGasPump:boolean = false ){
+   updateIntResult( newResult:InteractionObj, nearGasPump:boolean = false ){
       this.intResult = newResult;
       this.intResult.nearGasPump = nearGasPump;
    };
