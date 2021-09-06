@@ -1,11 +1,103 @@
 import alt from 'alt-server';
 import * as chat from "chat";
-export class ServerInteractions {
-    init() {
+import * as notify from 'notify-me';
+/*
+   //Serverside
+   notify.bigNotification(player,'your header','your second text','type or blank');
+   notify.littleNotification(player,'your text', 'type or blank');
+   notify.bannerNotification(player,'your text', 'URL to Picture');
+
+   //Types
+   info == Blue
+   danger == Red
+   success == Green
+   warning == Yellow
+*/ export class ServerInteractions {
+    init(allObjArray) {
+        this.intObjArray = [];
+        this.gasPumpArray = [];
+        for(let _key in allObjArray){
+            let _ele = allObjArray[_key];
+            let _ran = "range" in _ele ? _ele["range"] : 1;
+            if ("INTOBJ" in _ele && _ele["INTOBJ"]) {
+                this.intObjArray.push([
+                    _key,
+                    _ran
+                ]);
+            }
+            if ("gaspump" in _ele && _ele["gaspump"]) {
+                this.gasPumpArray.push([
+                    _key,
+                    _ran
+                ]);
+            }
+        }
+        // 
         alt.onClient('T8INT:CLI>SRV:interaction', (player, call, data, intResult)=>{
             alt.log(`T8INT >> ${player.name} >> interaction >> call: ${call} >> data: ${data} >> intResult: ${JSON.stringify(intResult)}`);
             this[call](player, call, data, intResult);
         });
+    }
+    notifyPlayer(player, msg, type = "info", size = 0) {
+        if (this.useNotify) {
+            switch(size){
+                case 0:
+                    notify.littleNotification(player, msg, type);
+                    break;
+                case 1:
+                    notify.bigNotification(player, msg[0], msg[1], type);
+                    break;
+                case 2:
+                    notify.bannerNotification(player, msg, type);
+                    break;
+            }
+        } else {
+            msg = msg === typeof 'array' ? msg[1] : msg;
+            chat.send(player, msg);
+        }
+    }
+    checkForFlag(menuObj, testFlags, flagState = false) {
+        /** Check if menu entry requires flag/flags to be shown to player, if not entry will not be passed
+     * @param menuObj      : Object of the menu
+     * @param testFlags    : A) String of the Flag
+     * @param testFlags    : B) Array: [[ 'flag', flagState ], e.g: [ 'admin', true ]]
+     * @param flagState    : Boolean if Flag is aktive (only used if testFlags is string/single flag)
+     * @returns            : Object of the handled menu 
+     **/ // bin zu dumm um das ander hinzubekommen (clon ohne refernz)
+        let _menuTemp = JSON.stringify(menuObj);
+        let _menu = JSON.parse(_menuTemp);
+        let _newItems = [];
+        for(let _key in _menu.items){
+            if ('flags' in _menu.items[_key]) {
+                if (typeof testFlags === 'string') {
+                    if (_menu.items[_key].flags.includes(testFlags)) {
+                        if (flagState) {
+                            _newItems.push(_menu.items[_key]);
+                        }
+                    }
+                } else {
+                    let _flagFound = [
+                        false,
+                        false
+                    ];
+                    for(let _i in testFlags){
+                        if (_menu.items[_key].flags.includes(testFlags[_i][0])) {
+                            _flagFound = [
+                                true,
+                                testFlags[_i][1]
+                            ];
+                        }
+                    }
+                    if (_flagFound[0] && _flagFound[1]) {
+                        _newItems.push(_menu.items[_key]);
+                    }
+                }
+            } else {
+                _newItems.push(_menu.items[_key]);
+            }
+        }
+        _menu.items = _newItems;
+        return _menu;
     }
     sitzen_bank(player, call, data) {
         alt.emitClient(player, 'T8INT:CLI:interaction', call, data);
@@ -22,22 +114,22 @@ export class ServerInteractions {
             "nix"
         ];
         let random = array[Math.floor(Math.random() * array.length)];
-        chat.send(player, `Du hast im Müll ${random} gefunden.`);
         alt.emitClient(player, 'T8INT:CLI:interaction', 'animation', [
             'gestures@f@standing@casual',
             'gesture_point',
             1,
             700
         ]);
+        this.notifyPlayer(player, `Du hast im Müll ${random} gefunden.`);
     }
     automat(player, call, data) {
-        chat.send(player, `Du hast eine(n) ${data} gekauft.`);
         alt.emitClient(player, 'T8INT:CLI:interaction', 'animation', [
             'gestures@f@standing@casual',
             'gesture_point',
             1,
             700
         ]);
+        this.notifyPlayer(player, `Du hast eine(n) ${data} gekauft.`);
     }
     teleport(player) {
         const spawns = [
@@ -78,23 +170,32 @@ export class ServerInteractions {
     vehicle_repair(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
         veh.repair();
-        chat.send(player, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert (du cheater).`);
+        this.notifyPlayer(player, [
+            `Admin Action`,
+            `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`
+        ], `success`, 1);
     }
     vehicle_quicktune(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
         veh.repair();
         veh.numberPlateText = "Tuuuned";
         veh.modKit = 1;
-        veh.setMod(11, 4); // Engine
-        veh.setMod(12, 3); // Brakes
-        veh.setMod(13, 3); // Transmission
-        veh.setMod(15, 3); // Suspension
+        veh.setMod(11, veh.getModsCount(11)); // Engine
+        veh.setMod(12, veh.getModsCount(12)); // Brakes
+        veh.setMod(13, veh.getModsCount(13)); // Transmission
+        veh.setMod(15, veh.getModsCount(15)); // Suspension
         veh.setMod(18, 1); // Turbo
         veh.setMod(22, 1); // Xenon
         veh.primaryColor = 50; // Metallic Racing Green
         veh.secondaryColor = 1; // Metallic Graphite Black 
         veh.pearlColor = 51; // Metallic Sea Green  
         veh.wheelColor = 158; // Pure Gold 
-        chat.send(player, `Dein Fahrzeug [${veh.numberPlateText}] wurde gepimpt (du cheater).`);
+        this.notifyPlayer(player, [
+            `Admin Action`,
+            `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`
+        ], `warning`, 1);
+    }
+    constructor(useNotify = false){
+        this.useNotify = useNotify;
     }
 }

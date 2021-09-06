@@ -97,7 +97,6 @@ export class InteractionObjects {
     }
     isNearGasPump() {
         let _p = alt.Player.local.pos;
-        let _range = 2;
         if (this.hashesGasPump.length < 1) {
             return false;
         }

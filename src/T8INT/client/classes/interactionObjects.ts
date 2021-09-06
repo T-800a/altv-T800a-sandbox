@@ -40,7 +40,6 @@ export class InteractionObjects {
       };
 
       let _obj = null;
-
    // find closest object to the player
    //  _el ->  0: Hash, 1:range
       for (const _el of this.hashes ) { 
@@ -71,16 +70,12 @@ export class InteractionObjects {
 
    isNearGasPump(){
       let _p = alt.Player.local.pos;
-      let _range = 2.0;
-
       if ( this.hashesGasPump.length < 1 ){ return false; };
-
-       //  _el ->  0: Hash, 1:range
+      //  _el ->  0: Hash, 1:range
       for (const _el of this.hashesGasPump ) { 
          let _obj = natives.getClosestObjectOfType( _p.x, _p.y, _p.z, _el[1], parseInt(_el[0]), false, true, true );
          if ( _obj ){ return true; };
       };
-
       return false;
    };
 
@@ -90,9 +85,7 @@ export class InteractionObjects {
 
       if ( alt.Player.local.vehicle ){ return; };
 
-      if ( object.entityHash > 0 )
-      {
-
+      if ( object.entityHash > 0 ){
          natives.setDrawOrigin(
             object.pos.x,
             object.pos.y,
@@ -109,7 +102,6 @@ export class InteractionObjects {
          // natives.setTextJustification(0);
          natives.endTextCommandDisplayText(0, 0, 0);
          natives.clearDrawOrigin();
-
 
          natives.setDrawOrigin(
             object.pos.x,

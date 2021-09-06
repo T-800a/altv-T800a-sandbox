@@ -290,21 +290,30 @@
                 "data": ""
             },
             {
-                "name": "Kofferaum Benutzen",
-                "img": "img/loschen.png",
-                "keepOpen": true,
-                "target": "none",
-                "call": "",
-                "data": ""
-            },
-            {
                 "name": "Tanken",
                 "img": "img/idee.png",
                 "keepOpen": true,
                 "target": "none",
                 "call": "",
                 "data": "",
-                "flag": "neargaspump"
+                "flags": [ "neargaspump" ]
+            },
+            {
+                "name": "Laden",
+                "img": "img/idee.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": "",
+                "flags": ["nearcharger", "admin"]
+            },
+            {
+                "name": "Kofferaum Benutzen",
+                "img": "img/loschen.png",
+                "keepOpen": true,
+                "target": "none",
+                "call": "",
+                "data": ""
             }
         ]
     },

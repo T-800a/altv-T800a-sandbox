@@ -1,32 +1,25 @@
 import alt from 'alt-server';
 import JSONdb from 'simple-json-db';
-import * as chat from "chat";
+import * as chat from 'chat';
+import * as notify from 'notify-me';
 import { ServerInteractions } from './classes/serverInteractions';
 
-let INTER = new ServerInteractions();
 
 const DBM = new JSONdb('./JSONdb/db-menus.json');
 const DBO = new JSONdb('./JSONdb/db-objects.json');
 
 
+let INTER = new ServerInteractions( true );
+INTER.init( DBO.JSON());
+
+
 alt.onClient('T8INT:CLI>SRV:requestINTOBJ', player => {
    
-   let fullJSON = DBO.JSON();
-   let intObjarray = [];
-   let gasPumpArray = [];
-
-   for ( let key in fullJSON ) {
-      let element = fullJSON[key];
-      let range = ( "range" in element ) ? element["range"] : 1;
-      if ( "INTOBJ" in element && element["INTOBJ"]){ intObjarray.push([ key, range ]); };
-      if ( "gaspump" in element && element["gaspump"]){ gasPumpArray.push([ key, range ]); };
-   };
-
-   alt.emitClient( player, 'T8INT:SRV>CLI:initINTOBJ', JSON.stringify(intObjarray), JSON.stringify(gasPumpArray) );
+   alt.emitClient( player, 'T8INT:SRV>CLI:initINTOBJ', JSON.stringify(INTER.intObjArray), JSON.stringify(INTER.gasPumpArray) );
 
    alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> ' + player.name );
-   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> intObjarray: ' + JSON.stringify(intObjarray) );
-   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> gasPumpArray: ' + JSON.stringify(gasPumpArray) );
+   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> intObjarray: ' + JSON.stringify(INTER.intObjArray));
+   alt.log( '>> T8INT:CLI>SRV:requestINTOBJ >> gasPumpArray: ' + JSON.stringify(INTER.gasPumpArray));
 });
 
 
@@ -64,23 +57,9 @@ alt.onClient('T8INT:CLI>SRV:requestMenu', ( player, type:number = 0, result:any 
 
    if (type === 2 ){
       if ( DBM.has("vehicle_menu") ){
-
-         // bin zu dumm um das ander hinzubekommen (clon ohne refernz)
-         let vehMenu = JSON.stringify(DBM.get("vehicle_menu"));
-         let menu:any = JSON.parse(vehMenu);
-
-         if ( !result.nearGasPump ){
-            for ( let key in menu.items ) {
-               let element = menu.items[key];
-               if ( "flag" in element && element["flag"] == "neargaspump" ) { 
-
-                  let index = menu.items.indexOf(element);
-                  if (index > -1) {
-                     menu.items.splice(index, 1);
-                  };
-               };
-            };
-         };
+         
+         let menu = DBM.get("vehicle_menu" );
+         menu = INTER.checkForFlag( menu, [[ 'neargaspump', result.nearGasPump ], ['admin', false]] );
 
          // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> vehMenu: ${vehMenu}`);
          // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> menu: ${JSON.stringify(menu)}`);
@@ -99,8 +78,6 @@ alt.onClient('T8INT:CLI>SRV:requestMenu', ( player, type:number = 0, result:any 
 });
 
 
-
-INTER.init();
 
 /*
 alt.onClient('T8INT:CLI>SRV:TEMP', ( player, _obj ) => {
