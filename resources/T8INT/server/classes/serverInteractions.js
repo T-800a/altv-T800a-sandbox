@@ -26,9 +26,9 @@ export class ServerInteractions {
             this[call](player, call, data, intResult);
         });
     }
-    notifyPlayer(player, title, text, type = "none", timeout = 5) {
+    notifyPlayer(player, title, text, type = "dark", timeout = 5) {
         if (this.useToast) {
-            alt.emitClient(player, 'T8INT:SRV>CLI:toast', title, text, timeout, type);
+            alt.emitClient(player, 'T8INT:WEBVIEW:toast', title, text, timeout, type);
         } else {
             chat.send(player, `${title} : ${text}`);
         }
@@ -88,6 +88,8 @@ export class ServerInteractions {
             "ne Mark",
             "nix",
             "nix",
+            "nix",
+            "nix",
             "nix"
         ];
         let random = array[Math.floor(Math.random() * array.length)];
@@ -97,7 +99,8 @@ export class ServerInteractions {
             1,
             700
         ]);
-        this.notifyPlayer(player, 'Information', `Du hast im Müll ${random} gefunden.`);
+        var type = random == "nix" ? "dark" : "success";
+        this.notifyPlayer(player, 'Information', `Du hast im Müll ${random} gefunden.`, type);
     }
     automat(player, call, data) {
         alt.emitClient(player, 'T8INT:CLI:interaction', 'animation', [
@@ -147,7 +150,7 @@ export class ServerInteractions {
     vehicle_repair(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
         veh.repair();
-        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `success`);
+        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `warning`);
     }
     vehicle_quicktune(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
@@ -164,7 +167,7 @@ export class ServerInteractions {
         veh.secondaryColor = 1; // Metallic Graphite Black 
         veh.pearlColor = 51; // Metallic Sea Green  
         veh.wheelColor = 158; // Pure Gold 
-        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `error`);
+        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `danger`);
     }
     constructor(useToast = false){
         this.useToast = useToast;

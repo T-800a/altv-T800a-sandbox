@@ -35,12 +35,24 @@ const appToasts = Vue.createApp({
         },
         type (type) {
             switch(type){
-                case 'error':
-                    return 'is-danger';
-                case 'success':
-                    return 'is-success';
                 case 'info':
                     return 'is-info';
+                case 'success':
+                    return 'is-success';
+                case 'warning':
+                    return 'is-warning';
+                case 'danger':
+                    return 'is-danger';
+                case 'white':
+                    return 'is-white';
+                case 'black':
+                    return 'is-black';
+                case 'light':
+                    return 'is-light';
+                case 'dark':
+                    return 'is-dark';
+                case 'primary':
+                    return 'is-primary';
             }
         }
     },

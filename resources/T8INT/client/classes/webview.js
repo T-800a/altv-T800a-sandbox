@@ -11,17 +11,20 @@ export class T8IntWebView {
         });
         // other resource wants to post to the webviwe
         alt.on('T8INT:WEBVIEW:POST', (emitter, data = '')=>{
-            this.webview.emit(emitter, data);
+            this.post(emitter, data);
         });
         // server sends a toast to the player
-        alt.onServer('T8INT:SRV>CLI:toast', (title, text, timeout, type)=>{
+        alt.onServer('T8INT:WEBVIEW:toast', (title, text, timeout = 5, type = "dark")=>{
             this.toast(title, text, timeout, type);
         });
     }
-    toast(title, text, timeout = 5, type = "none") {
+    toast(title, text, timeout = 5, type = "dark") {
         if (this.loaded) {
             this.webview.emit('T8INT:CLI>CEF:toast', title, text, timeout, type);
         }
+    }
+    post(emitter, data = '') {
+        this.webview.emit(`T8INT:CLI>CEF:${emitter}`, data);
     }
     constructor(){
         this.webViewURL = 'http://resource/client/webview/index.html';

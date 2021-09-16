@@ -59,14 +59,14 @@ export class WASDmenu {
             items: webvieItems,
          };
 
-         this.webview('T8INT:CLI>CEF:JSON', JSON.stringify(webviewJSON));
-         this.webview('T8INT:CLI>CEF:focus', `item-${this.item}` );
+         this.webview('JSON', JSON.stringify(webviewJSON));
+         this.webview('focus', `item-${this.item}`);
       };
    };
 
    close(){
       if (this.focused && this.loaded){ 
-         this.webview('T8INT:CLI>CEF:clear');
+         this.webview('clear');
          alt.toggleGameControls(true);
          // alt.showCursor(false);
          this.focused = false; 
@@ -128,7 +128,7 @@ export class WASDmenu {
    ChangeLine(){
       if ( this.item < 0 ) {  this.item = 0; };
       if ( this.item > this.n - 1 ) {  this.item = this.n - 1; };
-      this.webview('T8INT:CLI>CEF:focus', `item-${this.item}` );
+      this.webview('focus', `item-${this.item}` );
    };
 
    updateIntResult( newResult:InteractionObj, nearGasPump:boolean = false ){

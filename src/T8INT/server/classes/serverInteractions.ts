@@ -31,12 +31,9 @@ export class ServerInteractions {
       });
    };
 
-   notifyPlayer( player, title:string, text:string, type:string = "none", timeout:number = 5 ){
-
+   notifyPlayer( player, title:string, text:string, type:string = "dark", timeout:number = 5 ){
       if ( this.useToast ){
-
-         alt.emitClient(player, 'T8INT:SRV>CLI:toast', title, text, timeout, type );
-
+         alt.emitClient(player, 'T8INT:WEBVIEW:toast', title, text, timeout, type );
       } else {
          chat.send( player, `${title} : ${text}` );
       };
@@ -82,10 +79,12 @@ export class ServerInteractions {
    };
 
    muell_durchsuchen( player ){
-      let array = [ "eine abgebissene Wurst", "einen halbfaulen Apfel", "eine Bananen Schale", "eine Käsige Socke", "ne Mark", "nix", "nix", "nix" ];
+      let array = [ "eine abgebissene Wurst", "einen halbfaulen Apfel", "eine Bananen Schale", "eine Käsige Socke", "ne Mark", "nix", "nix", "nix", "nix", "nix" ];
       let random = array[Math.floor(Math.random()*array.length)];
       alt.emitClient( player, 'T8INT:CLI:interaction', 'animation', [ 'gestures@f@standing@casual', 'gesture_point', 1, 700 ]);
-      this.notifyPlayer( player, 'Information', `Du hast im Müll ${random} gefunden.`);
+
+      var type = ( random == "nix" )? "dark" : "success";
+      this.notifyPlayer( player, 'Information', `Du hast im Müll ${random} gefunden.`, type );
    };
 
    automat( player, call, data ){
@@ -109,7 +108,7 @@ export class ServerInteractions {
    vehicle_repair( player, call, data, intResult:InteractionObj ){
       let veh = alt.Vehicle.getByID( intResult.entityID );
       veh.repair();
-      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `success` );
+      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `warning` );
    };
 
 
@@ -129,6 +128,6 @@ export class ServerInteractions {
       veh.pearlColor = 51; // Metallic Sea Green  
       veh.wheelColor = 158; // Pure Gold 
 
-      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `error` );
+      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `danger` );
    };
 };
