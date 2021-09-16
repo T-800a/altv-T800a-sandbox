@@ -8,7 +8,7 @@ export class Interactions {
       alt.onServer('T8INT:CLI:interaction', ( call, data ) => { this[call]( data ); });
    };
 
-   sitzen_bank( data ){
+   sitzen_bank( data:string ){
       let dictArray =  [[ "timetable@ron@ig_5_p3", "ig_5_p3_base" ], 
                         ["timetable@reunited@ig_10", "base_amanda"], 
                         ["timetable@ron@ig_3_couch", "base"]];
@@ -17,8 +17,8 @@ export class Interactions {
       if ( data === "A" ){ natives.clearPedTasks(alt.Player.local.scriptID); return; };
    };
 
-   animation( data ){
-      alt.log ( 'animation >> ' + data );
-      playAnimation( data[0], data[1], data[2], data[3] );
+   animation([ animDict, animName, animFlag, animDuration ]:[string,string,number,number]){
+      alt.log ( 'animation >> ' + [ animDict, animName, animFlag, animDuration ] );
+      playAnimation( animDict, animName, animFlag, animDuration );
    };
 };

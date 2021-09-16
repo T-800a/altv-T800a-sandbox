@@ -32,8 +32,13 @@ export class Interactions {
             return;
         }
     }
-    animation(data) {
-        alt.log('animation >> ' + data);
-        playAnimation(data[0], data[1], data[2], data[3]);
+    animation([animDict, animName, animFlag, animDuration]) {
+        alt.log('animation >> ' + [
+            animDict,
+            animName,
+            animFlag,
+            animDuration
+        ]);
+        playAnimation(animDict, animName, animFlag, animDuration);
     }
 }

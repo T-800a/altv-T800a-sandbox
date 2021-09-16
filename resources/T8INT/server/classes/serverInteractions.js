@@ -1,18 +1,6 @@
 import alt from 'alt-server';
 import * as chat from "chat";
-import * as notify from 'notify-me';
-/*
-   //Serverside
-   notify.bigNotification(player,'your header','your second text','type or blank');
-   notify.littleNotification(player,'your text', 'type or blank');
-   notify.bannerNotification(player,'your text', 'URL to Picture');
-
-   //Types
-   info == Blue
-   danger == Red
-   success == Green
-   warning == Yellow
-*/ export class ServerInteractions {
+export class ServerInteractions {
     init(allObjArray) {
         this.intObjArray = [];
         this.gasPumpArray = [];
@@ -38,22 +26,11 @@ import * as notify from 'notify-me';
             this[call](player, call, data, intResult);
         });
     }
-    notifyPlayer(player, msg, type = "info", size = 0) {
-        if (this.useNotify) {
-            switch(size){
-                case 0:
-                    notify.littleNotification(player, msg, type);
-                    break;
-                case 1:
-                    notify.bigNotification(player, msg[0], msg[1], type);
-                    break;
-                case 2:
-                    notify.bannerNotification(player, msg, type);
-                    break;
-            }
+    notifyPlayer(player, title, text, type = "none", timeout = 5) {
+        if (this.useToast) {
+            alt.emitClient(player, 'T8INT:SRV>CLI:toast', title, text, timeout, type);
         } else {
-            msg = msg === typeof 'array' ? msg[1] : msg;
-            chat.send(player, msg);
+            chat.send(player, `${title} : ${text}`);
         }
     }
     checkForFlag(menuObj, testFlags, flagState = false) {
@@ -120,7 +97,7 @@ import * as notify from 'notify-me';
             1,
             700
         ]);
-        this.notifyPlayer(player, `Du hast im Müll ${random} gefunden.`);
+        this.notifyPlayer(player, 'Information', `Du hast im Müll ${random} gefunden.`);
     }
     automat(player, call, data) {
         alt.emitClient(player, 'T8INT:CLI:interaction', 'animation', [
@@ -129,7 +106,7 @@ import * as notify from 'notify-me';
             1,
             700
         ]);
-        this.notifyPlayer(player, `Du hast eine(n) ${data} gekauft.`);
+        this.notifyPlayer(player, 'Information', `Du hast eine(n) ${data} gekauft.`);
     }
     teleport(player) {
         const spawns = [
@@ -170,10 +147,7 @@ import * as notify from 'notify-me';
     vehicle_repair(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
         veh.repair();
-        this.notifyPlayer(player, [
-            `Admin Action`,
-            `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`
-        ], `success`, 1);
+        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `success`);
     }
     vehicle_quicktune(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
@@ -190,12 +164,9 @@ import * as notify from 'notify-me';
         veh.secondaryColor = 1; // Metallic Graphite Black 
         veh.pearlColor = 51; // Metallic Sea Green  
         veh.wheelColor = 158; // Pure Gold 
-        this.notifyPlayer(player, [
-            `Admin Action`,
-            `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`
-        ], `warning`, 1);
+        this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `error`);
     }
-    constructor(useNotify = false){
-        this.useNotify = useNotify;
+    constructor(useToast = false){
+        this.useToast = useToast;
     }
 }

@@ -1,24 +1,11 @@
 import alt from 'alt-server';
 import * as chat from "chat";
-import * as notify from 'notify-me';
 
-/*
-   //Serverside
-   notify.bigNotification(player,'your header','your second text','type or blank');
-   notify.littleNotification(player,'your text', 'type or blank');
-   notify.bannerNotification(player,'your text', 'URL to Picture');
-
-   //Types
-   info == Blue
-   danger == Red
-   success == Green
-   warning == Yellow
-*/
 
 
 export class ServerInteractions {
 
-   constructor( private useNotify:boolean = false ){};
+   constructor( private useToast:boolean = false ){};
 
    public intObjArray:[any?];
    public gasPumpArray:[any?];
@@ -44,24 +31,14 @@ export class ServerInteractions {
       });
    };
 
-   notifyPlayer( player, msg:string|string[], type:string = "info", size:number = 0 ){
-      if ( this.useNotify ){
-         switch ( size ) {
-            case 0:
-               notify.littleNotification( player, msg, type );
-            break;
-   
-            case 1:
-               notify.bigNotification( player, msg[0], msg[1], type );
-            break;
-   
-            case 2:
-               notify.bannerNotification( player, msg, type );
-            break;
-         };
+   notifyPlayer( player, title:string, text:string, type:string = "none", timeout:number = 5 ){
+
+      if ( this.useToast ){
+
+         alt.emitClient(player, 'T8INT:SRV>CLI:toast', title, text, timeout, type );
+
       } else {
-         msg = ( msg === typeof 'array' )? msg[1] : msg;
-         chat.send( player, msg );
+         chat.send( player, `${title} : ${text}` );
       };
    };
 
@@ -108,12 +85,12 @@ export class ServerInteractions {
       let array = [ "eine abgebissene Wurst", "einen halbfaulen Apfel", "eine Bananen Schale", "eine Käsige Socke", "ne Mark", "nix", "nix", "nix" ];
       let random = array[Math.floor(Math.random()*array.length)];
       alt.emitClient( player, 'T8INT:CLI:interaction', 'animation', [ 'gestures@f@standing@casual', 'gesture_point', 1, 700 ]);
-      this.notifyPlayer( player, `Du hast im Müll ${random} gefunden.`);
+      this.notifyPlayer( player, 'Information', `Du hast im Müll ${random} gefunden.`);
    };
 
    automat( player, call, data ){
       alt.emitClient( player, 'T8INT:CLI:interaction', 'animation', [ 'gestures@f@standing@casual', 'gesture_point', 1, 700 ]);
-      this.notifyPlayer( player, `Du hast eine(n) ${data} gekauft.`);
+      this.notifyPlayer( player, 'Information', `Du hast eine(n) ${data} gekauft.`);
    };
 
    teleport( player ){
@@ -132,7 +109,7 @@ export class ServerInteractions {
    vehicle_repair( player, call, data, intResult:InteractionObj ){
       let veh = alt.Vehicle.getByID( intResult.entityID );
       veh.repair();
-      this.notifyPlayer( player, [`Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`], `success`, 1 );
+      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `success` );
    };
 
 
@@ -152,6 +129,6 @@ export class ServerInteractions {
       veh.pearlColor = 51; // Metallic Sea Green  
       veh.wheelColor = 158; // Pure Gold 
 
-      this.notifyPlayer( player, [`Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`], `warning`, 1 );
+      this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `error` );
    };
 };

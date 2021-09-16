@@ -45,14 +45,14 @@ alt.onClient('T8INT:CLI>SRV:requestMenu', (player, type = 0, result = {
             let menu = DBM.get("vehicle_menu");
             menu = INTER.checkForFlag(menu, [
                 [
-                    "neargaspump",
+                    'neargaspump',
                     result.nearGasPump
                 ],
                 [
-                    "admin",
+                    'admin',
                     false
                 ]
-            ], result.nearGasPump);
+            ]);
             // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> vehMenu: ${vehMenu}`);
             // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> menu: ${JSON.stringify(menu)}`);
             alt.emitClient(player, 'T8INT:SRV>CLI:openMenu', JSON.stringify(menu));

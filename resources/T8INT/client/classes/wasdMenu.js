@@ -1,22 +1,54 @@
 import alt from 'alt-client';
 export class WASDmenu {
-    updateIntResult(newResult, nearGasPump = false) {
-        this.intResult = newResult;
-        this.intResult.nearGasPump = nearGasPump;
+    init() {
+        /*
+      this.webview = new alt.WebView(this.webViewURL);
+      this.webview.on('T8INT:CEF>CLI:LOADED', () => {
+         this.loaded = true;
+      });
+      */ alt.on('T8INT:WEBVIEW:LOADED', ()=>{
+            this.loaded = true;
+        });
+    }
+    open(dataJSON) {
+        if (!this.focused && this.loaded) {
+            alt.toggleGameControls(false);
+            // alt.showCursor(true);
+            this.menu_obj = JSON.parse(dataJSON);
+            this.focused = true;
+            this.n = 0;
+            this.item = 0;
+            let webvieItems = [];
+            this.menu_obj.items.forEach((element)=>{
+                webvieItems.push({
+                    id: `item-${this.n}`,
+                    name: element.name,
+                    img: element.img
+                });
+                this.n++;
+            });
+            let webviewJSON = {
+                titel: this.menu_obj.titel,
+                items: webvieItems
+            };
+            this.webview('T8INT:CLI>CEF:JSON', JSON.stringify(webviewJSON));
+            this.webview('T8INT:CLI>CEF:focus', `item-${this.item}`);
+        }
     }
     close() {
-        if (this.focused) {
+        if (this.focused && this.loaded) {
+            this.webview('T8INT:CLI>CEF:clear');
             alt.toggleGameControls(true);
             // alt.showCursor(false);
-            // this.webview.unfocus();
-            this.webview.destroy();
-            this.webview = null;
             this.focused = false;
             this.n = 0;
             this.item = 0;
             this.menu_obj = {
             };
         }
+    }
+    webview(emitter, data = '') {
+        alt.emit('T8INT:WEBVIEW:POST', emitter, data);
     }
     exec() {
         let name = this.menu_obj.items[this.item].name;
@@ -42,45 +74,14 @@ export class WASDmenu {
             this.close();
         }
     }
-    open(dataJSON) {
-        if (!this.focused) {
-            alt.toggleGameControls(false);
-            // alt.showCursor(true);
-            // this.webview.focus();
-            this.menu_obj = JSON.parse(dataJSON);
-            this.focused = true;
-            this.n = 0;
-            this.item = 0;
-            let webvieItems = [];
-            this.menu_obj.items.forEach((element)=>{
-                webvieItems.push({
-                    id: `item-${this.n}`,
-                    name: element.name,
-                    img: element.img
-                });
-                this.n++;
-            });
-            let webviewJSON = {
-                titel: this.menu_obj.titel,
-                items: webvieItems
-            };
-            this.webview = new alt.WebView('http://resource/client/html/index.html');
-            this.webview.on('T8INT:CEF>CLI:LOADED', ()=>{
-                alt.setTimeout(()=>{
-                    this.webview.emit('T8INT:CLI>CEF:JSON', JSON.stringify(webviewJSON));
-                    this.webview.emit('T8INT:CLI>CEF:focus', `item-${this.item}`);
-                }, 250);
-            });
-        }
-    }
     LineUp() {
-        if (this.webview) {
+        if (this.focused && this.loaded) {
             this.item--;
             this.ChangeLine();
         }
     }
     LineDown() {
-        if (this.webview) {
+        if (this.focused && this.loaded) {
             this.item++;
             this.ChangeLine();
         }
@@ -92,15 +93,21 @@ export class WASDmenu {
         if (this.item > this.n - 1) {
             this.item = this.n - 1;
         }
-        this.webview.emit('T8INT:CLI>CEF:focus', `item-${this.item}`);
+        this.webview('T8INT:CLI>CEF:focus', `item-${this.item}`);
+    }
+    updateIntResult(newResult, nearGasPump = false) {
+        this.intResult = newResult;
+        this.intResult.nearGasPump = nearGasPump;
     }
     constructor(){
-        this.focused = false;
+        this.webViewURL = 'http://resource/client/webview/index.html';
         this.n = 0;
         this.item = 0;
         this.menu_obj = {
         };
-        this.webview = null;
+        // public webview:any               = null;
+        this.loaded = false;
+        this.focused = false;
         this.intResult = {
             isHit: false,
             pos: {

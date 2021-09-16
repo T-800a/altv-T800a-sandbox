@@ -1,6 +1,7 @@
 import alt from 'alt-client';
 import natives from 'natives';
 import { Raycast } from './classes/utility';
+import { T8IntWebView } from './classes/webview';
 import { WASDmenu } from './classes/wasdMenu';
 import { InteractionObjects } from './classes/interactionObjects';
 import { Interactions } from './classes/interactions';
@@ -21,9 +22,12 @@ const emtpyResult = {
     entityHash: 0,
     entityID: 0
 };
+let WEBVIEW = new T8IntWebView();
 let WASDMENU = new WASDmenu();
 let INTOBJ = new InteractionObjects();
 let INTER = new Interactions();
+WEBVIEW.init();
+WASDMENU.init();
 let spam = Date.now();
 // Define Key presses
 alt.on("keyup", function(key) {
@@ -34,7 +38,7 @@ alt.on("keyup", function(key) {
     }
     // Interactions when menu is open
     if (Date.now() > spam) {
-        if (WASDMENU.webview) {
+        if (WASDMENU.loaded && WASDMENU.focused) {
             // MENU DO ACTION
             // [ LEFT MOUSE ]      (E : 69)
             if (key == 1) {
@@ -60,7 +64,7 @@ alt.on("keyup", function(key) {
         // --------------------------------------------------------------------------------
         // Request INTERACTIONS based on entity-hash we are 'looking' at or our player is near to 
         // [ E ] >>
-        if (key == 69 && !WASDMENU.webview) {
+        if (key == 69 && WASDMENU.loaded && !WASDMENU.focused) {
             WASDMENU.updateIntResult(emtpyResult);
             // Player not in Vehicle
             if (!alt.Player.local.vehicle) {
@@ -100,7 +104,7 @@ alt.on("keyup", function(key) {
         // [ X ] >>
         if (key == 88) {
             WASDMENU.updateIntResult(emtpyResult);
-            if (alt.Player.local.vehicle && !WASDMENU.webview) {
+            if (alt.Player.local.vehicle && WASDMENU.loaded && !WASDMENU.focused) {
                 WASDMENU.updateIntResult(INTOBJ.nearestObject);
                 alt.emitServer('T8INT:CLI>SRV:requestMenu', 99, WASDMENU.intResult);
                 return;
@@ -110,7 +114,7 @@ alt.on("keyup", function(key) {
         // [ F3 ] >>
         if (key == 114) {
             WASDMENU.updateIntResult(emtpyResult);
-            if (!WASDMENU.webview) {
+            if (WASDMENU.loaded && !WASDMENU.focused) {
                 alt.emitServer('T8INT:CLI>SRV:requestMenu', 9999, 'F3_menu');
             }
             return;
