@@ -76,8 +76,14 @@ export class ServerInteractions {
         _menu.items = _newItems;
         return _menu;
     }
-    sitzen_bank(player, call, data) {
-        alt.emitClient(player, 'T8INT:CLI:interaction', call, data);
+    sitzen_bank(player, call, data, intResult) {
+        alt.emitClient(player, 'T8INT:CLI:interaction', call, data, intResult);
+    }
+    sitzen(player, call, data, intResult) {
+        alt.emitClient(player, 'T8INT:CLI:interaction', call, data, intResult);
+    }
+    aufstehen(player, call) {
+        alt.emitClient(player, 'T8INT:CLI:interaction', call);
     }
     muell_durchsuchen(player) {
         let array = [

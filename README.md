@@ -1,18 +1,33 @@
 # altv-T800a-sandbox
 welcome to my sandbox! \
 These are **not** finished/polished resources. \
-I am not a programmer by trade, this is just a hobby to keep me busy. And these are my first half decent things I made with js, typescript and a little bit of vue for alt:V.
+I am not a programmer by trade, this is just a hobby to keep me busy. \
+And these are my first half decent things I made with Typescript and a little bit of VUE for alt:V.
+
+
+## T8UG
+![T8UG](img/img_t8ug.png?raw=true "pos logging tool")
+
+positon loggin tool for alt:V
+
+**Dependencies:** alt, natives, chat
+
+open via T8INT: press ```F3``` and select the menu entry \
+open via chat commant: ```/t8ug```\
+press ```NUM 0``` to log a position \
+press ```NUM 3``` to spawn a ped on last logged position with logged 'heading/yawn' \
+press ```NUM ,``` to focus the webview and activate the mouse
 
 
 ## T8INT
 ![T8INT](img/img_t8int.png?raw=true "interaction menu")
 
-interaction menu for alt:V \
-this is just my quirky take on an interaction menu
+Interaction menu for alt:V. \
+This is just my quirky take on an interaction menu...
 
 **Dependencies:** alt, natives, chat
 
-### requires: Simple JSONdb
+### requires: Simple JSONdb server side
 ```npm install --save simple-json-db```
 
 *You need to copy the JSONdb folder to your server root.* \
@@ -29,17 +44,14 @@ press ```Left Mouse``` to execute selected \
 press ```Right Mouse``` to close menu
 
 
+## T8UNE
+![T8UNE](img/img_t8une.png?raw=true "vehicle tuning menu")
 
-## T8UG
-![T8UG](img/img_t8ug.png?raw=true "pos logging tool")
+A simple vehicle tuning menu.
 
-positon loggin tool for alt:V
+**Dependencies:** alt, chat 
 
-**Dependencies:** alt, natives, chat
+open via chat commant when sitting in/on vehicle: ```/tune``` \
+open via T8INT when sitting in/on vehicle: press ```X``` and select the menu entry \
 
-open via T8INT: press ```F3``` and select the menu entry \
-open via chat commant: ```/t8ug```\
-press ```NUM 0``` to log a position \
-press ```NUM 3``` to spawn a ped on last logged position with logged 'heading/yawn' \
-press ```NUM ,``` to focus the webview and activate the mouse
-
+The Menu is mostly with sliders, but Colors and Wheels are selected from dropdowns in categories.

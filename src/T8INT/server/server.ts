@@ -1,7 +1,6 @@
 import alt from 'alt-server';
 import JSONdb from 'simple-json-db';
 import * as chat from 'chat';
-import * as notify from 'notify-me';
 import { ServerInteractions } from './classes/serverInteractions';
 
 

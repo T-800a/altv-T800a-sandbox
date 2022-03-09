@@ -1,0 +1,261 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+      
+      <title>T8UNE</title>
+   </head>
+   <body>
+
+      <div id="app" class="mainContainer">
+         <div class="container tuneContainer">
+            <div class="item double"><b>T8UNE your Car FFS!!!</b></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="closeWebview();"><b>Schließen</b></button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('performance');">Performance</button></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('colors');">Farben</button></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="resetCar();"><i>Fahrzeug Reset</i></button></div>
+
+            <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit');">Anbauteile</button></div>
+            <div class="item"><!-- <button style="width:100%; text-align: center;" onclick="openWindow('rims');">Felgen</button> --></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit2');">Anbauteile 2</button></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.performance">
+            <div v-if="vehicle.engine.range > 0" class="item"><input type="range" min="0" v-bind:max="vehicle.engine.range" step="1" v-model="vehicle.engine.current"></div>
+            <div v-if="vehicle.engine.range > 0" class="item double">Motor Stage {{ vehicle.engine.current }}</div>
+
+            <div v-if="vehicle.brakes.range > 0"  class="item"><input type="range" min="0" v-bind:max="vehicle.brakes.range" step="1" v-model="vehicle.brakes.current"></div>
+            <div v-if="vehicle.brakes.range > 0"  class="item double">Bremsen Stage {{ vehicle.brakes.current }}</div>
+
+            <div v-if="vehicle.transmission.range > 0"  class="item"><input type="range" min="0" v-bind:max="vehicle.transmission.range" step="1" v-model="vehicle.transmission.current"></div>
+            <div v-if="vehicle.transmission.range > 0"  class="item double">Getriebe Stage {{ vehicle.transmission.current }}</div>
+
+            <div v-if="vehicle.suspension.range > 0" class="item"><input type="range" min="0" v-bind:max="vehicle.suspension.range" step="1" v-model="vehicle.suspension.current"></div>
+            <div v-if="vehicle.suspension.range > 0" class="item double">Fahrwerk Stage {{ vehicle.suspension.current }}</div>
+
+            <div v-if="vehicle.turbo.range > 0"  class="item"><input type="range" min="0" v-bind:max="vehicle.turbo.range" step="1" v-model="vehicle.turbo.current"></div>
+            <div v-if="vehicle.turbo.range > 0"  class="item double">Turbo <!-- {{ vehicle.turbo.current }} --></div>
+
+            <div v-if="vehicle.exhaust.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.exhaust.range" step="1" v-model="vehicle.exhaust.current"></div>
+            <div v-if="vehicle.exhaust.range > 0" class="item">Auspuff Typ {{ vehicle.exhaust.current }}</div>
+
+            <div class="item">Felgen Art</div>
+            <div class="item double dropdown" :class="{active: isOpen.RG}" @click="isOpen.RG = !isOpen.RG">
+               <div><span>{{selected.RG}}</span></div>
+               <div class="dropdown-menu" v-if="isOpen.RG">
+                  <div v-for="option in wheels_grp" class="dropdown-item" @click="vehicle.wheelsType = option.id; selected.RG = option.text;">
+                     <a>{{ option.text }}</a>
+                  </div>
+               </div>
+            </div>
+            <div class="item">Felgen Desig</div>
+            <div class="item double dropdown" :class="{active: isOpen.R}">
+               <div @click="isOpen.R = !isOpen.R"><span>{{selected.R}}</span></div>
+               <div class="dropdown-menu" v-if="isOpen.R">
+                  <div v-for="option in wheels_sel" class="dropdown-item" @click="vehicle.wheels = option.id; selected.R = option.text">
+                     <a v-if="option.type == vehicle.wheelsType">{{ option.text }}</a>
+                     <!-- <a>{{ option.text }}</a> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.colors">
+            <div class="item tripple">Primär</div>
+            <div class="item dropdown" :class="{active: isOpen.MG}" @click="isOpen.MG = !isOpen.MG">
+               <div><a class="title">{{selected.MG}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.MG">
+                  <div v-for="option in color_grps" class="dropdown-item" @click="selected.MG = option">
+                     <a>{{ option }}</a>
+                  </div>
+               </div>
+            </div>
+            <div class="item double dropdown" :class="{active: isOpen.M}">
+               <div @click="isOpen.M = !isOpen.M"><a class="title">{{selected.M}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.M">
+                  <div v-for="option in colors_sel" class="dropdown-item" @click="vehicle.colors.M = option.id; selected.M = option.text">
+                     <a v-if="option.type == selected.MG">{{ option.text }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="item tripple">Sekundär</div>
+            <div class="item dropdown" :class="{active: isOpen.SG}" @click="isOpen.SG = !isOpen.SG">
+               <div><a class="title">{{selected.SG}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.SG">
+                  <div v-for="option in color_grps" class="dropdown-item" @click="selected.SG = option">
+                     <a>{{ option }}</a>
+                  </div>
+               </div>
+            </div>
+            <div class="item double dropdown" :class="{active: isOpen.S}">
+               <div @click="isOpen.S = !isOpen.S"><a class="title">{{selected.S}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.S">
+                  <div v-for="option in colors_sel" class="dropdown-item" @click="vehicle.colors.S = option.id; selected.S = option.text">
+                     <a v-if="option.type == selected.SG">{{ option.text }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="item tripple">Pearl</div>
+            <div class="item dropdown" :class="{active: isOpen.PG}" @click="isOpen.PG = !isOpen.PG">
+               <div><a class="title">{{selected.PG}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.PG">
+                  <div v-for="option in color_grps" class="dropdown-item" @click="selected.PG = option">
+                     <a>{{ option }}</a>
+                  </div>
+               </div>
+            </div>
+            <div class="item double dropdown" :class="{active: isOpen.P}">
+               <div @click="isOpen.P = !isOpen.P"><a class="title">{{selected.P}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.P">
+                  <div v-for="option in colors_sel" class="dropdown-item" @click="vehicle.colors.P = option.id; selected.P = option.text">
+                     <a v-if="option.type == selected.PG">{{ option.text }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="item tripple">Felgen</div>
+            <div class="item dropdown" :class="{active: isOpen.GW}" @click="isOpen.GW = !isOpen.GW">
+               <div><a class="title">{{selected.WG}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.GW">
+                  <div v-for="option in color_grps" class="dropdown-item" @click="selected.WG = option">
+                     <a>{{ option }}</a>
+                  </div>
+               </div>
+            </div>
+            <div class="item double dropdown" :class="{active: isOpen.W}">
+               <div @click="isOpen.W = !isOpen.W"><a class="title">{{selected.W}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.W">
+                  <div v-for="option in colors_sel" class="dropdown-item" @click="vehicle.colors.W = option.id; selected.W = option.text">
+                     <a v-if="option.type == selected.WG">{{ option.text }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div v-if="vehicle.livery.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.livery.range" step="1" v-model="vehicle.livery.current"></div>
+            <div v-if="vehicle.livery.range > 0" class="item">Folie Nr. {{ vehicle.livery.current }}</div>
+
+            <div class="item double"><input type="range" min="0" v-bind:max="vehicle.plates.range" step="1" v-model="vehicle.plates.current"></div>
+            <div class="item">Nummernschild</div>
+
+            <div class="item double"><input type="range" min="0" v-bind:max="vehicle.windows.range" step="1" v-model="vehicle.windows.current"></div>
+            <div class="item">Tönung</div>
+
+            <div v-if="vehicle.xenon.range > 0" class="item"><input type="range" min="0" v-bind:max="vehicle.xenon.range" step="1" v-model="vehicle.xenon.current"></div>
+            <div v-if="vehicle.xenon.range > 0" class="item double">Xenon <!-- {{ vehicle.xenon.current }} --></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.kit">
+            <div v-if="vehicle.spoiler.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.spoiler.range" step="1" v-model="vehicle.spoiler.current"></div>
+            <div v-if="vehicle.spoiler.range > 0" class="item">Spoiler {{ vehicle.spoiler.current }}</div>
+
+            <div v-if="vehicle.bumperF.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.bumperF.range" step="1" v-model="vehicle.bumperF.current"></div>
+            <div v-if="vehicle.bumperF.range > 0" class="item">Bumper Front {{ vehicle.bumperF.current }}</div>
+
+            <div v-if="vehicle.bumperR.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.bumperR.range" step="1" v-model="vehicle.bumperR.current"></div>
+            <div v-if="vehicle.bumperR.range > 0" class="item">Bumper Rear {{ vehicle.bumperR.current }}</div>
+
+            <div v-if="vehicle.skirt.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.skirt.range" step="1" v-model="vehicle.skirt.current"></div>
+            <div v-if="vehicle.skirt.range > 0" class="item">Skirt {{ vehicle.skirt.current }}</div>
+
+            <div v-if="vehicle.frame.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.frame.range" step="1" v-model="vehicle.frame.current"></div>
+            <div v-if="vehicle.frame.range > 0" class="item">Rahmen {{ vehicle.frame.current }}</div>
+
+            <div v-if="vehicle.grille.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.grille.range" step="1" v-model="vehicle.grille.current"></div>
+            <div v-if="vehicle.grille.range > 0" class="item">Grill {{ vehicle.grille.current }}</div>
+
+            <div v-if="vehicle.bonnet.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.bonnet.range" step="1" v-model="vehicle.bonnet.current"></div>
+            <div v-if="vehicle.bonnet.range > 0" class="item">Motorhaube {{ vehicle.bonnet.current }}</div>
+
+            <div v-if="vehicle.wingL.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.wingL.range" step="1" v-model="vehicle.wingL.current"></div>
+            <div v-if="vehicle.wingL.range > 0" class="item">Wing L {{ vehicle.wingL.current }}</div>
+
+            <div v-if="vehicle.wingR.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.wingR.range" step="1" v-model="vehicle.wingR.current"></div>
+            <div v-if="vehicle.wingR.range > 0" class="item">Wing R {{ vehicle.wingR.current }}</div>
+
+            <div v-if="vehicle.roof.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.roof.range" step="1" v-model="vehicle.roof.current"></div>
+            <div v-if="vehicle.roof.range > 0" class="item">Dach {{ vehicle.roof.current }}</div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.kit2">
+            <div v-if="vehicle.plateH.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.plateH.range" step="1" v-model="vehicle.plateH.current"></div>
+            <div v-if="vehicle.plateH.range > 0" class="item">plateH {{ vehicle.plateH.current }}</div>
+
+            <div v-if="vehicle.plateV.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.plateV.range" step="1" v-model="vehicle.plateV.current"></div>
+            <div v-if="vehicle.plateV.range > 0" class="item">plateV {{ vehicle.plateV.current }}</div>
+
+            <div v-if="vehicle.trim.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.trim.range" step="1" v-model="vehicle.trim.current"></div>
+            <div v-if="vehicle.trim.range > 0" class="item">trim {{ vehicle.trim.current }}</div>
+
+            <div v-if="vehicle.ornaments.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.ornaments.range" step="1" v-model="vehicle.ornaments.current"></div>
+            <div v-if="vehicle.ornaments.range > 0" class="item">ornaments {{ vehicle.ornaments.current }}</div>
+
+            <div v-if="vehicle.dialDesign.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.dialDesign.range" step="1" v-model="vehicle.dialDesign.current"></div>
+            <div v-if="vehicle.dialDesign.range > 0" class="item">dialDesign {{ vehicle.dialDesign.current }}</div>
+
+            <div v-if="vehicle.doorInterior.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.doorInterior.range" step="1" v-model="vehicle.doorInterior.current"></div>
+            <div v-if="vehicle.doorInterior.range > 0" class="item">doorInterior {{ vehicle.doorInterior.current }}</div>
+
+            <div v-if="vehicle.seats.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.seats.range" step="1" v-model="vehicle.seats.current"></div>
+            <div v-if="vehicle.seats.range > 0" class="item">seats {{ vehicle.seats.current }}</div>
+
+            <div v-if="vehicle.steeringWheel.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.steeringWheel.range" step="1" v-model="vehicle.steeringWheel.current"></div>
+            <div v-if="vehicle.steeringWheel.range > 0" class="item">steeringWheel {{ vehicle.steeringWheel.current }}</div>
+
+            <div v-if="vehicle.shiftLever.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.shiftLever.range" step="1" v-model="vehicle.shiftLever.current"></div>
+            <div v-if="vehicle.shiftLever.range > 0" class="item">shiftLever {{ vehicle.shiftLever.current }}</div>
+
+            <div v-if="vehicle.plaques.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.plaques.range" step="1" v-model="vehicle.plaques.current"></div>
+            <div v-if="vehicle.plaques.range > 0" class="item">plaques {{ vehicle.plaques.current }}</div>
+
+            <div v-if="vehicle.rearShelf.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.rearShelf.range" step="1" v-model="vehicle.rearShelf.current"></div>
+            <div v-if="vehicle.rearShelf.range > 0" class="item">rearShelf {{ vehicle.rearShelf.current }}</div>
+
+            <div v-if="vehicle.trunk.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.trunk.range" step="1" v-model="vehicle.trunk.current"></div>
+            <div v-if="vehicle.trunk.range > 0" class="item">trunk {{ vehicle.trunk.current }}</div>
+
+            <div v-if="vehicle.hydraulics.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.hydraulics.range" step="1" v-model="vehicle.hydraulics.current"></div>
+            <div v-if="vehicle.hydraulics.range > 0" class="item">hydraulics {{ vehicle.hydraulics.current }}</div>
+
+            <div v-if="vehicle.engineBlock.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.engineBlock.range" step="1" v-model="vehicle.engineBlock.current"></div>
+            <div v-if="vehicle.engineBlock.range > 0" class="item">engineBlock {{ vehicle.engineBlock.current }}</div>
+
+            <div v-if="vehicle.airFilter.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.airFilter.range" step="1" v-model="vehicle.airFilter.current"></div>
+            <div v-if="vehicle.airFilter.range > 0" class="item">airFilter {{ vehicle.airFilter.current }}</div>
+
+            <div v-if="vehicle.strutBar.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.strutBar.range" step="1" v-model="vehicle.strutBar.current"></div>
+            <div v-if="vehicle.strutBar.range > 0" class="item">strutBar {{ vehicle.strutBar.current }}</div>
+
+            <div v-if="vehicle.archCover.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.archCover.range" step="1" v-model="vehicle.archCover.current"></div>
+            <div v-if="vehicle.archCover.range > 0" class="item">archCover {{ vehicle.archCover.current }}</div>
+
+            <div v-if="vehicle.antenna.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.antenna.range" step="1" v-model="vehicle.antenna.current"></div>
+            <div v-if="vehicle.antenna.range > 0" class="item">antenna {{ vehicle.antenna.current }}</div>
+
+            <div v-if="vehicle.exteriorParts.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.exteriorParts.range" step="1" v-model="vehicle.exteriorParts.current"></div>
+            <div v-if="vehicle.exteriorParts.range > 0" class="item">exteriorParts {{ vehicle.exteriorParts.current }}</div>
+
+            <div v-if="vehicle.tank.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.tank.range" step="1" v-model="vehicle.tank.current"></div>
+            <div v-if="vehicle.tank.range > 0" class="item">tank {{ vehicle.tank.current }}</div>
+
+            <div v-if="vehicle.door.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.door.range" step="1" v-model="vehicle.door.current"></div>
+            <div v-if="vehicle.door.range > 0" class="item">door {{ vehicle.door.current }}</div>
+
+            <div v-if="vehicle.WROH.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.WROH.range" step="1" v-model="vehicle.WROH.current"></div>
+            <div v-if="vehicle.WROH.range > 0" class="item">WROH {{ vehicle.WROH.current }}</div>
+
+         </div>
+
+
+      </div>
+   </body>
+   <script type="text/javascript" src="vue.global.prod.js"></script>
+   <script type="text/javascript" src="webview.js"></script>
+</html>
+
+
+

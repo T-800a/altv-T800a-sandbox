@@ -166,6 +166,38 @@
                 "target": "T8INT",
                 "call": "sitzen_bank",
                 "data": "A"
+            },
+            {
+                "name": "Sitzen Links",
+                "img": "img/empty.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "sitzen",
+                "data": "L"
+            },
+            {
+                "name": "Sitzen Mitte",
+                "img": "img/empty.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "sitzen",
+                "data": "M"
+            },
+            {
+                "name": "Sitzen Rechts",
+                "img": "img/empty.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "sitzen",
+                "data": "R"
+            },
+            {
+                "name": "2 Aufstehen 2",
+                "img": "img/empty.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "aufstehen",
+                "data": ""
             }
         ]
     },
@@ -253,6 +285,22 @@
         "titel": "Fahrzeug",
         "items": [
             {
+                "name": "Reparieren",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "vehicle_repair",
+                "data": ""
+            },
+            {
+                "name": "TUNEN",
+                "img": "img/idee.png",
+                "keepOpen": false,
+                "target": "client",
+                "call": "T8UNE:client:createWindow",
+                "data": ""
+            },
+            {
                 "name": "Motor starten/stoppen",
                 "img": "img/senden.png",
                 "keepOpen": true,
@@ -266,14 +314,6 @@
                 "keepOpen": false,
                 "target": "T8INT",
                 "call": "vehicle_quicktune",
-                "data": ""
-            },
-            {
-                "name": "Reparieren",
-                "img": "img/idee.png",
-                "keepOpen": false,
-                "target": "T8INT",
-                "call": "vehicle_repair",
                 "data": ""
             }
         ]
