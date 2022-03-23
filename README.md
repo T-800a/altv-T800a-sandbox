@@ -55,3 +55,10 @@ open via chat commant when sitting in/on vehicle: ```/tune``` \
 open via T8INT when sitting in/on vehicle: press ```X``` and select the menu entry \
 
 The Menu is mostly with sliders, but Colors and Wheels are selected from dropdowns in categories.
+
+## T8CLOTH
+A very simple menu to change player cloth and props.
+
+**Dependencies:** alt, chat 
+
+open via chat commant when sitting in/on vehicle: ```/cloth``` \

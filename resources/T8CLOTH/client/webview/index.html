@@ -1,0 +1,86 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+      
+      <title>T8CLOTH</title>
+   </head>
+   <body>
+
+      <div id="app" class="mainContainer">
+         <div class="container tuneContainer">
+            <div class="item tripple"><b>Choose your T8CLOTH!!!</b></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="T8CLT_closeWebview();"><b>Schließen</b></button></div>
+
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.clothCon = !isOpen.clothCon; isOpen.propCon = false;">Clothes</button></div>
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.propCon = !isOpen.propCon; isOpen.clothCon = false;">Props</button></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.clothCon">
+            <div class="item quadro">Clothes</div>
+            <div class="item">Component</div>
+            <div class="item tripple dropdown" :class="{active: isOpen.cloth}">
+               <div @click="isOpen.cloth = !isOpen.cloth"><a class="title">{{selected.cloth}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.cloth">
+                  <div v-for="option in clothArray" class="dropdown-item" @click=" 
+                     clothing.component = option.id; 
+                     selected.cloth = option.name;
+                     isOpen.cloth = false;
+                     clothing.drawable = 0;
+                     clothing.texture = 0;
+                  ">
+                     <a>{{ option.name }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_drawable"><b>prev</b></button></div>
+            <div class="item"> drawable </div>
+            <div class="item"><input type="text" v-model="clothing.drawable" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_drawable"><b>next</b></button></div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_texture"><b>prev</b></button></div>
+            <div class="item"> texture </div>
+            <div class="item"><input type="text" v-model="clothing.texture" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_texture"><b>next</b></button></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.propCon">
+            <div class="item quadro">Props</div>
+            <div class="item">Component</div>
+            <div class="item tripple dropdown" :class="{active: isOpen.prop}">
+               <div @click="isOpen.prop = !isOpen.prop"><a class="title">{{selected.prop}}</a></div>
+               <div class="dropdown-menu" v-if="isOpen.prop">
+                  <div v-for="option in propsArray" class="dropdown-item" @click=" 
+                     props.component = option.id; 
+                     selected.prop = option.name;
+                     isOpen.prop = false;
+                     props.drawable = 0;
+                     props.texture = 0;
+                  ">
+                     <a>{{ option.name }}</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_prop_drawable"><b>prev</b></button></div>
+            <div class="item"> drawable </div>
+            <div class="item"><input type="text" v-model="props.drawable" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_prop_drawable"><b>next</b></button></div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_prop_texture"><b>prev</b></button></div>
+            <div class="item"> texture </div>
+            <div class="item"><input type="text" v-model="props.texture" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_prop_texture"><b>next</b></button></div>
+         </div>
+
+      </div>
+   </body>
+   <script type="text/javascript" src="vue.global.prod.js"></script>
+   <script type="text/javascript" src="webview.js"></script>
+</html>
+
+
+

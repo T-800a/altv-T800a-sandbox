@@ -187,13 +187,13 @@ alt.onClient('T8UNE:server:sendVehicle', (player, vehicleID)=>{
             W: veh.wheelColor
         }
     };
-    // alt.log(`>> T8UNE:server:sendVehicle >> ${vehicleID}`);
+    alt.log(`>> T8UNE:server:sendVehicle >> ${vehicleID}`);
     // alt.log(`>> T8UNE:server:sendVehicle >> ${JSON.stringify(vehData)}`);
     alt.emitClient(player, "T8UNE:client:sendVehicle", JSON.stringify(vehData));
 });
 alt.onClient('T8UNE:server:updateVehicle', (player, vehicleID, dataJSON)=>{
     let vehData = JSON.parse(dataJSON);
-    alt.log(`>> T8UNE:server:updateVehicle >> ${vehicleID} > ${player.vehicle.id}`);
+    // alt.log(`>> T8UNE:server:updateVehicle >> ${vehicleID} > ${player.vehicle.id}`);
     let veh = alt.Vehicle.getByID(player.vehicle.id);
     veh.repair();
     veh.dirtLevel = 0;

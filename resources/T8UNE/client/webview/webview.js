@@ -7249,6 +7249,11 @@ var colorsArray = [
     },
     {
         type: "Matte",
+        id: 131,
+        text: "White"
+    },
+    {
+        type: "Matte",
         id: 39,
         text: "Red"
     },
@@ -7274,6 +7279,26 @@ var colorsArray = [
     },
     {
         type: "Matte",
+        id: 128,
+        text: "Green"
+    },
+    {
+        type: "Matte",
+        id: 155,
+        text: "Foilage Green"
+    },
+    {
+        type: "Matte",
+        id: 151,
+        text: "Forest Green"
+    },
+    {
+        type: "Matte",
+        id: 152,
+        text: "Olive Drab"
+    },
+    {
+        type: "Matte",
         id: 82,
         text: "Dark Blue"
     },
@@ -7289,21 +7314,6 @@ var colorsArray = [
     },
     {
         type: "Matte",
-        id: 128,
-        text: "Green"
-    },
-    {
-        type: "Matte",
-        id: 129,
-        text: "Brown"
-    },
-    {
-        type: "Matte",
-        id: 131,
-        text: "White"
-    },
-    {
-        type: "Matte",
         id: 148,
         text: "Purple"
     },
@@ -7311,16 +7321,6 @@ var colorsArray = [
         type: "Matte",
         id: 149,
         text: "Dark Purple"
-    },
-    {
-        type: "Matte",
-        id: 151,
-        text: "Forest Green"
-    },
-    {
-        type: "Matte",
-        id: 152,
-        text: "Olive Drab"
     },
     {
         type: "Matte",
@@ -7334,23 +7334,13 @@ var colorsArray = [
     },
     {
         type: "Matte",
-        id: 155,
-        text: "Foilage Green"
+        id: 129,
+        text: "Brown"
     },
     {
         type: "Worm",
         id: 21,
         text: "Black"
-    },
-    {
-        type: "Worm",
-        id: 132,
-        text: "White"
-    },
-    {
-        type: "Worm",
-        id: 121,
-        text: "Off White"
     },
     {
         type: "Worm",
@@ -7379,6 +7369,16 @@ var colorsArray = [
     },
     {
         type: "Worm",
+        id: 121,
+        text: "Off White"
+    },
+    {
+        type: "Worm",
+        id: 132,
+        text: "White"
+    },
+    {
+        type: "Worm",
         id: 46,
         text: "Red"
     },
@@ -7391,6 +7391,26 @@ var colorsArray = [
         type: "Worm",
         id: 48,
         text: "Dark Red"
+    },
+    {
+        type: "Worm",
+        id: 123,
+        text: "Orange"
+    },
+    {
+        type: "Worm",
+        id: 124,
+        text: "Light Orange"
+    },
+    {
+        type: "Worm",
+        id: 130,
+        text: "Orange"
+    },
+    {
+        type: "Worm",
+        id: 126,
+        text: "Taxi Yellow"
     },
     {
         type: "Worm",
@@ -7448,26 +7468,6 @@ var colorsArray = [
         text: "straw beige"
     },
     {
-        type: "Worm",
-        id: 123,
-        text: "Orange"
-    },
-    {
-        type: "Worm",
-        id: 124,
-        text: "Light Orange"
-    },
-    {
-        type: "Worm",
-        id: 130,
-        text: "Orange"
-    },
-    {
-        type: "Worm",
-        id: 126,
-        text: "Taxi Yellow"
-    },
-    {
         type: "Utility",
         id: 15,
         text: "Black"
@@ -7496,6 +7496,11 @@ var colorsArray = [
         type: "Utility",
         id: 20,
         text: "Shadow Silver"
+    },
+    {
+        type: "Utility",
+        id: 122,
+        text: "Off White"
     },
     {
         type: "Utility",
@@ -7573,9 +7578,14 @@ var colorsArray = [
         text: "Light Brown"
     },
     {
-        type: "Utility",
-        id: 122,
-        text: "Off White"
+        type: "Divers",
+        id: 147,
+        text: "Modshop Black"
+    },
+    {
+        type: "Divers",
+        id: 134,
+        text: "Pure White"
     },
     {
         type: "Divers",
@@ -7609,16 +7619,6 @@ var colorsArray = [
     },
     {
         type: "Divers",
-        id: 147,
-        text: "Modshop Black"
-    },
-    {
-        type: "Divers",
-        id: 134,
-        text: "Pure White"
-    },
-    {
-        type: "Divers",
         id: 138,
         text: "Orange"
     },
@@ -7629,23 +7629,13 @@ var colorsArray = [
     },
     {
         type: "Divers",
-        id: 140,
-        text: "Blue"
-    },
-    {
-        type: "Divers",
         id: 144,
         text: "Hunter Green"
     },
     {
         type: "Divers",
-        id: 135,
-        text: "Hot Pink"
-    },
-    {
-        type: "Divers",
-        id: 136,
-        text: "Salmon pink"
+        id: 140,
+        text: "Blue"
     },
     {
         type: "Divers",
@@ -7656,6 +7646,16 @@ var colorsArray = [
         type: "Divers",
         id: 127,
         text: "Policecar Blue"
+    },
+    {
+        type: "Divers",
+        id: 135,
+        text: "Hot Pink"
+    },
+    {
+        type: "Divers",
+        id: 136,
+        text: "Salmon pink"
     },
     {
         type: "Divers",

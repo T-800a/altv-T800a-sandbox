@@ -50,6 +50,7 @@ nav ul {
    list-style: none;
    position: relative;
    z-index: 99999;
+   max-height: 50%;
 }
    
 nav ul li {
