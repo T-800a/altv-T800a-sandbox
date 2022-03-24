@@ -35,7 +35,7 @@ body {
 
 .tuneContainer { 
    display: grid;
-   grid-template-columns: .5fr 1fr 1fr .5fr;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
    grid-template-rows: auto;
    column-gap: 0.5em;
    row-gap: 0.5em;
