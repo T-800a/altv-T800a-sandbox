@@ -63,4 +63,4 @@ A very simple menu to change player cloth and props.
 
 **Dependencies:** alt, chat (from altv example resources)
 
-open via chat commant when sitting in/on vehicle: ```/cloth```
+open via chat commant when outside vehicle: ```/cloth```
