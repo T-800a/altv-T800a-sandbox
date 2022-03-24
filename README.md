@@ -58,6 +58,7 @@ The Menu is mostly with sliders, but Colors and Wheels are selected from dropdow
 
 ## T8CLOTH
 ![T8CLOTH](img/img_t8cloth.png?raw=true "player cloth and props menu")
+
 A very simple menu to change player cloth and props.
 
 **Dependencies:** alt, chat (from altv example resources)
