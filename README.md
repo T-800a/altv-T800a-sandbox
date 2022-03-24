@@ -10,7 +10,7 @@ And these are my first half decent things I made with Typescript and a little bi
 
 positon loggin tool for alt:V
 
-**Dependencies:** alt, natives, chat
+**Dependencies:** alt, natives, chat (from altv example resources)
 
 open via T8INT: press ```F3``` and select the menu entry \
 open via chat commant: ```/t8ug```\
@@ -25,7 +25,7 @@ press ```NUM ,``` to focus the webview and activate the mouse
 Interaction menu for alt:V. \
 This is just my quirky take on an interaction menu...
 
-**Dependencies:** alt, natives, chat
+**Dependencies:** alt, natives, chat (from altv example resources)
 
 ### requires: Simple JSONdb server side
 ```npm install --save simple-json-db```
@@ -49,10 +49,10 @@ press ```Right Mouse``` to close menu
 
 A simple vehicle tuning menu.
 
-**Dependencies:** alt, chat 
+**Dependencies:** alt, chat (from altv example resources)
 
 open via chat commant when sitting in/on vehicle: ```/tune``` \
-open via T8INT when sitting in/on vehicle: press ```X``` and select the menu entry \
+open via T8INT when sitting in/on vehicle: press ```X``` and select the menu entry
 
 The Menu is mostly with sliders, but Colors and Wheels are selected from dropdowns in categories.
 
@@ -60,6 +60,6 @@ The Menu is mostly with sliders, but Colors and Wheels are selected from dropdow
 ![T8CLOTH](img/img_t8cloth.png?raw=true "player cloth and props menu")
 A very simple menu to change player cloth and props.
 
-**Dependencies:** alt, chat 
+**Dependencies:** alt, chat (from altv example resources)
 
-open via chat commant when sitting in/on vehicle: ```/cloth``` \
+open via chat commant when sitting in/on vehicle: ```/cloth```
