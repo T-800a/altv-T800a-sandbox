@@ -1,6 +1,11 @@
 import alt from 'alt-client';
 import natives from 'natives';
 
+import { createPedEditCamera, destroyPedEditCamera, setFov, setZPos } from './classes/camera';
+import { T8_webView } from './classes/webview';
+
+
+// let WEBVIEW = new T8_webView();
 
 var webview = null;
 
@@ -15,6 +20,12 @@ function T8CLT_startWebview(){
       webview.focus();
       alt.toggleGameControls(false);
       alt.showCursor(true);
+
+
+      createPedEditCamera();
+      setFov(50);
+      setZPos(-0.1);
+      natives.freezeEntityPosition(alt.Player.local.scriptID, true);
 
 //      alt.setConfigFlag( DisableIdleCamera, true );
    };
@@ -31,6 +42,9 @@ function T8CLT_handleFromWebview( task:string, data:string = "" ) {
       webview = null;
       alt.toggleGameControls(true);
       alt.showCursor(false);
+
+      natives.freezeEntityPosition(alt.Player.local.scriptID, false);
+      destroyPedEditCamera();
    };
 
    if( task == "update_cloth" ){
@@ -48,5 +62,5 @@ function T8CLT_handleFromWebview( task:string, data:string = "" ) {
 let idle = alt.setInterval(() => {
    natives.invalidateIdleCam(); // Disable player idle camera
    //@ts-ignore
-   natives._0x9E4CFFF989258472(); // Disable vehicle idle camera
+   // natives._0x9E4CFFF989258472(); // Disable vehicle idle camera
 }, 20000); // Idle camera activated after 30 seconds

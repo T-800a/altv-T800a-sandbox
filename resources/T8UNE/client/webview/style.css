@@ -93,6 +93,9 @@ select, textarea {
    border-radius: .25em;
 }
 
+textarea {
+   font-size: 0.8em;
+}
 
 .dropdown {
    position: relative;

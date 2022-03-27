@@ -1599,8 +1599,7 @@ var colorsArray = [
 const app = Vue.createApp({
    data() {
       return {
-         value: 3,
-         max: 5,
+         jsonexchange: "",
 
          reset: {
             colors: "",
@@ -1654,6 +1653,8 @@ const app = Vue.createApp({
             plates:        { current: 0, range: 5 },
             windows:       { current: 0, range: 6 },
 
+            extras:        [ false, false, true, true, false, false, true, true, false, false, true, true  ],
+
             wheelsType:    0,
             wheels:        0,
             wheelsRear:    0,
@@ -1683,6 +1684,8 @@ const app = Vue.createApp({
             performance: true,
             colors: false,
             kit: false,
+            kit2: false,
+            extras: false,
             MG: null,
             SG: null,
             PG: null,
@@ -1794,9 +1797,25 @@ function openWindow( window:string ){
    view.isOpen.colors         = false;
    view.isOpen.kit            = false;
    view.isOpen.kit2           = false;
+   view.isOpen.extras         = false;
+   view.isOpen.jsonexchange   = false;
 
    if ( window == "performance" )   { view.isOpen.performance = true; return; };
    if ( window == "colors" )        { view.isOpen.colors = true; return; };
    if ( window == "kit" )           { view.isOpen.kit = true; return; };
    if ( window == "kit2" )          { view.isOpen.kit2 = true; return; };
+   if ( window == "extras" )        { view.isOpen.extras = true; return; };
+   if ( window == "jsonexchange" )  { view.isOpen.jsonexchange = true; return; };
+};
+
+function handleJSON( task:string ){
+
+   if ( task == "import"){
+      view.vehicle = JSON.parse( view.jsonexchange );
+      view.jsonexchange = "--- IPORTIERT ---";
+   };
+
+   if ( task == "export"){
+      view.jsonexchange = JSON.stringify( view.vehicle );
+   };
 };

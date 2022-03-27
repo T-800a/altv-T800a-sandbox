@@ -13,13 +13,15 @@
          <div class="container tuneContainer">
             <div class="item double"><b>T8UNE your Car FFS!!!</b></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="closeWebview();"><b>Schließen</b></button></div>
+
+            <div class="item tripple"><button style="width:100%; text-align: center;" onclick="openWindow('jsonexchange');">JSON Import / Export</button></div>
             
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('performance');">Performance</button></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('colors');">Farben</button></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="resetCar();"><i>Fahrzeug Reset</i></button></div>
 
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit');">Anbauteile</button></div>
-            <div class="item"><!-- <button style="width:100%; text-align: center;" onclick="openWindow('rims');">Felgen</button> --></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('extras');">Extras</button></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit2');">Anbauteile 2</button></div>
          </div>
 
@@ -248,6 +250,42 @@
             <div v-if="vehicle.WROH.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.WROH.range" step="1" v-model="vehicle.WROH.current"></div>
             <div v-if="vehicle.WROH.range > 0" class="item">WROH {{ vehicle.WROH.current }}</div>
 
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.extras">
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[0] = !vehicle.extras[0];">Extra 1: {{vehicle.extras[0]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[1] = !vehicle.extras[1];">Extra 2: {{vehicle.extras[1]}}</button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[2] = !vehicle.extras[2];">Extra 3: {{vehicle.extras[2]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[3] = !vehicle.extras[3];">Extra 4: {{vehicle.extras[3]}}</button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[4] = !vehicle.extras[4];">Extra 5: {{vehicle.extras[4]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[5] = !vehicle.extras[5];">Extra 6: {{vehicle.extras[5]}}</button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[6] = !vehicle.extras[6];">Extra 7: {{vehicle.extras[6]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[7] = !vehicle.extras[7];">Extra 8: {{vehicle.extras[7]}}</button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[8] = !vehicle.extras[8];">Extra 9: {{vehicle.extras[8]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[9] = !vehicle.extras[9];">Extra 10: {{vehicle.extras[9]}}</button></div>
+            
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[10] = !vehicle.extras[10];">Extra 11: {{vehicle.extras[10]}}</button></div>
+            <div class="item"></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[11] = !vehicle.extras[11];">Extra 12: {{vehicle.extras[11]}}</button></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.jsonexchange">
+            <div class="item"><button style="width:100%; text-align: center;" onclick="handleJSON('import');">Import JSON</button></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="jsonexchange = '';">clear</button></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="handleJSON('export');">Export JSON</button></div>
+            
+            <div class="item tripple">
+               <textarea v-model="jsonexchange" rows="16"></textarea>
+            </div>
          </div>
 
 

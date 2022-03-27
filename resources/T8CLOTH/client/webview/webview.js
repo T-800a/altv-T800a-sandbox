@@ -165,7 +165,7 @@ const T8CLT_view = app.mount('#app');
 let T8CLT_firstload = false;
 document.addEventListener("DOMContentLoaded", function() {
     if ('alt' in window) {
-        alt.on('T8CLT:Webview:exec', T8CLT_handleFromClient);
+        alt.on('T8CLT:webview:exec', T8CLT_handleFromClient);
         alt.emit('T8CLT:client:exec', 'load_vehicle');
     }
 });
