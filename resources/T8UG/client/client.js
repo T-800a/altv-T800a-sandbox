@@ -27,7 +27,7 @@ function _asyncToGenerator(fn) {
         });
     };
 }
-import alt from 'alt';
+import alt from 'alt-client';
 import natives from 'natives';
 // import * as chat from 'chat';
 let T8ug_loaded = false;
@@ -90,7 +90,7 @@ alt.on("keyup", function(key) {
         }
         // NUM 0
         if (key === 96) {
-            webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray(key));
+            webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray());
         }
         // NUM 3
         if (key === 99) {

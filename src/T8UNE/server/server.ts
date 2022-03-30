@@ -13,7 +13,7 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
    let veh = alt.Vehicle.getByID(player.vehicle.id);
    let vehData = {};
    
-   if ( veh.modKitsCount > 0 ){
+   // if ( veh.modKitsCount > 0 ){
       veh.modKit = 1;
 
       vehData = {
@@ -70,6 +70,8 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
          wheels:        veh.frontWheels,
          wheelsRear:    veh.rearWheels,
 
+         rooflivery:    veh.roofLivery,
+
          colors:        {
                            M: veh.primaryColor,
                            S: veh.secondaryColor,
@@ -77,6 +79,8 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
                            W: veh.wheelColor
          }
       };
+
+/*
    } else {
       veh.modKit = 0;
 
@@ -133,6 +137,8 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
          wheels:        veh.frontWheels,
          wheelsRear:    veh.rearWheels,
 
+         rooflivery:    veh.roofLivery,
+
          colors:        {
                            M: veh.primaryColor,
                            S: veh.secondaryColor,
@@ -141,6 +147,7 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
          }
       };
    };
+*/
 
    alt.log(`>> T8UNE:server:sendVehicle >> ${vehicleID}`);
    // alt.log(`>> T8UNE:server:sendVehicle >> ${JSON.stringify(vehData)}`);

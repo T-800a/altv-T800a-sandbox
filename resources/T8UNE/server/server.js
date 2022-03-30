@@ -9,398 +9,270 @@ alt.onClient('T8UNE:server:sendVehicle', (player, vehicleID)=>{
     let veh = alt.Vehicle.getByID(player.vehicle.id);
     let vehData = {
     };
-    if (veh.modKitsCount > 0) {
-        veh.modKit = 1;
-        vehData = {
-            engine: {
-                current: veh.getMod(11),
-                range: veh.getModsCount(11)
-            },
-            brakes: {
-                current: veh.getMod(12),
-                range: veh.getModsCount(12)
-            },
-            transmission: {
-                current: veh.getMod(13),
-                range: veh.getModsCount(13)
-            },
-            suspension: {
-                current: veh.getMod(15),
-                range: veh.getModsCount(15)
-            },
-            turbo: {
-                current: veh.getMod(18),
-                range: veh.getModsCount(18)
-            },
-            exhaust: {
-                current: veh.getMod(4),
-                range: veh.getModsCount(4)
-            },
-            spoiler: {
-                current: veh.getMod(0),
-                range: veh.getModsCount(0)
-            },
-            bumperF: {
-                current: veh.getMod(1),
-                range: veh.getModsCount(1)
-            },
-            bumperR: {
-                current: veh.getMod(2),
-                range: veh.getModsCount(2)
-            },
-            skirt: {
-                current: veh.getMod(3),
-                range: veh.getModsCount(3)
-            },
-            frame: {
-                current: veh.getMod(5),
-                range: veh.getModsCount(5)
-            },
-            grille: {
-                current: veh.getMod(6),
-                range: veh.getModsCount(6)
-            },
-            bonnet: {
-                current: veh.getMod(7),
-                range: veh.getModsCount(7)
-            },
-            wingL: {
-                current: veh.getMod(8),
-                range: veh.getModsCount(8)
-            },
-            wingR: {
-                current: veh.getMod(9),
-                range: veh.getModsCount(9)
-            },
-            roof: {
-                current: veh.getMod(10),
-                range: veh.getModsCount(10)
-            },
-            plateH: {
-                current: veh.getMod(25),
-                range: veh.getModsCount(25)
-            },
-            plateV: {
-                current: veh.getMod(26),
-                range: veh.getModsCount(26)
-            },
-            trim: {
-                current: veh.getMod(27),
-                range: veh.getModsCount(27)
-            },
-            ornaments: {
-                current: veh.getMod(28),
-                range: veh.getModsCount(28)
-            },
-            dialDesign: {
-                current: veh.getMod(30),
-                range: veh.getModsCount(30)
-            },
-            doorInterior: {
-                current: veh.getMod(31),
-                range: veh.getModsCount(31)
-            },
-            seats: {
-                current: veh.getMod(32),
-                range: veh.getModsCount(32)
-            },
-            steeringWheel: {
-                current: veh.getMod(33),
-                range: veh.getModsCount(33)
-            },
-            shiftLever: {
-                current: veh.getMod(34),
-                range: veh.getModsCount(34)
-            },
-            plaques: {
-                current: veh.getMod(35),
-                range: veh.getModsCount(35)
-            },
-            rearShelf: {
-                current: veh.getMod(36),
-                range: veh.getModsCount(36)
-            },
-            trunk: {
-                current: veh.getMod(37),
-                range: veh.getModsCount(37)
-            },
-            hydraulics: {
-                current: veh.getMod(38),
-                range: veh.getModsCount(38)
-            },
-            engineBlock: {
-                current: veh.getMod(39),
-                range: veh.getModsCount(39)
-            },
-            airFilter: {
-                current: veh.getMod(40),
-                range: veh.getModsCount(40)
-            },
-            strutBar: {
-                current: veh.getMod(41),
-                range: veh.getModsCount(41)
-            },
-            archCover: {
-                current: veh.getMod(42),
-                range: veh.getModsCount(42)
-            },
-            antenna: {
-                current: veh.getMod(43),
-                range: veh.getModsCount(43)
-            },
-            exteriorParts: {
-                current: veh.getMod(44),
-                range: veh.getModsCount(44)
-            },
-            tank: {
-                current: veh.getMod(45),
-                range: veh.getModsCount(45)
-            },
-            door: {
-                current: veh.getMod(46),
-                range: veh.getModsCount(46)
-            },
-            WROH: {
-                current: veh.getMod(47),
-                range: veh.getModsCount(47)
-            },
-            livery: {
-                current: veh.getMod(48),
-                range: veh.getModsCount(48)
-            },
-            xenon: {
-                current: veh.getMod(22),
-                range: veh.getModsCount(22)
-            },
-            plates: {
-                current: veh.numberPlateIndex,
-                range: 5
-            },
-            windows: {
-                current: veh.windowTint,
-                range: 6
-            },
-            extras: [
-                veh.getExtra(1),
-                veh.getExtra(2),
-                veh.getExtra(3),
-                veh.getExtra(4),
-                veh.getExtra(5),
-                veh.getExtra(6),
-                veh.getExtra(7),
-                veh.getExtra(8),
-                veh.getExtra(9),
-                veh.getExtra(10),
-                veh.getExtra(11),
-                veh.getExtra(12)
-            ],
-            wheelsType: veh.wheelType,
-            wheels: veh.frontWheels,
-            wheelsRear: veh.rearWheels,
-            colors: {
-                M: veh.primaryColor,
-                S: veh.secondaryColor,
-                P: veh.pearlColor,
-                W: veh.wheelColor
-            }
-        };
-    } else {
-        veh.modKit = 0;
-        vehData = {
-            engine: {
-                current: 0,
-                range: 0
-            },
-            brakes: {
-                current: 0,
-                range: 0
-            },
-            transmission: {
-                current: 0,
-                range: 0
-            },
-            suspension: {
-                current: 0,
-                range: 0
-            },
-            turbo: {
-                current: 0,
-                range: 0
-            },
-            exhaust: {
-                current: 0,
-                range: 0
-            },
-            spoiler: {
-                current: 0,
-                range: 0
-            },
-            bumperF: {
-                current: 0,
-                range: 0
-            },
-            bumperR: {
-                current: 0,
-                range: 0
-            },
-            skirt: {
-                current: 0,
-                range: 0
-            },
-            frame: {
-                current: 0,
-                range: 0
-            },
-            grille: {
-                current: 0,
-                range: 0
-            },
-            bonnet: {
-                current: 0,
-                range: 0
-            },
-            wingL: {
-                current: 0,
-                range: 0
-            },
-            wingR: {
-                current: 0,
-                range: 0
-            },
-            roof: {
-                current: 0,
-                range: 0
-            },
-            plateH: {
-                current: 0,
-                range: 0
-            },
-            plateV: {
-                current: 0,
-                range: 0
-            },
-            trim: {
-                current: 0,
-                range: 0
-            },
-            ornaments: {
-                current: 0,
-                range: 0
-            },
-            dialDesign: {
-                current: 0,
-                range: 0
-            },
-            doorInterior: {
-                current: 0,
-                range: 0
-            },
-            seats: {
-                current: 0,
-                range: 0
-            },
-            steeringWheel: {
-                current: 0,
-                range: 0
-            },
-            shiftLever: {
-                current: 0,
-                range: 0
-            },
-            plaques: {
-                current: 0,
-                range: 0
-            },
-            rearShelf: {
-                current: 0,
-                range: 0
-            },
-            trunk: {
-                current: 0,
-                range: 0
-            },
-            hydraulics: {
-                current: 0,
-                range: 0
-            },
-            engineBlock: {
-                current: 0,
-                range: 0
-            },
-            airFilter: {
-                current: 0,
-                range: 0
-            },
-            strutBar: {
-                current: 0,
-                range: 0
-            },
-            archCover: {
-                current: 0,
-                range: 0
-            },
-            antenna: {
-                current: 0,
-                range: 0
-            },
-            exteriorParts: {
-                current: 0,
-                range: 0
-            },
-            tank: {
-                current: 0,
-                range: 0
-            },
-            door: {
-                current: 0,
-                range: 0
-            },
-            WROH: {
-                current: 0,
-                range: 0
-            },
-            livery: {
-                current: 0,
-                range: 0
-            },
-            xenon: {
-                current: 0,
-                range: 0
-            },
-            plates: {
-                current: veh.numberPlateIndex,
-                range: 5
-            },
-            windows: {
-                current: veh.windowTint,
-                range: 6
-            },
-            extras: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-            ],
-            wheelsType: veh.wheelType,
-            wheels: veh.frontWheels,
-            wheelsRear: veh.rearWheels,
-            colors: {
-                M: veh.primaryColor,
-                S: veh.secondaryColor,
-                P: veh.pearlColor,
-                W: veh.wheelColor
-            }
-        };
-    }
-    alt.log(`>> T8UNE:server:sendVehicle >> ${vehicleID}`);
+    // if ( veh.modKitsCount > 0 ){
+    veh.modKit = 1;
+    vehData = {
+        engine: {
+            current: veh.getMod(11),
+            range: veh.getModsCount(11)
+        },
+        brakes: {
+            current: veh.getMod(12),
+            range: veh.getModsCount(12)
+        },
+        transmission: {
+            current: veh.getMod(13),
+            range: veh.getModsCount(13)
+        },
+        suspension: {
+            current: veh.getMod(15),
+            range: veh.getModsCount(15)
+        },
+        turbo: {
+            current: veh.getMod(18),
+            range: veh.getModsCount(18)
+        },
+        exhaust: {
+            current: veh.getMod(4),
+            range: veh.getModsCount(4)
+        },
+        spoiler: {
+            current: veh.getMod(0),
+            range: veh.getModsCount(0)
+        },
+        bumperF: {
+            current: veh.getMod(1),
+            range: veh.getModsCount(1)
+        },
+        bumperR: {
+            current: veh.getMod(2),
+            range: veh.getModsCount(2)
+        },
+        skirt: {
+            current: veh.getMod(3),
+            range: veh.getModsCount(3)
+        },
+        frame: {
+            current: veh.getMod(5),
+            range: veh.getModsCount(5)
+        },
+        grille: {
+            current: veh.getMod(6),
+            range: veh.getModsCount(6)
+        },
+        bonnet: {
+            current: veh.getMod(7),
+            range: veh.getModsCount(7)
+        },
+        wingL: {
+            current: veh.getMod(8),
+            range: veh.getModsCount(8)
+        },
+        wingR: {
+            current: veh.getMod(9),
+            range: veh.getModsCount(9)
+        },
+        roof: {
+            current: veh.getMod(10),
+            range: veh.getModsCount(10)
+        },
+        plateH: {
+            current: veh.getMod(25),
+            range: veh.getModsCount(25)
+        },
+        plateV: {
+            current: veh.getMod(26),
+            range: veh.getModsCount(26)
+        },
+        trim: {
+            current: veh.getMod(27),
+            range: veh.getModsCount(27)
+        },
+        ornaments: {
+            current: veh.getMod(28),
+            range: veh.getModsCount(28)
+        },
+        dialDesign: {
+            current: veh.getMod(30),
+            range: veh.getModsCount(30)
+        },
+        doorInterior: {
+            current: veh.getMod(31),
+            range: veh.getModsCount(31)
+        },
+        seats: {
+            current: veh.getMod(32),
+            range: veh.getModsCount(32)
+        },
+        steeringWheel: {
+            current: veh.getMod(33),
+            range: veh.getModsCount(33)
+        },
+        shiftLever: {
+            current: veh.getMod(34),
+            range: veh.getModsCount(34)
+        },
+        plaques: {
+            current: veh.getMod(35),
+            range: veh.getModsCount(35)
+        },
+        rearShelf: {
+            current: veh.getMod(36),
+            range: veh.getModsCount(36)
+        },
+        trunk: {
+            current: veh.getMod(37),
+            range: veh.getModsCount(37)
+        },
+        hydraulics: {
+            current: veh.getMod(38),
+            range: veh.getModsCount(38)
+        },
+        engineBlock: {
+            current: veh.getMod(39),
+            range: veh.getModsCount(39)
+        },
+        airFilter: {
+            current: veh.getMod(40),
+            range: veh.getModsCount(40)
+        },
+        strutBar: {
+            current: veh.getMod(41),
+            range: veh.getModsCount(41)
+        },
+        archCover: {
+            current: veh.getMod(42),
+            range: veh.getModsCount(42)
+        },
+        antenna: {
+            current: veh.getMod(43),
+            range: veh.getModsCount(43)
+        },
+        exteriorParts: {
+            current: veh.getMod(44),
+            range: veh.getModsCount(44)
+        },
+        tank: {
+            current: veh.getMod(45),
+            range: veh.getModsCount(45)
+        },
+        door: {
+            current: veh.getMod(46),
+            range: veh.getModsCount(46)
+        },
+        WROH: {
+            current: veh.getMod(47),
+            range: veh.getModsCount(47)
+        },
+        livery: {
+            current: veh.getMod(48),
+            range: veh.getModsCount(48)
+        },
+        xenon: {
+            current: veh.getMod(22),
+            range: veh.getModsCount(22)
+        },
+        plates: {
+            current: veh.numberPlateIndex,
+            range: 5
+        },
+        windows: {
+            current: veh.windowTint,
+            range: 6
+        },
+        extras: [
+            veh.getExtra(1),
+            veh.getExtra(2),
+            veh.getExtra(3),
+            veh.getExtra(4),
+            veh.getExtra(5),
+            veh.getExtra(6),
+            veh.getExtra(7),
+            veh.getExtra(8),
+            veh.getExtra(9),
+            veh.getExtra(10),
+            veh.getExtra(11),
+            veh.getExtra(12)
+        ],
+        wheelsType: veh.wheelType,
+        wheels: veh.frontWheels,
+        wheelsRear: veh.rearWheels,
+        rooflivery: veh.roofLivery,
+        colors: {
+            M: veh.primaryColor,
+            S: veh.secondaryColor,
+            P: veh.pearlColor,
+            W: veh.wheelColor
+        }
+    };
+    /*
+   } else {
+      veh.modKit = 0;
+
+      vehData = {
+         engine:        { current: 0, range: 0 },
+         brakes:        { current: 0, range: 0 },
+         transmission:  { current: 0, range: 0 },
+         suspension:    { current: 0, range: 0 },
+         turbo:         { current: 0, range: 0 },
+         exhaust:       { current: 0, range: 0 },
+
+         spoiler:       { current: 0, range: 0 },
+         bumperF:       { current: 0, range: 0 },
+         bumperR:       { current: 0, range: 0 },
+         skirt:         { current: 0, range: 0 },
+         frame:         { current: 0, range: 0 },
+         grille:        { current: 0, range: 0 },
+         bonnet:        { current: 0, range: 0 },
+         wingL:         { current: 0, range: 0 },
+         wingR:         { current: 0, range: 0 },
+         roof:          { current: 0, range: 0 },
+
+         plateH:        { current: 0, range: 0 },
+         plateV:        { current: 0, range: 0 },
+         trim:          { current: 0, range: 0 },
+         ornaments:     { current: 0, range: 0 },
+         dialDesign:    { current: 0, range: 0 },
+         doorInterior:  { current: 0, range: 0 },
+         seats:         { current: 0, range: 0 },
+         steeringWheel: { current: 0, range: 0 },
+         shiftLever:    { current: 0, range: 0 },
+         plaques:       { current: 0, range: 0 },
+         rearShelf:     { current: 0, range: 0 },
+         trunk:         { current: 0, range: 0 },
+         hydraulics:    { current: 0, range: 0 },
+         engineBlock:   { current: 0, range: 0 },
+         airFilter:     { current: 0, range: 0 },
+         strutBar:      { current: 0, range: 0 },
+         archCover:     { current: 0, range: 0 },
+         antenna:       { current: 0, range: 0 },
+         exteriorParts: { current: 0, range: 0 },
+         tank:          { current: 0, range: 0 },
+         door:          { current: 0, range: 0 },
+         WROH:          { current: 0, range: 0 },
+
+         livery:        { current: 0, range: 0 },
+         xenon:         { current: 0, range: 0 },
+         plates:        { current: veh.numberPlateIndex, range: 5 },
+         windows:       { current: veh.windowTint, range: 6 },
+
+         extras:        [  false, false, false, false, false, false, false, false, false, false, false, false ],
+
+         wheelsType:    veh.wheelType,
+         wheels:        veh.frontWheels,
+         wheelsRear:    veh.rearWheels,
+
+         rooflivery:    veh.roofLivery,
+
+         colors:        {
+                           M: veh.primaryColor,
+                           S: veh.secondaryColor,
+                           P: veh.pearlColor,
+                           W: veh.wheelColor
+         }
+      };
+   };
+*/ alt.log(`>> T8UNE:server:sendVehicle >> ${vehicleID}`);
     // alt.log(`>> T8UNE:server:sendVehicle >> ${JSON.stringify(vehData)}`);
     alt.emitClient(player, "T8UNE:client:sendVehicle", JSON.stringify(vehData));
 });

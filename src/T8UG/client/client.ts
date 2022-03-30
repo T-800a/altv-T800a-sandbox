@@ -1,4 +1,4 @@
-import alt from 'alt';
+import alt from 'alt-client';
 import natives from 'natives';
 // import * as chat from 'chat';
 
@@ -63,7 +63,7 @@ alt.on("keyup", function (key) {
    
    // NUM 0
       if (key === 96 ) {
-         webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray( key ));
+         webview.emit('T8UG:CEF:sendToWebview', T8ug_buildArray());
       };
    
    // NUM 3

@@ -7858,6 +7858,7 @@ const app = Vue.createApp({
                 wheelsType: 0,
                 wheels: 0,
                 wheelsRear: 0,
+                rooflivery: 0,
                 colors: {
                     M: null,
                     S: null,

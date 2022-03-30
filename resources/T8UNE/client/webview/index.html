@@ -141,6 +141,10 @@
             <div v-if="vehicle.livery.range > 0" class="item double"><input type="range" min="0" v-bind:max="vehicle.livery.range" step="1" v-model="vehicle.livery.current"></div>
             <div v-if="vehicle.livery.range > 0" class="item">Folie Nr. {{ vehicle.livery.current }}</div>
 
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.rooflivery--">Prev</button></div>
+            <div class="item">Dach: {{ vehicle.rooflivery }}</div>
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.rooflivery++">Next</button></div>
+
             <div class="item double"><input type="range" min="0" v-bind:max="vehicle.plates.range" step="1" v-model="vehicle.plates.current"></div>
             <div class="item">Nummernschild</div>
 

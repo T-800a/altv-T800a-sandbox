@@ -1,0 +1,51 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+      <link rel="stylesheet" href="style.css">
+      
+      <title>T8CLOTH</title>
+   </head>
+   <body>
+
+      <div id="app" class="app">
+         <div class="container">
+            <div class="item tripple"><b>Choose your T8VEH!!!</b></div>
+            <div class="item"><button style="width:100%; text-align: center;" onclick="T8VEH_closeWebview();"><b>Schließen</b></button></div>
+         </div>
+
+         <div class="container">
+            <div class="item quadro">Fahrzeug Klasse</div>
+            <div class="item quadro">
+               <select size="5" v-model="vehClass">
+                  <option v-for="item in vehClasses" :value="item.id">{{item.name}}</option>
+               </select>
+            </div>
+
+            <div class="item quadro">
+               <select size="10" v-model="vehSubClass">
+                  <option v-for="item in filteredSubClasses" :value="item.id">{{item.name}}</option>
+               </select>
+            </div>
+
+            <div class="item quadro">Fahrzeuge</div> 
+            <div class="item quadro">
+               <select size="20" v-model="vehicle">
+                  <option v-for="item in filteredVehicles" :value="item.id">{{item.name}}</option>
+               </select>
+            </div>
+
+      </div>
+   </body>
+   <script type="text/javascript" src="vue.global.prod.js"></script>
+
+   <!-- use the latest vue-select release -->
+   <script src="https://unpkg.com/vue-select@latest"></script>
+
+   <script type="text/javascript" src="webview.js"></script>
+</html>
+
+
+
