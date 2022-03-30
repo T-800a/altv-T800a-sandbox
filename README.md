@@ -15,8 +15,8 @@ positon loggin tool for alt:V
 - natives
 - chat (from altv example resources)
 
-open via T8INT: press ```F3``` and select the menu entry \
-open via chat commant: ```/t8ug```\
+open via chat command: ```/t8ug```\
+if T8INT is used with the example menus: press ```F3``` and select the menu entry \
 press ```NUM 0``` to log a position \
 press ```NUM 3``` to spawn a ped on last logged position with logged 'heading/yawn' \
 press ```NUM ,``` to focus the webview and activate the mouse
@@ -60,7 +60,7 @@ A simple vehicle spawning menu using JSON files to build the menu.
 - chat (from altv example resources)
 - SHARED (assets resource for json files, included)
 
-open via chat commant when sitting in/on vehicle: ```/t8veh```
+open via chat command: ```/t8veh```
 
 
 ## T8UNE
@@ -72,7 +72,7 @@ A simple vehicle tuning menu.
 - alt
 - chat (from altv example resources)
 
-open via chat commant when sitting in/on vehicle: ```/tune``` \
+open via chat command when sitting in/on vehicle: ```/tune``` \
 open via T8INT when sitting in/on vehicle: press ```X``` and select the menu entry
 
 The Menu is mostly with sliders, but Colors and Wheels are selected from dropdowns in categories.
@@ -87,4 +87,4 @@ A very simple menu to change player cloth and props.
 - alt
 - chat (from altv example resources)
 
-open via chat commant when outside vehicle: ```/cloth```
+open via chat command when outside vehicle: ```/cloth```
