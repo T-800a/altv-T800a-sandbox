@@ -17,16 +17,18 @@
          </div>
 
          <div class="container">
-            <div class="item quadro">Fahrzeug Klasse</div>
+            <div class="item quadro">Fahrzeug Addons</div>
             <div class="item quadro">
-               <select size="5" v-model="vehClass">
-                  <option v-for="item in vehClasses" :value="item.id">{{item.name}}</option>
+               <select size="5" v-model="vehAddon">
+                  <option v-for="item in vehAddons" :value="item.id">{{item.name}}</option>
                </select>
             </div>
 
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="filter = 0"><b>nach Klasse</b></button></div>
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="filter = 1"><b>nach Hersteller</b></button></div>
             <div class="item quadro">
-               <select size="10" v-model="vehSubClass">
-                  <option v-for="item in filteredSubClasses" :value="item.id">{{item.name}}</option>
+               <select size="10" v-model="vehClass">
+                  <option v-for="item in filteredClasses" :value="item.id">{{item.name}}</option>
                </select>
             </div>
 
@@ -42,7 +44,7 @@
    <script type="text/javascript" src="vue.global.prod.js"></script>
 
    <!-- use the latest vue-select release -->
-   <script src="https://unpkg.com/vue-select@latest"></script>
+   <!--<script src="https://unpkg.com/vue-select@latest"></script>-->
 
    <script type="text/javascript" src="webview.js"></script>
 </html>

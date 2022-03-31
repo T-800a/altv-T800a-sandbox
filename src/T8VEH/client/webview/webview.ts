@@ -1,20 +1,16 @@
 
-
-let vehArray = [];
-let vehClsArray = [];
-let vehSubClsArray = [];
-
-
 //@ts-ignore
 const app = Vue.createApp({
    data() {
       return {
-         vehicles: vehArray,
+         vehicles: [],
          vehicle: null,
-         vehClasses: vehClsArray,
+         vehAddons: [],
+         vehAddon: null,
+         vehMaker: [],
+         vehClasses: [],
          vehClass: null,
-         vehSubClasses: vehSubClsArray,
-         vehSubClass: null,
+         filter: 0,
       }
    },
 
@@ -34,11 +30,14 @@ const app = Vue.createApp({
 */
 
    computed: {
-      filteredVehicles() {
-         return this.vehicles.filter( x => ( x.subClass == this.vehSubClass || this.vehSubClass == "ALL" ) && x.class == this.vehClass );
+      filteredClasses() {
+         if( this.filter == 0 ){ return this.vehClasses.filter( x => x.addon == this.vehAddon ); };
+         if( this.filter == 1 ){ return this.vehMaker.filter( x => x.addon == this.vehAddon ); };
       },
-      filteredSubClasses() {
-         return this.vehSubClasses.filter( x => x.class == this.vehClass );
+
+      filteredVehicles() {
+         if( this.filter == 0 ){ return this.vehicles.filter( x => ( x.class == this.vehClass || this.vehClass == "ALL" ) && x.addon == this.vehAddon ); };
+         if( this.filter == 1 ){ return this.vehicles.filter( x => ( x.maker == this.vehClass || this.vehClass == "ALL" ) && x.addon == this.vehAddon ); };
       }
    }
 
@@ -46,9 +45,13 @@ const app = Vue.createApp({
 
 
 const T8VEH_view = app.mount('#app');
-
-
 let T8VEH_firstload = false;
+
+const vehJSON     = 'http://assets/SHARED/JSON/vehicles.json';
+const vehAdsJSON  = 'http://assets/SHARED/JSON/vehicleAddons.json';
+const vehClsJSON  = 'http://assets/SHARED/JSON/vehicleClasses.json';
+const vehMakJSON  = 'http://assets/SHARED/JSON/vehicleMaker.json';
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -56,15 +59,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
       alt.on( 'T8VEH:webview:exec', T8VEH_handleFromClient );
       alt.emit( 'T8VEH:client:exec', 'loaded' );
+
+      fetch( vehAdsJSON )
+      .then(response => response.json())
+      .then(data => { T8VEH_view.vehAddons = data; });
+      
+      fetch( vehClsJSON )
+      .then(response => response.json())
+      .then(data => { T8VEH_view.vehClasses = data; });
+      
+      fetch( vehMakJSON )
+      .then(response => response.json())
+      .then(data => { T8VEH_view.vehMaker = data; });
+      
+      fetch( vehJSON )
+      .then(response => response.json())
+      .then(data => { T8VEH_view.vehicles = data; });
+
    };
 });
 
 
-function T8VEH_handleFromClient( task:string, dataVehJSON, dataVehClsJSON, dataVehSubClsJSON ) {
+function T8VEH_handleFromClient( task:string ) {
    if ( task == 'load_vehicle' ){
-      T8VEH_view.vehicles        = JSON.parse( dataVehJSON );
-      T8VEH_view.vehClasses      = JSON.parse( dataVehClsJSON );
-      T8VEH_view.vehSubClasses   = JSON.parse( dataVehSubClsJSON );
+
+
    };
 };
 

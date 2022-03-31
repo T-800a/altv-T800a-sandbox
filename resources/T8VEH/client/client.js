@@ -1,12 +1,20 @@
 import alt from 'alt-client';
+import natives from 'natives';
 import { T8_webView } from './classes/webview';
-const vehJSON = '@SHARED/JSON/vehicles.json';
-const vehClsJSON = '@SHARED/JSON/vehicleClasses.json';
-const vehSubClsJSON = '@SHARED/JSON/vehicleSubClasses.json';
-const CEF = new T8_webView();
+/*
+   const vehJSON     = '@SHARED/JSON/vehicles.json';
+   const vehAdsJSON  = '@SHARED/JSON/vehicleAddons.json';
+   const vehClsJSON  = '@SHARED/JSON/vehicleClasses.json';
+
+   if( alt.File.exists( vehJSON ) && alt.File.exists( vehAdsJSON ) && alt.File.exists( vehClsJSON )) {
+      let dataVehJSON = alt.File.read( vehJSON );
+      let dataVehAdsJSON = alt.File.read( vehAdsJSON );
+      let dataVehClsJSON = alt.File.read( vehClsJSON );
+   };
+*/ const CEF = new T8_webView();
 CEF.init('T8VEH');
 // let CEF = new T8_webView();
-var webview = null;
+var timeout = 0;
 alt.onServer("T8VEH:client:createWebView", ()=>{
     T8VEH_startWebview();
 });
@@ -16,8 +24,12 @@ alt.on("T8VEH:client:createWebView", ()=>{
 function T8VEH_startWebview() {
     if (!CEF.wv) {
         CEF.open();
-        // webview = new alt.WebView('http://resource/client/webview/index.html');
         CEF.wv.on('T8VEH:client:exec', T8VEH_handleFromWebview);
+        return;
+    }
+    if (CEF.wv) {
+        CEF.close();
+        return;
     }
 }
 function T8VEH_handleFromWebview(task = "null", data = "null") {
@@ -26,16 +38,18 @@ function T8VEH_handleFromWebview(task = "null", data = "null") {
         CEF.close();
     }
     if (task == "loaded") {
-        if (alt.File.exists(vehJSON) && alt.File.exists(vehClsJSON) && alt.File.exists(vehSubClsJSON)) {
-            let dataVehJSON = alt.File.read(vehJSON);
-            let dataVehClsJSON = alt.File.read(vehClsJSON);
-            let dataVehSubClsJSON = alt.File.read(vehSubClsJSON);
-            CEF.wv.emit('T8VEH:webview:exec', 'load_vehicle', dataVehJSON, dataVehClsJSON, dataVehSubClsJSON);
-            alt.log(`>> T8VEH_handleFromWebview >> ${task}`);
-        }
+        CEF.wv.emit('T8VEH:webview:exec', 'load_vehicle');
+        alt.log(`>> T8VEH_handleFromWebview >> ${task}`);
     }
     if (task == "spawnVehicle") {
-        alt.emitServer('T8VEH:server:spawnVehicle', data);
+        if (natives.isModelValid(alt.hash(data))) {
+            if (timeout < Date.now()) {
+                alt.emitServer('T8VEH:server:spawnVehicle', data);
+                timeout = Date.now() + 750;
+            }
+        } else {
+            alt.log(`>> T8VEH_handleFromWebview >> spawnVehicle >> ${data} >> NOT A VALID MODEL`);
+        }
     }
 }
 alt.onServer("T8VEH:client:vehicleSpawned", ()=>{

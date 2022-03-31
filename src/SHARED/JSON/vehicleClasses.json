@@ -1,5 +1,30 @@
 [
-   { "id": "gta5",     "name": "GTA 5 - Basegame" },
-   { "id": "vwrks",    "name": "Vanillaworks" },
-   { "id": "vwgta4",   "name": "Vanillaworks GTA 4" }
+   { "addon": "gta5",   "id": "ALL", "name": "Show all Vehicles" },
+   { "addon": "gta5",   "id": "boats", "name": "Boats" },
+   { "addon": "gta5",   "id": "commercials", "name": "Commercials" },
+   { "addon": "gta5",   "id": "compacts", "name": "compacts" },
+   { "addon": "gta5",   "id": "coupes", "name": "coupes" },
+   { "addon": "gta5",   "id": "cycles", "name": "cycles" },
+   { "addon": "gta5",   "id": "emergency", "name": "emergency" },
+   { "addon": "gta5",   "id": "helicopters", "name": "helicopters" },
+   { "addon": "gta5",   "id": "industrial", "name": "industrial" },
+   { "addon": "gta5",   "id": "military", "name": "military" },
+   { "addon": "gta5",   "id": "motorcycles", "name": "motorcycles" },
+   { "addon": "gta5",   "id": "muscle", "name": "muscle" },
+   { "addon": "gta5",   "id": "off-road", "name": "off-road" },
+   { "addon": "gta5",   "id": "openwheel", "name": "openwheel" },
+   { "addon": "gta5",   "id": "planes", "name": "planes" },
+   { "addon": "gta5",   "id": "suvs", "name": "suvs" },
+   { "addon": "gta5",   "id": "sedans", "name": "sedans" },
+   { "addon": "gta5",   "id": "service", "name": "service" },
+   { "addon": "gta5",   "id": "sports", "name": "sports" },
+   { "addon": "gta5",   "id": "sports classics", "name": "sports classics" },
+   { "addon": "gta5",   "id": "super", "name": "super sports" },
+   { "addon": "gta5",   "id": "trailer", "name": "trailer" },
+   { "addon": "gta5",   "id": "trains", "name": "trains" },
+   { "addon": "gta5",   "id": "utility", "name": "utility" },
+   { "addon": "gta5",   "id": "vans", "name": "vans" },
+
+   { "addon": "vwgta4", "id": "ALL",     "name": "Show all Vehicles" },
+   { "addon": "vwrks",  "id": "ALL",     "name": "Show all Vehicles" }
 ]

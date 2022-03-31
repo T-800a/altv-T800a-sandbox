@@ -13,5 +13,5 @@ alt.onClient('T8VEH:server:spawnVehicle', (player, vehicleName)=>{
     alt.setTimeout(()=>{
         player.setIntoVehicle(newVehicle, 1);
     }, 100);
-    alt.log(`>> T8VEH:server:spawnVehicle >> ${player.name} >> ${vehicleName}`);
+    alt.log(`>> T8VEH:server:spawnVehicle >> ${player.name} > SPAWNED > ${vehicleName}`);
 });
