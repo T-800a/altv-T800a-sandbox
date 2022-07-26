@@ -1,6 +1,7 @@
-# alt:V Simple Freeroam Gamemode
+# T8FREEROAM - Simple alt:V Freeroam Gamemode
 
-Simple Freeroam Gamemode for alt:V by [MrNeta](https://github.com/MrNeta)
+Based on Simple Freeroam Gamemode for alt:V by [MrNeta](https://github.com/MrNeta)
+For Compability with the other T8* Resources
 
 ## Features
 
@@ -24,5 +25,9 @@ Simple Freeroam Gamemode for alt:V by [MrNeta](https://github.com/MrNeta)
 
 ## Dependencies
 
+### requires: Simple JSONdb server side
+```npm install --save simple-json-db```
+
 - Chat Resource | [GitHub](https://github.com/altmp/chat)
 - Node-Module
+- simple-json-db

@@ -8,12 +8,12 @@ import * as chat from "chat";
 
 export class T8WebView {
 
-   private webViewURL:string        = 'http://resource/client/webview/index.html';
-
    public webview:any               = null;
    public loaded:boolean            = false;
    public focused:boolean           = false;
-   
+   public webviewName:string        = "T8UI";
+   private webViewURL:string        = 'http://resource/client/webview/index.html';
+
    init( name:string = "T8UI" ){
       this.webviewName = name;
       this.webview = new alt.WebView(this.webViewURL);

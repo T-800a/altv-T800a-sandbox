@@ -1,4 +1,3 @@
-// <reference types="@altv/types-server" />
 import * as alt from "alt-server";
 import * as chat from "chat";
 //@ts-ignore
@@ -486,7 +485,8 @@ chat.registerCmd("clothLoad", (player, args)=>{
         chat.send(player, "Usage: /clothLoad (outfit) | oufit 'default' will load on connect");
         return;
     }
-    let error = loadClothesDB(player, args[0]);
+    let outfitname = args[0];
+    let error = loadClothesDB(player, outfitname);
     if (error) {
         WEBVIEW.toast(player, `CLOTHES: ${outfitname}`, `A outfit with the name ${outfitname} does not exist.`, 5, `warning`);
         // chat.send(player, `>> es existiert kein ein Eintrag unter dem Namen: ${name}`);
@@ -502,7 +502,9 @@ function loadClothesDB(player, outfitname, basic = false) {
     if (!DBC.has(dbname)) {
         return true;
     }
-    let entry = DBC.get(dbname);
+    let entry = {
+    };
+    entry = DBC.get(dbname);
     // alt.log(`>> ${JSON.stringify(outfit)}`);
     let clothes = entry.outfit.clothes;
     let props = entry.outfit.props;

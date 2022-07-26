@@ -28,9 +28,10 @@ export class T8WebView {
         this.webview.emit(`${this.webviewName}:CLI>CEF:${emitter}`, data);
     }
     constructor(){
-        this.webViewURL = 'http://resource/client/webview/index.html';
         this.webview = null;
         this.loaded = false;
         this.focused = false;
+        this.webviewName = "T8UI";
+        this.webViewURL = 'http://resource/client/webview/index.html';
     }
 }

@@ -1,4 +1,5 @@
 // <reference types="@altv/types-server" />
+import { Player } from "alt-client";
 import * as alt from "alt-server";
 import * as chat from "chat";
 //@ts-ignore
@@ -159,7 +160,7 @@ alt.on("playerConnect", (player)=>{
     };
 });
 
-alt.on("playerDeath", (player, killer, weapon)=>{
+alt.on("playerDeath", (player, killer:any, weapon)=>{
     const spawn = spawns[randomNumber(0, spawns.length - 1)];
     alt.emitClient(player, "freeroam:switchInOutPlayer", false, 0, 2);
     let playerDeathTimeout = alt.setTimeout(()=>{
@@ -447,7 +448,9 @@ chat.registerCmd("clothLoad", (player, args)=>{
         return;
     }
 
-    let error = loadClothesDB( player, args[0] );
+    let outfitname = args[0];
+
+    let error = loadClothesDB( player, outfitname );
 
     if ( error ) {
         WEBVIEW.toast( player, `CLOTHES: ${outfitname}`, `A outfit with the name ${outfitname} does not exist.`, 5,`warning`);
@@ -468,7 +471,8 @@ function loadClothesDB( player:any, outfitname:string, basic:boolean = false ){
         return true;
     }
 
-    let entry = DBC.get(dbname);
+    let entry:any = {};
+    entry = DBC.get(dbname);
 
     // alt.log(`>> ${JSON.stringify(outfit)}`);
     
