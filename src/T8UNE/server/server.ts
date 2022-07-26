@@ -6,6 +6,18 @@ chat.registerCmd("tune", (player ) => {
    alt.emitClient( player, "T8UNE:client:createWindow" );
 });
 
+function getExt( veh, n ){
+   let ext = veh.getExtra( n );
+   let ret = 1;
+   if( ext == true ){ ret = 0; };
+   return ret;
+};
+
+function setExt( extra ){
+   let ret = false;
+   if( extra == 1 ){ ret = true; };
+   return ret;
+};
 
 alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
 
@@ -63,8 +75,8 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
          plates:        { current: veh.numberPlateIndex, range: 5 },
          windows:       { current: veh.windowTint, range: 6 },
 
-         extras:        [  veh.getExtra(1), veh.getExtra(2), veh.getExtra(3), veh.getExtra(4), veh.getExtra(5), veh.getExtra(6), 
-                           veh.getExtra(7), veh.getExtra(8), veh.getExtra(9), veh.getExtra(10), veh.getExtra(11), veh.getExtra(12) ],
+         extras:        [  getExt( veh, 1 ), getExt( veh, 2 ), getExt( veh, 3 ), getExt( veh, 4 ),  getExt( veh, 5 ),  getExt( veh, 6 ),
+                           getExt( veh, 7 ), getExt( veh, 8 ), getExt( veh, 9 ), getExt( veh, 10 ), getExt( veh, 11 ), getExt( veh, 12 ) ],
 
          wheelsType:    veh.wheelType,
          wheels:        veh.frontWheels,
@@ -178,6 +190,8 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
    veh.pearlColor       = vehData.colors.P;
    veh.wheelColor       = vehData.colors.W;
 
+   veh.roofLivery       = vehData.rooflivery;
+
    if ( veh.modKitsCount > 0 ){
       veh.modKit = 1;
 
@@ -225,8 +239,10 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
       veh.setMod( 48, vehData.livery.current );
       veh.setMod( 22, vehData.xenon.current );
    
-      for ( let n = 1; n < 13; n++ ){
-         veh.setExtra( n, vehData.extras[ n - 1 ]);
-      };
+      let n = 1;
+      vehData.extras.forEach(( extra ) => { veh.setExtra( n, setExt( extra )); n++; });
+
+
+      // for ( let n = 1; n < 13; n++ ){ veh.setExtra( n, [ n - 1 ]); };
    };
 });

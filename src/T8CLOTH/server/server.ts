@@ -24,7 +24,7 @@ alt.onClient('T8CLT:server:updateCloth', ( player, dataJSON:string ) => {
 
    player.setClothes( clothData.component, clothData.drawable, clothData.texture );
    
-   alt.log(`>> T8CLT:server:updateClothes >> ${dataJSON}`);
+   // alt.log(`>> T8CLT:server:updateClothes >> ${dataJSON}`);
 });
 
 alt.onClient('T8CLT:server:updateProps', ( player, dataJSON:string ) => {
@@ -43,5 +43,5 @@ alt.onClient('T8CLT:server:updateProps', ( player, dataJSON:string ) => {
    if ( propsData.drawable < 0 ){   player.clearProp(propsData.component); };
    if ( propsData.drawable >= 0 ){  player.setProp( propsData.component, propsData.drawable, propsData.texture ); };
 
-   alt.log(`>> T8CLT:server:updateProps >> ${dataJSON}`);
+   // alt.log(`>> T8CLT:server:updateProps >> ${dataJSON}`);
 });

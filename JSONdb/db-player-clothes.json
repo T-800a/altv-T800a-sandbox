@@ -1,0 +1,482 @@
+{
+    "306387997-default": {
+        "player": "t800a",
+        "hwID": "6062229313467836830",
+        "soID": "306387997",
+        "name": "default",
+        "outfit": {
+            "clothes": [
+                {
+                    "id": 0,
+                    "name": "Head",
+                    "data": {
+                        "drawable": 16,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Masks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Hair Styles",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "Torsos",
+                    "data": {
+                        "drawable": 4,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "Legs",
+                    "data": {
+                        "drawable": 7,
+                        "texture": 4,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "Bagpacks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Shoes",
+                    "data": {
+                        "drawable": 1,
+                        "texture": 7,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Accessories",
+                    "data": {
+                        "drawable": 90,
+                        "texture": 1,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "Undershirts",
+                    "data": {
+                        "drawable": 65,
+                        "texture": 10,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "Body Armor",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 10,
+                    "name": "Decals",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 11,
+                    "name": "Tops",
+                    "data": {
+                        "drawable": 88,
+                        "texture": 4,
+                        "palette": 2
+                    }
+                }
+            ],
+            "props": [
+                {
+                    "id": 0,
+                    "name": "Hats",
+                    "data": {
+                        "drawable": 55,
+                        "texture": 14
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Glasses",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Ears",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Watches",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Bracelets",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                }
+            ]
+        }
+    },
+    "basic-spawn": {
+        "player": "t800a",
+        "hwID": "6062229313467836830",
+        "soID": "306387997",
+        "name": "basic-spawn",
+        "outfit": {
+            "clothes": [
+                {
+                    "id": 0,
+                    "name": "Head",
+                    "data": {
+                        "drawable": 16,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Masks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Hair Styles",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "Torsos",
+                    "data": {
+                        "drawable": 6,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "Legs",
+                    "data": {
+                        "drawable": 3,
+                        "texture": 13,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "Bagpacks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Shoes",
+                    "data": {
+                        "drawable": 8,
+                        "texture": 2,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Accessories",
+                    "data": {
+                        "drawable": 88,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "Undershirts",
+                    "data": {
+                        "drawable": 5,
+                        "texture": 1,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "Body Armor",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 10,
+                    "name": "Decals",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 11,
+                    "name": "Tops",
+                    "data": {
+                        "drawable": 3,
+                        "texture": 13,
+                        "palette": 2
+                    }
+                }
+            ],
+            "props": [
+                {
+                    "id": 0,
+                    "name": "Hats",
+                    "data": {
+                        "drawable": 77,
+                        "texture": 7
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Glasses",
+                    "data": {
+                        "drawable": 10,
+                        "texture": 2
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Ears",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Watches",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Bracelets",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                }
+            ]
+        }
+    },
+    "306387997-docks": {
+        "player": "t800a",
+        "hwID": "6062229313467836830",
+        "soID": "306387997",
+        "name": "docks",
+        "outfit": {
+            "clothes": [
+                {
+                    "id": 0,
+                    "name": "Head",
+                    "data": {
+                        "drawable": 16,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Masks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Hair Styles",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "Torsos",
+                    "data": {
+                        "drawable": 63,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "Legs",
+                    "data": {
+                        "drawable": 36,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "Bagpacks",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Shoes",
+                    "data": {
+                        "drawable": 12,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Accessories",
+                    "data": {
+                        "drawable": 89,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "Undershirts",
+                    "data": {
+                        "drawable": 59,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "Body Armor",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 2
+                    }
+                },
+                {
+                    "id": 10,
+                    "name": "Decals",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 0,
+                        "palette": 0
+                    }
+                },
+                {
+                    "id": 11,
+                    "name": "Tops",
+                    "data": {
+                        "drawable": 0,
+                        "texture": 8,
+                        "palette": 2
+                    }
+                }
+            ],
+            "props": [
+                {
+                    "id": 0,
+                    "name": "Hats",
+                    "data": {
+                        "drawable": 145,
+                        "texture": 2
+                    }
+                },
+                {
+                    "id": 1,
+                    "name": "Glasses",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "Ears",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "Watches",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "Bracelets",
+                    "data": {
+                        "drawable": 255,
+                        "texture": 255
+                    }
+                }
+            ]
+        }
+    }
+}

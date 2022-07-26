@@ -25,6 +25,12 @@
    { "addon": "gta5",   "id": "utility", "name": "utility" },
    { "addon": "gta5",   "id": "vans", "name": "vans" },
 
+   { "addon": "addon",  "id": "ALL",     "name": "Show all Vehicles" },
    { "addon": "vwgta4", "id": "ALL",     "name": "Show all Vehicles" },
-   { "addon": "vwrks",  "id": "ALL",     "name": "Show all Vehicles" }
+   { "addon": "vwrks",  "id": "ALL",     "name": "Show all Vehicles" },
+
+   { "addon": "dw_modern",    "id": "ALL",      "name": "Show all Vehicles" },
+   { "addon": "dw_modern",    "id": "police",   "name": "Los Santos Police" },
+   { "addon": "dw_classic",   "id": "ALL",      "name": "Show all Vehicles" },
+   { "addon": "dw_classic",   "id": "police",   "name": "Los Santos Police" }
 ]

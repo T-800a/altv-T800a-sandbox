@@ -1653,7 +1653,7 @@ const app = Vue.createApp({
             plates:        { current: 0, range: 5 },
             windows:       { current: 0, range: 6 },
 
-            extras:        [ false, false, true, true, false, false, true, true, false, false, true, true  ],
+            extras:        [ false, false, false, false, false, false, false, false, false, false, false, false ],
 
             wheelsType:    0,
             wheels:        0,
@@ -1754,7 +1754,7 @@ function T8UNE_handleFromClient( task:string, dataJSON ) {
          R:  getFromArray( wheelsArray, "wheel", view.vehicle.wheels )
       };
 
-      firstload = true;
+      setTimeout(function() { firstload = true; }, 500 );
    };
 };
 

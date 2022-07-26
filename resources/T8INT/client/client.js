@@ -22,11 +22,11 @@ const emtpyResult = {
     entityHash: 0,
     entityID: 0
 };
-let WEBVIEW = new T8IntWebView();
+let INTWEBVIEW = new T8IntWebView();
 let WASDMENU = new WASDmenu();
 let INTOBJ = new InteractionObjects();
 let INTER = new Interactions();
-WEBVIEW.init();
+INTWEBVIEW.init();
 WASDMENU.init();
 let spam = Date.now();
 // Define Key presses

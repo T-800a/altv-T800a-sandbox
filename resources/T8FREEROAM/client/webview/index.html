@@ -1,0 +1,35 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Glory:wght@600&display=swap"> 
+      <link rel="stylesheet" href="css/style.css">
+      
+      <script type="text/javascript" src="js/vue.global.prod.js"></script>
+      <title>T8INT</title>
+   </head>
+   <body>
+
+      <div id="appToasts">
+         <transition-group name="toast-list" tag="ul">
+            <article class="message toast-list-item" v-for="toast, index of content" :key="toast.id" :class="type(toast.type)">
+               <div class="message-header">
+               <p class="toast-font">{{ toast.title}}</p>
+               <!-- <button class="delete" @click="remove(toast.id)"></button> -->
+               </div>
+               <div class="message-body toast-font">{{ toast.body}} </div>
+            </article>
+         </transition-group>
+      </div>
+
+   </body>
+   <script type="text/javascript" src="js/webview.js"></script>
+</html>
+
+
+
+
+

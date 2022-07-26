@@ -39,7 +39,7 @@ function T8UNE_handleFromWebview( task:string, data:string = "" ) {
       alt.emitServer( 'T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data );
    };
 
-   alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
+   // alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
 };
 
 alt.onServer('T8UNE:client:sendVehicle', ( vehicleJSON, ) => {

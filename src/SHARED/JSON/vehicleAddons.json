@@ -1,5 +1,8 @@
 [
-   { "id": "gta5",     "name": "GTA 5 - Basegame" },
-   { "id": "vwrks",    "name": "Vanillaworks" },
-   { "id": "vwgta4",   "name": "Vanillaworks GTA 4" }
+   { "id": "gta5",         "name": "GTA 5 - Basegame" },
+   { "id": "addon",        "name": "Addons Cars" },
+   { "id": "vwrks",        "name": "Vanillaworks" },
+   { "id": "vwgta4",       "name": "Vanillaworks GTA 4" },
+   { "id": "dw_modern",    "name": "Dispatchworks Modern" },
+   { "id": "dw_classic",   "name": "Dispatchworks Classic" }
 ]

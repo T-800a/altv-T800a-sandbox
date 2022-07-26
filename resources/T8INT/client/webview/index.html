@@ -20,18 +20,6 @@
          </ul>
       </nav>
 
-      <div id="appToasts">
-         <transition-group name="toast-list" tag="ul">
-            <article class="message toast-list-item" v-for="toast, index of content" :key="toast.id" :class="type(toast.type)">
-               <div class="message-header">
-               <p class="toast-font">{{ toast.title}}</p>
-               <!-- <button class="delete" @click="remove(toast.id)"></button> -->
-               </div>
-               <div class="message-body toast-font">{{ toast.body}} </div>
-            </article>
-         </transition-group>
-      </div>
-
    </body>
    <script type="text/javascript" src="js/webview.js"></script>
 </html>

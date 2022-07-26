@@ -10,12 +10,12 @@ import { Interactions } from './classes/interactions';
 
 const emtpyResult = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };
 
-let WEBVIEW = new T8IntWebView();
+let INTWEBVIEW = new T8IntWebView();
 let WASDMENU = new WASDmenu();
 let INTOBJ = new InteractionObjects();
 let INTER = new Interactions();
 
-WEBVIEW.init();
+INTWEBVIEW.init();
 WASDMENU.init();
 
 let spam = Date.now();

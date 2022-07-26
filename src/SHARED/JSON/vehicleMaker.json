@@ -60,5 +60,7 @@
    { "addon": "gta5", "id": "wemo", "name": "Western Motorcycle Company" },
    { "addon": "gta5", "id": "will", "name": "Willard" },
    { "addon": "gta5", "id": "zirc", "name": "Zirconium" },
-   { "addon": "gta5", "id": "____", "name": "Unbekannt" }
+   { "addon": "gta5", "id": "____", "name": "Unbekannt" },
+
+   { "addon": "addon", "id": "brav", "name": "Bravado" }
 ]

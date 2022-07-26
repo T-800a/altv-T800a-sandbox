@@ -28,7 +28,7 @@ export class ServerInteractions {
     }
     notifyPlayer(player, title, text, type = "dark", timeout = 5) {
         if (this.useToast) {
-            alt.emitClient(player, 'T8INT:WEBVIEW:toast', title, text, timeout, type);
+            alt.emitClient(player, 'T8UI:WEBVIEW:toast', title, text, timeout, type);
         } else {
             chat.send(player, `${title} : ${text}`);
         }

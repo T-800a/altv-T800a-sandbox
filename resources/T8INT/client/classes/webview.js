@@ -13,15 +13,6 @@ export class T8IntWebView {
         alt.on('T8INT:WEBVIEW:POST', (emitter, data = '')=>{
             this.post(emitter, data);
         });
-        // server sends a toast to the player
-        alt.onServer('T8INT:WEBVIEW:toast', (title, text, timeout = 5, type = "dark")=>{
-            this.toast(title, text, timeout, type);
-        });
-    }
-    toast(title, text, timeout = 5, type = "dark") {
-        if (this.loaded) {
-            this.webview.emit('T8INT:CLI>CEF:toast', title, text, timeout, type);
-        }
     }
     post(emitter, data = '') {
         this.webview.emit(`T8INT:CLI>CEF:${emitter}`, data);

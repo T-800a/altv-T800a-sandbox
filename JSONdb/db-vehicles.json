@@ -1,12 +1,9 @@
 {
     "savestra": {
         "titel": "savestra",
-        "base64": "2545_Agx4nm9vACAf/oYWAgCAgQBCIEKJJEACABCF8i5BmZTQQYcGEAAAAAAQAAAAAA==",
-        "licencePlate": "LS-HANS"
-    },
-    "zionClassic": {
-        "titel": "zionClassic",
-        "base64": "2545_QQBDnw1vACAf/oYWCEIQAVAAIQCABAiQAAHcjpBmZTQQYcGEAAAAAAgAAAAA",
-        "licencePlate": "LS-HANS"
+        "modelName": "Savestra",
+        "licencePlate": "LS-HANS",
+        "model": 903794909,
+        "base64": "2699_AJOTcG9vACAf/oYWBBAAgSAIIgKJJEACABiNcmpBmZTQQYcGEAAAAAAQAAAAAA=="
     }
 }

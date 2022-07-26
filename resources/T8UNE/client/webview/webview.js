@@ -7844,16 +7844,16 @@ const app = Vue.createApp({
                 extras: [
                     false,
                     false,
-                    true,
-                    true,
                     false,
                     false,
-                    true,
-                    true,
                     false,
                     false,
-                    true,
-                    true
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
                 ],
                 wheelsType: 0,
                 wheels: 0,
@@ -7941,7 +7941,9 @@ function T8UNE_handleFromClient(task, dataJSON) {
             W: getFromArray(colorsArray, "text", view.vehicle.colors.W),
             R: getFromArray(wheelsArray, "wheel", view.vehicle.wheels)
         };
-        firstload = true;
+        setTimeout(function() {
+            firstload = true;
+        }, 500);
     }
 }
 function resetCar() {

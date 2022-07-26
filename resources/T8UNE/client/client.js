@@ -30,7 +30,7 @@ function T8UNE_handleFromWebview(task, data = "") {
     if (task == "update_vehicle" && alt.Player.local.vehicle) {
         alt.emitServer('T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data);
     }
-    alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
+// alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
 }
 alt.onServer('T8UNE:client:sendVehicle', (vehicleJSON)=>{
     webview.emit('T8UNE:Webview:exec', 'load_vehicle', vehicleJSON);
