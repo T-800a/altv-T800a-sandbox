@@ -19,10 +19,8 @@ function T8UNE_startWebview(){
 };
 
 
-function T8UNE_handleFromWebview( task:string, data:string = "" ) {
+function T8UNE_handleFromWebview( task:string, data:any ) {
    
-   // chat.pushLine('>> T8UG >> handleFromWebview: ' + msg );
-
    if ( task == "close"  ){
       webview.unfocus();
       webview.destroy();
@@ -38,6 +36,11 @@ function T8UNE_handleFromWebview( task:string, data:string = "" ) {
    if( task == "update_vehicle" && alt.Player.local.vehicle ){
       alt.emitServer( 'T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data );
    };
+
+   if( task == "update_oldlivery" && alt.Player.local.vehicle ){
+      natives.setVehicleLivery( alt.Player.local.vehicle.scriptID, data );
+   };
+
 
    // alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
 };

@@ -1607,6 +1607,8 @@ const app = Vue.createApp({
          },
 
          vehicle: {
+            modkit:        { current: 1, range: 2 },
+
             engine:        { current: 0, range: 4 },
             brakes:        { current: 0, range: 4 },
             transmission:  { current: 0, range: 3 },
@@ -1660,6 +1662,7 @@ const app = Vue.createApp({
             wheelsRear:    0,
 
             rooflivery:    0,
+            oldlivery:     0,
 
             colors: {
                M: null,
@@ -1708,6 +1711,12 @@ const app = Vue.createApp({
             applyTuning();
          },
          deep: true
+      },
+
+      'vehicle.oldlivery': {
+         handler(val){
+            applyOldlivery();
+         },         
       },
    },
 /*
@@ -1782,6 +1791,9 @@ function applyTuning(){
    };
 };
 
+function applyOldlivery(){
+      alt.emit('T8UNE:client:exec', 'update_oldlivery', view.vehicle.oldlivery );
+};
 
 function getFromArray( array:any, type:string, var1, var2 = 0 ){
    for ( let key in array ){

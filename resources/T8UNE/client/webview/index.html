@@ -23,6 +23,10 @@
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit');">Anbauteile</button></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('extras');">Extras</button></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="openWindow('kit2');">Anbauteile 2</button></div>
+
+            <div class="item">Modkit: {{ vehicle.modkit.current }}</div>
+            <div class="item"><!-- <input type="range" min="0" v-bind:max="vehicle.modkit.range" step="1" v-model="vehicle.modkit.current"> --></div>
+            <div class="item">ModkitCount: {{ vehicle.modkit.range }}</div>
          </div>
 
          <div class="container tuneContainer" v-if="isOpen.performance">
@@ -144,6 +148,11 @@
             <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.rooflivery--">Prev</button></div>
             <div class="item">Dach: {{ vehicle.rooflivery }}</div>
             <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.rooflivery++">Next</button></div>
+
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.oldlivery--">Prev</button></div>
+            <div class="item">Dach: {{ vehicle.oldlivery }}</div>
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.oldlivery++">Next</button></div>
+
 
             <div class="item double"><input type="range" min="0" v-bind:max="vehicle.plates.range" step="1" v-model="vehicle.plates.current"></div>
             <div class="item">Nummernschild</div>

@@ -24,9 +24,17 @@ alt.onClient('T8UNE:server:sendVehicle', (player, vehicleID)=>{
     let veh = alt.Vehicle.getByID(player.vehicle.id);
     let vehData = {
     };
-    // if ( veh.modKitsCount > 0 ){
-    veh.modKit = 1;
+    if (veh.modKitsCount === 1) {
+        veh.modKit = 1;
+    }
+    if (veh.modKitsCount === 2) {
+        veh.modKit = 2;
+    }
     vehData = {
+        modkit: {
+            current: veh.modKit,
+            range: veh.modKitsCount
+        },
         engine: {
             current: veh.getMod(11),
             range: veh.getModsCount(11)
@@ -213,6 +221,7 @@ alt.onClient('T8UNE:server:sendVehicle', (player, vehicleID)=>{
         wheels: veh.frontWheels,
         wheelsRear: veh.rearWheels,
         rooflivery: veh.roofLivery,
+        oldlivery: 0,
         colors: {
             M: veh.primaryColor,
             S: veh.secondaryColor,
@@ -309,7 +318,12 @@ alt.onClient('T8UNE:server:updateVehicle', (player, vehicleID, dataJSON)=>{
     veh.wheelColor = vehData.colors.W;
     veh.roofLivery = vehData.rooflivery;
     if (veh.modKitsCount > 0) {
-        veh.modKit = 1;
+        if (veh.modKitsCount === 1) {
+            veh.modKit = 1;
+        }
+        if (veh.modKitsCount === 2) {
+            veh.modKit = 2;
+        }
         veh.setMod(11, vehData.engine.current);
         veh.setMod(12, vehData.brakes.current);
         veh.setMod(13, vehData.transmission.current);
@@ -350,11 +364,11 @@ alt.onClient('T8UNE:server:updateVehicle', (player, vehicleID, dataJSON)=>{
         veh.setMod(47, vehData.WROH.current);
         veh.setMod(48, vehData.livery.current);
         veh.setMod(22, vehData.xenon.current);
-        let n = 1;
-        vehData.extras.forEach((extra)=>{
-            veh.setExtra(n, setExt(extra));
-            n++;
-        });
     // for ( let n = 1; n < 13; n++ ){ veh.setExtra( n, [ n - 1 ]); };
     }
+    let n = 1;
+    vehData.extras.forEach((extra)=>{
+        veh.setExtra(n, setExt(extra));
+        n++;
+    });
 });

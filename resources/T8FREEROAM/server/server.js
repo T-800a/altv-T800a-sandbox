@@ -106,7 +106,10 @@ const weapons = [
     "proxmine",
     "snowball",
     "pipebomb",
-    "ball", 
+    "ball",
+    "metaldetector",
+    "precisionrifle",
+    "tacticalrifle"
 ];
 function randomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);

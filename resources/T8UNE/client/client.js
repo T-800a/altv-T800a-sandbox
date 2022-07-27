@@ -1,4 +1,5 @@
 import alt from 'alt-client';
+import natives from 'natives';
 var webview = null;
 alt.onServer("T8UNE:client:createWindow", ()=>{
     T8UNE_startWebview();
@@ -15,7 +16,7 @@ function T8UNE_startWebview() {
         alt.showCursor(true);
     }
 }
-function T8UNE_handleFromWebview(task, data = "") {
+function T8UNE_handleFromWebview(task, data) {
     // chat.pushLine('>> T8UG >> handleFromWebview: ' + msg );
     if (task == "close") {
         webview.unfocus();
@@ -29,6 +30,10 @@ function T8UNE_handleFromWebview(task, data = "") {
     }
     if (task == "update_vehicle" && alt.Player.local.vehicle) {
         alt.emitServer('T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data);
+    }
+    if (task == "update_oldlivery" && alt.Player.local.vehicle) {
+        natives.setVehicleLivery(alt.Player.local.vehicle.scriptID, data);
+        chat.pushLine('>> T8UG >> update_oldlivery >> ' + data);
     }
 // alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
 }
