@@ -1,3 +1,16 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-client';
 import natives from 'natives';
 export class InteractionObjects {
@@ -116,23 +129,23 @@ export class InteractionObjects {
             return;
         }
         if (object.entityHash > 0) {
-            natives.setDrawOrigin(object.pos.x, object.pos.y, object.pos.z + 1, 0);
+            natives.setDrawOrigin(object.pos.x, object.pos.y, object.pos.z + 1, false);
             natives.beginTextCommandDisplayText("STRING");
             natives.addTextComponentSubstringPlayerName(`interagieren`);
             natives.setTextFont(fontType);
             natives.setTextScale(1, 0.4);
-            natives.setTextWrap(0, 1);
+            natives.setTextWrap(0.0, 1.0);
             natives.setTextCentre(true);
             natives.setTextColour(255, 255, 255, 175);
             // natives.setTextJustification(0);
             natives.endTextCommandDisplayText(0, 0, 0);
             natives.clearDrawOrigin();
-            natives.setDrawOrigin(object.pos.x, object.pos.y, object.pos.z + 1.25, 0);
+            natives.setDrawOrigin(object.pos.x, object.pos.y, object.pos.z + 1.25, false);
             natives.beginTextCommandDisplayText("STRING");
             natives.addTextComponentSubstringPlayerName(`hash: ${object.entityHash}`);
             natives.setTextFont(fontType);
             natives.setTextScale(1, 0.4);
-            natives.setTextWrap(0, 1);
+            natives.setTextWrap(0.0, 1.0);
             natives.setTextCentre(true);
             natives.setTextColour(255, 255, 255, 100);
             // natives.setTextJustification(0);
@@ -141,10 +154,10 @@ export class InteractionObjects {
         }
     }
     constructor(){
-        this.hashes = [];
-        this.hashesGasPump = [];
+        _define_property(this, "hashes", []);
+        _define_property(this, "hashesGasPump", []);
         // nearestObject = { pos: alt.Player.local.pos, rot: alt.Player.local.rot, hash: 0, obj: null };
-        this.nearestObject = {
+        _define_property(this, "nearestObject", {
             isHit: false,
             pos: {
                 x: 0,
@@ -160,6 +173,6 @@ export class InteractionObjects {
             entityType: 0,
             entityHash: 0,
             entityID: 0
-        };
+        });
     }
 }

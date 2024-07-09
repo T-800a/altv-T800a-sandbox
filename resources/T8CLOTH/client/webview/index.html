@@ -14,8 +14,9 @@
             <div class="item tripple"><b>Choose your T8CLOTH!!!</b></div>
             <div class="item"><button style="width:100%; text-align: center;" onclick="T8CLT_closeWebview();"><b>Schließen</b></button></div>
 
-            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.clothCon = !isOpen.clothCon; isOpen.propCon = false;">Clothes</button></div>
-            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.propCon = !isOpen.propCon; isOpen.clothCon = false;">Props</button></div>
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.clothCon = !isOpen.clothCon; isOpen.propCon = false; isOpen.tatoCon = false;">Clothes</button></div>
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.propCon = !isOpen.propCon; isOpen.clothCon = false; isOpen.tatoCon = false;">Props</button></div>
+            <div class="item double"><button style="width:100%; text-align: center;" v-on:click="isOpen.tatoCon = !isOpen.tatoCon; isOpen.clothCon = false; isOpen.propCon = false;">Props</button></div>
          </div>
 
          <div class="container tuneContainer" v-if="isOpen.clothCon">
@@ -74,6 +75,20 @@
             <div class="item"> texture </div>
             <div class="item"><input type="text" v-model="props.texture" /></div>
             <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_prop_texture"><b>next</b></button></div>
+         </div>
+
+         <div class="container tuneContainer" v-if="isOpen.tatoCon">
+            <div class="item quadro">Tatoos</div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_tato_drawable"><b>prev</b></button></div>
+            <div class="item"> drawable </div>
+            <div class="item"><input type="text" v-model="tato.drawable" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_tato_drawable"><b>next</b></button></div>
+
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="dec_tato_texture"><b>prev</b></button></div>
+            <div class="item"> texture </div>
+            <div class="item"><input type="text" v-model="tato.texture" /></div>
+            <div class="item"><button style="width:100%; text-align: center;" v-on:click="inc_tato_texture"><b>next</b></button></div>
          </div>
 
       </div>

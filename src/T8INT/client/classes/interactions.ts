@@ -1,6 +1,6 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import { Raycast, GetDirectionFromRotation, playAnimation } from './utility';
+import { Raycast, GetDirectionFromRotation, playAnimation } from './utility.js';
 
 function rotate(ax:number, ay:number, bx:number, by:number, angle:number) {
    var rad = (Math.PI / 180) * angle,

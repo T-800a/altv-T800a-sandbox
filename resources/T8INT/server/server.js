@@ -1,7 +1,8 @@
 import alt from 'alt-server';
 import JSONdb from 'simple-json-db';
-import * as chat from 'chat';
-import { ServerInteractions } from './classes/serverInteractions';
+//@ts-ignore
+import * as chat from "alt:chat";
+import { ServerInteractions } from './classes/serverInteractions.js';
 const DBM = new JSONdb('./JSONdb/db-menus.json');
 const DBO = new JSONdb('./JSONdb/db-objects.json');
 let INTER = new ServerInteractions(true);
@@ -12,8 +13,7 @@ alt.onClient('T8INT:CLI>SRV:requestINTOBJ', (player)=>{
     alt.log('>> T8INT:CLI>SRV:requestINTOBJ >> intObjarray: ' + JSON.stringify(INTER.intObjArray));
     alt.log('>> T8INT:CLI>SRV:requestINTOBJ >> gasPumpArray: ' + JSON.stringify(INTER.gasPumpArray));
 });
-alt.onClient('T8INT:CLI>SRV:requestMenu', (player, type = 0, result = {
-})=>{
+alt.onClient('T8INT:CLI>SRV:requestMenu', (player, type = 0, result = {})=>{
     // alt.log( `>> T8INT:CLI>SRV:requestMenu >> ${player.name} >> type: ${type} result: ${JSON.stringify(result)}`);
     let hash = result.entityHash;
     if (type === 99) {

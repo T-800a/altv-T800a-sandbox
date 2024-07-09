@@ -1,6 +1,8 @@
 import alt from 'alt-client';
 import natives from 'natives';
 var webview = null;
+var vehiclePower = 1;
+var vehhicleTorque = 1;
 alt.onServer("T8UNE:client:createWindow", ()=>{
     T8UNE_startWebview();
 });
@@ -17,7 +19,6 @@ function T8UNE_startWebview() {
     }
 }
 function T8UNE_handleFromWebview(task, data) {
-    // chat.pushLine('>> T8UG >> handleFromWebview: ' + msg );
     if (task == "close") {
         webview.unfocus();
         webview.destroy();
@@ -31,13 +32,23 @@ function T8UNE_handleFromWebview(task, data) {
     if (task == "update_vehicle" && alt.Player.local.vehicle) {
         alt.emitServer('T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data);
     }
+    if (task == "update_tune" && alt.Player.local.vehicle) {
+        var tune = JSON.parse(data);
+        vehiclePower = tune.power;
+        vehhicleTorque = tune.torque;
+    }
     if (task == "update_oldlivery" && alt.Player.local.vehicle) {
         natives.setVehicleLivery(alt.Player.local.vehicle.scriptID, data);
-        chat.pushLine('>> T8UG >> update_oldlivery >> ' + data);
     }
 // alt.log(`>> T8UNE_handleFromWebview >> ${task} > ${data} `);
 }
 alt.onServer('T8UNE:client:sendVehicle', (vehicleJSON)=>{
-    webview.emit('T8UNE:Webview:exec', 'load_vehicle', vehicleJSON);
+    webview.emit('T8UNE:Webview:exec', 'load_vehicle', vehicleJSON, vehiclePower, vehhicleTorque);
 // alt.log(`>> T8UNE:client:sendVehicle >> ${vehicleJSON}`);
+});
+alt.everyTick(()=>{
+    if (alt.Player.local.vehicle) {
+        natives.setVehicleCheatPowerIncrease(alt.Player.local.vehicle.scriptID, vehhicleTorque);
+        natives.modifyVehicleTopSpeed(alt.Player.local.vehicle.scriptID, vehiclePower);
+    }
 });

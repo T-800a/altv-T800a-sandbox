@@ -1,6 +1,7 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 
 // this.webview.unfocus();
 // this.webview.destroy();

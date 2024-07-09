@@ -43,6 +43,13 @@ const app = Vue.createApp({
             texture:    0,
          },
 
+         tato: {
+            drawable:   0,
+            texture:    0,
+            drawable_old:   0,
+            texture_old:    0,
+         },
+
          watch_draw:    0,
          watch_text:    0,
          watch_prop_draw:    0,
@@ -53,6 +60,7 @@ const app = Vue.createApp({
             prop:       false,
             clothCon:   true,
             propCon:    false,
+            tatoCon:    false,
          },
 
          selected: {
@@ -79,6 +87,14 @@ const app = Vue.createApp({
          deep: true
       },
 
+      tato: {
+         handler(val){
+            T8CLT_applyTato();
+         },
+         deep: true
+      },
+
+
       watch_draw() { 
          this.watch_text = 0;
          this.clothing.texture = 0;
@@ -91,6 +107,7 @@ const app = Vue.createApp({
          this.props.texture = 0;
          T8CLT_applyProp();
       },
+
       watch_prop_text() { T8CLT_applyProp(); }
    },
 
@@ -105,6 +122,11 @@ const app = Vue.createApp({
       dec_prop_drawable() { this.props.drawable-- },
       inc_prop_texture() { this.props.texture++ },
       dec_prop_texture() { this.props.texture-- },
+
+      inc_tato_drawable() { this.tato.drawable_old = this.tato.drawable; this.tato.drawable++ },
+      dec_tato_drawable() { this.tato.drawable_old = this.tato.drawable; this.tato.drawable-- },
+      inc_tato_texture() { this.tato.texture_old = this.tato.texture; this.tato.texture++ },
+      dec_tato_texture() { this.tato.texture_old = this.tato.texture; this.tato.texture-- },
    },
 /*
    computed: {
@@ -146,5 +168,10 @@ function T8CLT_applyCloth(){
 function T8CLT_applyProp(){
    let dataJSON = JSON.stringify(T8CLT_view.props);
    alt.emit('T8CLT:client:exec', 'update_props', dataJSON );
+};
+
+function T8CLT_applyTato(){
+   let dataJSON = JSON.stringify(T8CLT_view.tato);
+   alt.emit('T8CLT:client:exec', 'update_tatos', dataJSON );
 };
 

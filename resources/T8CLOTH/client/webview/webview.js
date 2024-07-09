@@ -46,7 +46,7 @@ let clothComp = [
     {
         id: 10,
         name: "Decals"
-    }, 
+    }
 ];
 let propComp = [
     {
@@ -86,6 +86,12 @@ const app = Vue.createApp({
                 drawable: 0,
                 texture: 0
             },
+            tato: {
+                drawable: 0,
+                texture: 0,
+                drawable_old: 0,
+                texture_old: 0
+            },
             watch_draw: 0,
             watch_text: 0,
             watch_prop_draw: 0,
@@ -94,7 +100,8 @@ const app = Vue.createApp({
                 cloth: false,
                 prop: false,
                 clothCon: true,
-                propCon: false
+                propCon: false,
+                tatoCon: false
             },
             selected: {
                 cloth: " ... ",
@@ -114,6 +121,12 @@ const app = Vue.createApp({
             handler (val) {
                 this.watch_prop_draw = this.props.drawable;
                 this.watch_prop_text = this.props.texture;
+            },
+            deep: true
+        },
+        tato: {
+            handler (val) {
+                T8CLT_applyTato();
             },
             deep: true
         },
@@ -158,6 +171,22 @@ const app = Vue.createApp({
         },
         dec_prop_texture () {
             this.props.texture--;
+        },
+        inc_tato_drawable () {
+            this.tato.drawable_old = this.tato.drawable;
+            this.tato.drawable++;
+        },
+        dec_tato_drawable () {
+            this.tato.drawable_old = this.tato.drawable;
+            this.tato.drawable--;
+        },
+        inc_tato_texture () {
+            this.tato.texture_old = this.tato.texture;
+            this.tato.texture++;
+        },
+        dec_tato_texture () {
+            this.tato.texture_old = this.tato.texture;
+            this.tato.texture--;
         }
     }
 });
@@ -173,8 +202,7 @@ function T8CLT_closeWebview() {
     alt.emit('T8CLT:client:exec', 'close');
 }
 function T8CLT_handleFromClient(task, dataJSON) {
-    if (task == 'load_vehicle') {
-    }
+    if (task == 'load_vehicle') {}
 }
 function T8CLT_applyCloth() {
     let dataJSON = JSON.stringify(T8CLT_view.clothing);
@@ -183,4 +211,8 @@ function T8CLT_applyCloth() {
 function T8CLT_applyProp() {
     let dataJSON = JSON.stringify(T8CLT_view.props);
     alt.emit('T8CLT:client:exec', 'update_props', dataJSON);
+}
+function T8CLT_applyTato() {
+    let dataJSON = JSON.stringify(T8CLT_view.tato);
+    alt.emit('T8CLT:client:exec', 'update_tatos', dataJSON);
 }

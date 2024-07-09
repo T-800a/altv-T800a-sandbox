@@ -71,7 +71,7 @@ const toasts = appToasts.mount('#appToasts');
 // ---------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
     if ('alt' in window) {
-        alt.on(`${webviewName}:CLI>CEF:toast`, (newTitle, newBody, newTimeout, newType)=>{
+        alt.on(`${webviewName}:CEF:toast`, (newTitle, newBody, newTimeout, newType)=>{
             toasts.add({
                 title: newTitle,
                 type: newType,
@@ -79,6 +79,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 timeout: newTimeout
             });
         });
-        alt.emit(`${webviewName}:CEF>CLI:LOADED`);
+        alt.emit(`${webviewName}:CLIENT:LOADED`);
     }
 });

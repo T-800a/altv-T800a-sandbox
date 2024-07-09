@@ -1,8 +1,6 @@
 [
-   { "id": "gta5",         "name": "GTA 5 - Basegame" },
-   { "id": "addon",        "name": "Addons Cars" },
-   { "id": "vwrks",        "name": "Vanillaworks" },
-   { "id": "vwgta4",       "name": "Vanillaworks GTA 4" },
-   { "id": "dw_modern",    "name": "Dispatchworks Modern" },
-   { "id": "dw_classic",   "name": "Dispatchworks Classic" }
+   { "id": "gta5",         "name": "GTA V Basegame" },
+   { "id": "gtaLSDW",      "name": "GTA V DLC Los Santos Drug Wars" },
+   { "id": "gtaCS",        "name": "GTA V DLC The Chop Shop" },
+   { "id": "gtaSAM",       "name": "GTA V DLC San Andreas Mercenaries" }
 ]

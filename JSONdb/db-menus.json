@@ -226,6 +226,22 @@
         "titel": "T8M - Menu",
         "items": [
             {
+                "name": "Fahrzeug Menu",
+                "img": "img/key.png",
+                "keepOpen": false,
+                "target": "client",
+                "call": "T8VEH:client:createWebView",
+                "data": ""
+            },
+            {
+                "name": "Kleidungs Menu",
+                "img": "img/senden.png",
+                "keepOpen": false,
+                "target": "client",
+                "call": "T8CLT:client:createWindow",
+                "data": ""
+            },  
+            {
                 "name": "T8UG",
                 "img": "img/idee.png",
                 "keepOpen": false,
@@ -285,6 +301,14 @@
         "titel": "Fahrzeug",
         "items": [
             {
+                "name": "Motor starten/stoppen",
+                "img": "img/key.png",
+                "keepOpen": false,
+                "target": "T8INT",
+                "call": "vehicle_engine",
+                "data": ""
+            },
+            {
                 "name": "Reparieren",
                 "img": "img/idee.png",
                 "keepOpen": false,
@@ -298,14 +322,6 @@
                 "keepOpen": false,
                 "target": "client",
                 "call": "T8UNE:client:createWindow",
-                "data": ""
-            },
-            {
-                "name": "Motor starten/stoppen",
-                "img": "img/senden.png",
-                "keepOpen": true,
-                "target": "none",
-                "call": "",
                 "data": ""
             },
             {

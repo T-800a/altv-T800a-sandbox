@@ -1,6 +1,19 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-client';
 import natives from 'natives';
-import { playAnimation } from './utility';
+import { playAnimation } from './utility.js';
 function rotate(ax, ay, bx, by, angle) {
     var rad = Math.PI / 180 * angle, cos = Math.cos(rad), sin = Math.sin(rad), run = bx - ax, rise = by - ay, cx = cos * run + sin * rise + ax, cy = cos * rise - sin * run + ay;
     return {
@@ -101,7 +114,7 @@ export class Interactions {
         this.currentObj = null;
     }
     constructor(){
-        this.sitting = false;
-        this.currentObj = null;
+        _define_property(this, "sitting", false);
+        _define_property(this, "currentObj", null);
     }
 }

@@ -1,11 +1,12 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import * as chat from "chat";
-import { Raycast, GetDirectionFromRotation, playAnimation } from './classes/utility';
-import { T8IntWebView } from './classes/webview';
-import { WASDmenu } from './classes/wasdMenu';
-import { InteractionObjects } from './classes/interactionObjects';
-import { Interactions } from './classes/interactions';
+//@ts-ignore
+import * as chat from "alt:chat";
+import { Raycast, GetDirectionFromRotation, playAnimation } from './classes/utility.js';
+import { T8IntWebView } from './classes/webview.js';
+import { WASDmenu } from './classes/wasdMenu.js';
+import { InteractionObjects } from './classes/interactionObjects.js';
+import { Interactions } from './classes/interactions.js';
 
 
 const emtpyResult = { isHit: false, pos: { x:0, y:0, z:0 }, rot: { x:0, y:0, z:0 }, entity: null, entityType: 0, entityHash: 0, entityID: 0 };

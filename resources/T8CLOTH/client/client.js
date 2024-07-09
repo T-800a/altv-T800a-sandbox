@@ -1,6 +1,6 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import { createPedEditCamera, destroyPedEditCamera, setFov, setZPos } from './classes/camera';
+import { createPedEditCamera, destroyPedEditCamera, setFov, setZPos } from './classes/camera.js';
 // let WEBVIEW = new T8_webView();
 var webview = null;
 alt.onServer("T8CLT:client:createWindow", ()=>{
@@ -39,6 +39,9 @@ function T8CLT_handleFromWebview(task, data = "") {
     }
     if (task == "update_props") {
         alt.emitServer('T8CLT:server:updateProps', data);
+    }
+    if (task == "update_tatos") {
+        alt.emitServer('T8CLT:server:updateTatos', data);
     }
     alt.log(`>> T8CLT_handleFromWebview >> ${task} > ${data} `);
 }

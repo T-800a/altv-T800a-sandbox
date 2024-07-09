@@ -1,6 +1,7 @@
 import alt, { WebView } from 'alt-client';
 import natives from 'natives';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 
 
 export class WASDmenu {

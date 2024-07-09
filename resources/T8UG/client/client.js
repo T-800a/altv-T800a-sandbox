@@ -12,7 +12,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
         Promise.resolve(value).then(_next, _throw);
     }
 }
-function _asyncToGenerator(fn) {
+function _async_to_generator(fn) {
     return function() {
         var self = this, args = arguments;
         return new Promise(function(resolve, reject) {
@@ -139,31 +139,36 @@ function T8ug_RotToHead(rot) {
     return heading;
 }
 // Sachen um Test Ped Model zu laden
-const T8ug_RequestModel = _asyncToGenerator(function*(modelHash, timeoutMs = 1000) {
-    return new Promise((resolve, reject)=>{
-        if (!natives.isModelValid(modelHash)) {
-            reject(new Error(`Model does not exist: ${modelHash}`));
-            return;
-        }
-        if (natives.hasModelLoaded(modelHash)) {
-            resolve(true);
-            return;
-        }
-        natives.requestModel(modelHash);
-        const deadline = new Date().getTime() + timeoutMs;
-        const inter = alt.setInterval(()=>{
-            if (natives.hasModelLoaded(modelHash)) {
-                alt.clearInterval(inter);
-                resolve(true);
-            } else if (deadline < new Date().getTime()) {
-                alt.clearInterval(inter);
-                const error = `Error: Async loading failed for model: ${modelHash}`;
-                alt.log(error);
-                reject(new Error(error)); // probably better resolve(false)
+const T8ug_RequestModel = function() {
+    var _ref = _async_to_generator(function*(modelHash, timeoutMs = 1000) {
+        return new Promise((resolve, reject)=>{
+            if (!natives.isModelValid(modelHash)) {
+                reject(new Error(`Model does not exist: ${modelHash}`));
+                return;
             }
-        }, 10);
+            if (natives.hasModelLoaded(modelHash)) {
+                resolve(true);
+                return;
+            }
+            natives.requestModel(modelHash);
+            const deadline = new Date().getTime() + timeoutMs;
+            const inter = alt.setInterval(()=>{
+                if (natives.hasModelLoaded(modelHash)) {
+                    alt.clearInterval(inter);
+                    resolve(true);
+                } else if (deadline < new Date().getTime()) {
+                    alt.clearInterval(inter);
+                    const error = `Error: Async loading failed for model: ${modelHash}`;
+                    alt.log(error);
+                    reject(new Error(error)); // probably better resolve(false)
+                }
+            }, 10);
+        });
     });
-});
+    return function T8ug_RequestModel(modelHash) {
+        return _ref.apply(this, arguments);
+    };
+}();
 const T8ug_ModelHash = alt.hash('a_m_m_farmer_01');
 T8ug_RequestModel(T8ug_ModelHash);
 T8ug_loaded = true; // chat.pushLine('<<< T8ub < TeaBug > Positions Logger geladen >>>');

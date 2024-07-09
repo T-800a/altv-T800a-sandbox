@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
          document.getElementById('menu').innerHTML = msg;
       });
       */ alt.on('T8INT:CLI>CEF:clear', ()=>{
-            menu.data = {
-            };
+            menu.data = {};
         });
         alt.on('T8INT:CLI>CEF:JSON', (JSONdata)=>{
             menu.data = JSON.parse(JSONdata);

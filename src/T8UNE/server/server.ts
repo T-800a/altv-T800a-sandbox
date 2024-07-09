@@ -1,6 +1,7 @@
 /// <reference types="@altv/types-server" />
 import alt from 'alt-server';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 
 chat.registerCmd("tune", (player ) => {
    alt.emitClient( player, "T8UNE:client:createWindow" );
@@ -8,8 +9,8 @@ chat.registerCmd("tune", (player ) => {
 
 function getExt( veh, n ){
    let ext = veh.getExtra( n );
-   let ret = 1;
-   if( ext == true ){ ret = 0; };
+   let ret = 0;
+   if( ext == true ){ ret = 1; };
    return ret;
 };
 
@@ -230,7 +231,7 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
       veh.setMod( 35, vehData.plaques.current );
       veh.setMod( 36, vehData.rearShelf.current );
       veh.setMod( 37, vehData.trunk.current );
-      veh.setMod( 38, vehData.hydraulics.current );
+//    veh.setMod( 38, vehData.hydraulics.current );
       veh.setMod( 39, vehData.engineBlock.current );
       veh.setMod( 40, vehData.airFilter.current );
       veh.setMod( 41, vehData.strutBar.current );

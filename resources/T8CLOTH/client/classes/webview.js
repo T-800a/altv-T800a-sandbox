@@ -1,3 +1,16 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-client';
 // import natives from 'natives';
 // import * as chat from "chat";
@@ -38,10 +51,10 @@ alt.showCursor(false);
         this.wv.emit(`${this.tag}:CLI>CEF:${emitter}`, data);
     }
     constructor(){
-        this.webviewURL = 'http://resource/client/webview/index.html';
-        this.wv = null;
-        this.loaded = false;
-        this.focused = false;
-        this.tag = "T8WV";
+        _define_property(this, "webviewURL", 'http://resource/client/webview/index.html');
+        _define_property(this, "wv", null);
+        _define_property(this, "loaded", false);
+        _define_property(this, "focused", false);
+        _define_property(this, "tag", "T8WV");
     }
 }

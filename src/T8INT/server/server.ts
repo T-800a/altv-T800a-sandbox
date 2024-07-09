@@ -1,7 +1,8 @@
 import alt from 'alt-server';
 import JSONdb from 'simple-json-db';
-import * as chat from 'chat';
-import { ServerInteractions } from './classes/serverInteractions';
+//@ts-ignore
+import * as chat from "alt:chat";
+import { ServerInteractions } from './classes/serverInteractions.js';
 
 
 const DBM = new JSONdb('./JSONdb/db-menus.json');

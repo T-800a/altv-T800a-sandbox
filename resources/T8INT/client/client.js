@@ -1,10 +1,10 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import { Raycast } from './classes/utility';
-import { T8IntWebView } from './classes/webview';
-import { WASDmenu } from './classes/wasdMenu';
-import { InteractionObjects } from './classes/interactionObjects';
-import { Interactions } from './classes/interactions';
+import { Raycast } from './classes/utility.js';
+import { T8IntWebView } from './classes/webview.js';
+import { WASDmenu } from './classes/wasdMenu.js';
+import { InteractionObjects } from './classes/interactionObjects.js';
+import { Interactions } from './classes/interactions.js';
 const emtpyResult = {
     isHit: false,
     pos: {

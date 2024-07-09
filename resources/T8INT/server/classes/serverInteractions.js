@@ -1,5 +1,19 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-server';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 export class ServerInteractions {
     init(allObjArray) {
         this.intObjArray = [];
@@ -120,7 +134,7 @@ export class ServerInteractions {
     teleport(player) {
         const spawns = [
             {
-                x: -695.1956176757813,
+                x: -695.1956176757812,
                 y: 83.94725036621094,
                 z: 55.85205078125
             },
@@ -131,7 +145,7 @@ export class ServerInteractions {
             },
             {
                 x: 200.6637420654297,
-                y: -935.2879028320313,
+                y: -935.2879028320312,
                 z: 30.6783447265625
             },
             {
@@ -148,7 +162,7 @@ export class ServerInteractions {
                 x: -265.3582458496094,
                 y: -1898.0703125,
                 z: 27.7464599609375
-            }, 
+            }
         ];
         let random = spawns[Math.floor(Math.random() * spawns.length)];
         player.pos = random;
@@ -157,6 +171,16 @@ export class ServerInteractions {
         let veh = alt.Vehicle.getByID(intResult.entityID);
         veh.repair();
         this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `warning`);
+    }
+    vehicle_engine(player, call, data, intResult) {
+        let veh = alt.Vehicle.getByID(intResult.entityID);
+        if (veh.engineOn) {
+            veh.engineOn = false;
+            this.notifyPlayer(player, `Motor`, `Du hast den Motor deines Fahrzeug [${veh.numberPlateText}] ausgemacht.`, `dark`);
+        } else {
+            veh.engineOn = true;
+            this.notifyPlayer(player, `Motor`, `Du hast den Motor deines Fahrzeug [${veh.numberPlateText}] gestartet.`, `dark`);
+        }
     }
     vehicle_quicktune(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);
@@ -176,6 +200,9 @@ export class ServerInteractions {
         this.notifyPlayer(player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde getuned.`, `danger`);
     }
     constructor(useToast = false){
+        _define_property(this, "useToast", void 0);
+        _define_property(this, "intObjArray", void 0);
+        _define_property(this, "gasPumpArray", void 0);
         this.useToast = useToast;
     }
 }

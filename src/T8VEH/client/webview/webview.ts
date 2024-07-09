@@ -31,7 +31,7 @@ const app = Vue.createApp({
 
    computed: {
       filteredClasses() {
-         if( this.filter == 0 ){ return this.vehClasses.filter( x => x.addon == this.vehAddon ); };
+         if( this.filter == 0 ){ return this.vehClasses };
          if( this.filter == 1 ){ return this.vehMaker.filter( x => x.addon == this.vehAddon ); };
       },
 

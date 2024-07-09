@@ -30,6 +30,13 @@
          </div>
 
          <div class="container tuneContainer" v-if="isOpen.performance">
+
+            <div class="item double">Motor Power Mod</div>
+            <div class="item"><input type="number" v-model="tune.power"></div>
+
+            <div class="item double">Motor Torque Mod</div>
+            <div class="item"><input type="number" v-model="tune.torque"></div>
+
             <div v-if="vehicle.engine.range > 0" class="item"><input type="range" min="0" v-bind:max="vehicle.engine.range" step="1" v-model="vehicle.engine.current"></div>
             <div v-if="vehicle.engine.range > 0" class="item double">Motor Stage {{ vehicle.engine.current }}</div>
 
@@ -57,7 +64,7 @@
                   </div>
                </div>
             </div>
-            <div class="item">Felgen Desig</div>
+            <div class="item">Felgen Typ</div>
             <div class="item double dropdown" :class="{active: isOpen.R}">
                <div @click="isOpen.R = !isOpen.R"><span>{{selected.R}}</span></div>
                <div class="dropdown-menu" v-if="isOpen.R">
@@ -67,6 +74,10 @@
                   </div>
                </div>
             </div>
+
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.wheels--">Prev</button></div>
+            <div class="item">Felgen Typ {{ vehicle.wheels }}</div>
+            <div class="item"><button style="width:100%; text-align: center;" @click="vehicle.wheels++">Next</button></div>
          </div>
 
          <div class="container tuneContainer" v-if="isOpen.colors">

@@ -1,3 +1,16 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-client';
 // this.webview.unfocus();
 // this.webview.destroy();
@@ -18,9 +31,9 @@ export class T8IntWebView {
         this.webview.emit(`T8INT:CLI>CEF:${emitter}`, data);
     }
     constructor(){
-        this.webViewURL = 'http://resource/client/webview/index.html';
-        this.webview = null;
-        this.loaded = false;
-        this.focused = false;
+        _define_property(this, "webViewURL", 'http://resource/client/webview/index.html');
+        _define_property(this, "webview", null);
+        _define_property(this, "loaded", false);
+        _define_property(this, "focused", false);
     }
 }

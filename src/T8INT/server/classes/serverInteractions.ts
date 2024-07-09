@@ -1,5 +1,6 @@
 import alt from 'alt-server';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 
 
 
@@ -119,6 +120,16 @@ export class ServerInteractions {
       this.notifyPlayer( player, `Admin Action`, `Dein Fahrzeug [${veh.numberPlateText}] wurde repariert.`, `warning` );
    };
 
+   vehicle_engine( player, call, data, intResult:InteractionObj ){
+      let veh = alt.Vehicle.getByID( intResult.entityID );
+      if( veh.engineOn ){
+         veh.engineOn = false;
+         this.notifyPlayer( player, `Motor`, `Du hast den Motor deines Fahrzeug [${veh.numberPlateText}] ausgemacht.`, `dark` );
+      } else {
+         veh.engineOn = true; 
+         this.notifyPlayer( player, `Motor`, `Du hast den Motor deines Fahrzeug [${veh.numberPlateText}] gestartet.`, `dark` );
+      };
+   };
 
    vehicle_quicktune( player, call, data, intResult:InteractionObj ){
       let veh = alt.Vehicle.getByID( intResult.entityID );

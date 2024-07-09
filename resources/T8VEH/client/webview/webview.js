@@ -25,22 +25,18 @@ const app = Vue.createApp({
 */ computed: {
         filteredClasses () {
             if (this.filter == 0) {
-                return this.vehClasses.filter((x)=>x.addon == this.vehAddon
-                );
+                return this.vehClasses;
             }
             if (this.filter == 1) {
-                return this.vehMaker.filter((x)=>x.addon == this.vehAddon
-                );
+                return this.vehMaker.filter((x)=>x.addon == this.vehAddon);
             }
         },
         filteredVehicles () {
             if (this.filter == 0) {
-                return this.vehicles.filter((x)=>(x.class == this.vehClass || this.vehClass == "ALL") && x.addon == this.vehAddon
-                );
+                return this.vehicles.filter((x)=>(x.class == this.vehClass || this.vehClass == "ALL") && x.addon == this.vehAddon);
             }
             if (this.filter == 1) {
-                return this.vehicles.filter((x)=>(x.maker == this.vehClass || this.vehClass == "ALL") && x.addon == this.vehAddon
-                );
+                return this.vehicles.filter((x)=>(x.maker == this.vehClass || this.vehClass == "ALL") && x.addon == this.vehAddon);
             }
         }
     }
@@ -55,27 +51,22 @@ document.addEventListener("DOMContentLoaded", function() {
     if ('alt' in window) {
         alt.on('T8VEH:webview:exec', T8VEH_handleFromClient);
         alt.emit('T8VEH:client:exec', 'loaded');
-        fetch(vehAdsJSON).then((response)=>response.json()
-        ).then((data)=>{
+        fetch(vehAdsJSON).then((response)=>response.json()).then((data)=>{
             T8VEH_view.vehAddons = data;
         });
-        fetch(vehClsJSON).then((response)=>response.json()
-        ).then((data)=>{
+        fetch(vehClsJSON).then((response)=>response.json()).then((data)=>{
             T8VEH_view.vehClasses = data;
         });
-        fetch(vehMakJSON).then((response)=>response.json()
-        ).then((data)=>{
+        fetch(vehMakJSON).then((response)=>response.json()).then((data)=>{
             T8VEH_view.vehMaker = data;
         });
-        fetch(vehJSON).then((response)=>response.json()
-        ).then((data)=>{
+        fetch(vehJSON).then((response)=>response.json()).then((data)=>{
             T8VEH_view.vehicles = data;
         });
     }
 });
 function T8VEH_handleFromClient(task) {
-    if (task == 'load_vehicle') {
-    }
+    if (task == 'load_vehicle') {}
 }
 function T8VEH_closeWebview() {
     alt.emit('T8VEH:client:exec', 'close');

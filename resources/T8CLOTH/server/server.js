@@ -1,6 +1,7 @@
 /// <reference types="@altv/types-server" />
 import alt from 'alt-server';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 chat.registerCmd("cloth", (player)=>{
     alt.emitClient(player, "T8CLT:client:createWindow");
 });
@@ -45,4 +46,19 @@ alt.onClient('T8CLT:server:updateProps', (player, dataJSON)=>{
         player.setProp(propsData.component, propsData.drawable, propsData.texture);
     }
 // alt.log(`>> T8CLT:server:updateProps >> ${dataJSON}`);
+});
+alt.onClient('T8CLT:server:updateTatos', (player, dataJSON)=>{
+    /*
+      tato: {
+         drawable:   0,
+         texture:    0,
+         drawable_old:   0,
+         texture_old:    0,
+      }
+   */ let tato = JSON.parse(dataJSON);
+    player.removeDecoration(tato.drawable_old, tato.texture_old);
+    player.addDecoration(tato.drawable, tato.texture);
+    if (tato.texture != tato.texture_old) {
+    //    alt.log(`>> T8CLT:server:updateProps >> ${dataJSON}`);
+    }
 });

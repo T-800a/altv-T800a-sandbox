@@ -1,6 +1,7 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import * as chat from "chat";
+//@ts-ignore
+import * as chat from "alt:chat";
 
 export class InteractionObjects {
 
@@ -90,7 +91,7 @@ export class InteractionObjects {
             object.pos.x,
             object.pos.y,
             object.pos.z + 1,
-            0
+            false
          );
          natives.beginTextCommandDisplayText("STRING");
          natives.addTextComponentSubstringPlayerName(`interagieren`);
@@ -107,7 +108,7 @@ export class InteractionObjects {
             object.pos.x,
             object.pos.y,
             object.pos.z + 1.25,
-            0
+            false
          );
          natives.beginTextCommandDisplayText("STRING");
          natives.addTextComponentSubstringPlayerName(`hash: ${object.entityHash}`);

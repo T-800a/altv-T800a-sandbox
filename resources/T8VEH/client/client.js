@@ -1,6 +1,6 @@
 import alt from 'alt-client';
 import natives from 'natives';
-import { T8_webView } from './classes/webview';
+import { T8_webView } from './classes/webview.js';
 /*
    const vehJSON     = '@SHARED/JSON/vehicles.json';
    const vehAdsJSON  = '@SHARED/JSON/vehicleAddons.json';

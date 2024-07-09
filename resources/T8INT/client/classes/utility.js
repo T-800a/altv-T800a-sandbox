@@ -1,8 +1,21 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import * as alt from 'alt-client';
 import * as natives from 'natives';
 export function GetDirectionFromRotation(rotation) {
-    var z = rotation.z * (Math.PI / 180);
-    var x = rotation.x * (Math.PI / 180);
+    var z = rotation.z * (Math.PI / 180.0);
+    var x = rotation.x * (Math.PI / 180.0);
     var num = Math.abs(Math.cos(x));
     return new alt.Vector3(-Math.sin(z) * num, Math.cos(z) * num, Math.sin(x));
 }
@@ -44,14 +57,14 @@ export class Raycast {
         };
     }
 }
-Raycast.player = alt.Player.local;
+_define_property(Raycast, "player", alt.Player.local);
 export function playAnimation(animDict, animName, animFlag, animDuration) {
     if (animDict == undefined || animName == undefined || animFlag == undefined || animDuration == undefined) return;
     natives.requestAnimDict(animDict);
     let interval = alt.setInterval(()=>{
         if (natives.hasAnimDictLoaded(animDict)) {
             alt.clearInterval(interval);
-            natives.taskPlayAnim(alt.Player.local.scriptID, animDict, animName, 8, 1, animDuration, animFlag, 1, false, false, false);
+            natives.taskPlayAnim(alt.Player.local.scriptID, animDict, animName, 8.0, 1, animDuration, animFlag, 1, false, false, false);
         }
     }, 0);
 }

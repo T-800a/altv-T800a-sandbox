@@ -1,3 +1,16 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 import alt from 'alt-client';
 export class WASDmenu {
     init() {
@@ -43,8 +56,7 @@ export class WASDmenu {
             this.focused = false;
             this.n = 0;
             this.item = 0;
-            this.menu_obj = {
-            };
+            this.menu_obj = {};
         }
     }
     webview(emitter, data = '') {
@@ -100,15 +112,14 @@ export class WASDmenu {
         this.intResult.nearGasPump = nearGasPump;
     }
     constructor(){
-        this.webViewURL = 'http://resource/client/webview/index.html';
-        this.n = 0;
-        this.item = 0;
-        this.menu_obj = {
-        };
+        _define_property(this, "webViewURL", 'http://resource/client/webview/index.html');
+        _define_property(this, "n", 0);
+        _define_property(this, "item", 0);
+        _define_property(this, "menu_obj", {});
         // public webview:any               = null;
-        this.loaded = false;
-        this.focused = false;
-        this.intResult = {
+        _define_property(this, "loaded", false);
+        _define_property(this, "focused", false);
+        _define_property(this, "intResult", {
             isHit: false,
             pos: {
                 x: 0,
@@ -125,6 +136,6 @@ export class WASDmenu {
             entityHash: 0,
             entityID: 0,
             nearGasPump: false
-        };
+        });
     }
 }

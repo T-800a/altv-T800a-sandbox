@@ -1,3 +1,3 @@
 // <reference types="@altv/types-server" />
-import './server';
+import './server.js';
 

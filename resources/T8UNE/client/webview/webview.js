@@ -323,6 +323,831 @@ var wheelsArray = [
         type: 0,
         text: "Split Six"
     },
+    {
+        id: 51,
+        type: 0,
+        text: "JDMFelge:1"
+    },
+    {
+        id: 52,
+        type: 0,
+        text: "JDMFelge:2"
+    },
+    {
+        id: 53,
+        type: 0,
+        text: "JDMFelge:3"
+    },
+    {
+        id: 54,
+        type: 0,
+        text: "JDMFelge:4"
+    },
+    {
+        id: 55,
+        type: 0,
+        text: "JDMFelge:5"
+    },
+    {
+        id: 56,
+        type: 0,
+        text: "JDMFelge:6"
+    },
+    {
+        id: 57,
+        type: 0,
+        text: "JDMFelge:7"
+    },
+    {
+        id: 58,
+        type: 0,
+        text: "JDMFelge:8"
+    },
+    {
+        id: 59,
+        type: 0,
+        text: "JDMFelge:9"
+    },
+    {
+        id: 60,
+        type: 0,
+        text: "JDMFelge:10"
+    },
+    {
+        id: 61,
+        type: 0,
+        text: "JDMFelge:11"
+    },
+    {
+        id: 62,
+        type: 0,
+        text: "JDMFelge:12"
+    },
+    {
+        id: 63,
+        type: 0,
+        text: "JDMFelge:13"
+    },
+    {
+        id: 64,
+        type: 0,
+        text: "JDMFelge:14"
+    },
+    {
+        id: 65,
+        type: 0,
+        text: "JDMFelge:15"
+    },
+    {
+        id: 66,
+        type: 0,
+        text: "JDMFelge:16"
+    },
+    {
+        id: 67,
+        type: 0,
+        text: "JDMFelge:17"
+    },
+    {
+        id: 68,
+        type: 0,
+        text: "JDMFelge:18"
+    },
+    {
+        id: 69,
+        type: 0,
+        text: "JDMFelge:19"
+    },
+    {
+        id: 70,
+        type: 0,
+        text: "JDMFelge:20"
+    },
+    {
+        id: 71,
+        type: 0,
+        text: "JDMFelge:21"
+    },
+    {
+        id: 72,
+        type: 0,
+        text: "JDMFelge:22"
+    },
+    {
+        id: 73,
+        type: 0,
+        text: "JDMFelge:23"
+    },
+    {
+        id: 74,
+        type: 0,
+        text: "JDMFelge:24"
+    },
+    {
+        id: 75,
+        type: 0,
+        text: "JDMFelge:25"
+    },
+    {
+        id: 76,
+        type: 0,
+        text: "JDMFelge:26"
+    },
+    {
+        id: 77,
+        type: 0,
+        text: "JDMFelge:27"
+    },
+    {
+        id: 78,
+        type: 0,
+        text: "JDMFelge:28"
+    },
+    {
+        id: 79,
+        type: 0,
+        text: "JDMFelge:29"
+    },
+    {
+        id: 80,
+        type: 0,
+        text: "JDMFelge:30"
+    },
+    {
+        id: 81,
+        type: 0,
+        text: "JDMFelge:31"
+    },
+    {
+        id: 82,
+        type: 0,
+        text: "JDMFelge:32"
+    },
+    {
+        id: 83,
+        type: 0,
+        text: "JDMFelge:33"
+    },
+    {
+        id: 84,
+        type: 0,
+        text: "JDMFelge:34"
+    },
+    {
+        id: 85,
+        type: 0,
+        text: "JDMFelge:35"
+    },
+    {
+        id: 86,
+        type: 0,
+        text: "JDMFelge:36"
+    },
+    {
+        id: 87,
+        type: 0,
+        text: "JDMFelge:37"
+    },
+    {
+        id: 88,
+        type: 0,
+        text: "JDMFelge:38"
+    },
+    {
+        id: 89,
+        type: 0,
+        text: "JDMFelge:39"
+    },
+    {
+        id: 90,
+        type: 0,
+        text: "JDMFelge:40"
+    },
+    {
+        id: 91,
+        type: 0,
+        text: "JDMFelge:41"
+    },
+    {
+        id: 92,
+        type: 0,
+        text: "JDMFelge:42"
+    },
+    {
+        id: 93,
+        type: 0,
+        text: "JDMFelge:43"
+    },
+    {
+        id: 94,
+        type: 0,
+        text: "JDMFelge:44"
+    },
+    {
+        id: 95,
+        type: 0,
+        text: "JDMFelge:45"
+    },
+    {
+        id: 96,
+        type: 0,
+        text: "JDMFelge:46"
+    },
+    {
+        id: 97,
+        type: 0,
+        text: "JDMFelge:47"
+    },
+    {
+        id: 98,
+        type: 0,
+        text: "JDMFelge:48"
+    },
+    {
+        id: 99,
+        type: 0,
+        text: "JDMFelge:49"
+    },
+    {
+        id: 100,
+        type: 0,
+        text: "JDMFelge:50"
+    },
+    {
+        id: 101,
+        type: 0,
+        text: "JDMFelge:51"
+    },
+    {
+        id: 102,
+        type: 0,
+        text: "JDMFelge:52"
+    },
+    {
+        id: 103,
+        type: 0,
+        text: "JDMFelge:53"
+    },
+    {
+        id: 104,
+        type: 0,
+        text: "JDMFelge:54"
+    },
+    {
+        id: 105,
+        type: 0,
+        text: "JDMFelge:55"
+    },
+    {
+        id: 106,
+        type: 0,
+        text: "JDMFelge:56"
+    },
+    {
+        id: 107,
+        type: 0,
+        text: "JDMFelge:57"
+    },
+    {
+        id: 108,
+        type: 0,
+        text: "JDMFelge:58"
+    },
+    {
+        id: 109,
+        type: 0,
+        text: "JDMFelge:59"
+    },
+    {
+        id: 110,
+        type: 0,
+        text: "JDMFelge:60"
+    },
+    {
+        id: 111,
+        type: 0,
+        text: "JDMFelge:61"
+    },
+    {
+        id: 112,
+        type: 0,
+        text: "JDMFelge:62"
+    },
+    {
+        id: 113,
+        type: 0,
+        text: "JDMFelge:63"
+    },
+    {
+        id: 114,
+        type: 0,
+        text: "JDMFelge:64"
+    },
+    {
+        id: 115,
+        type: 0,
+        text: "JDMFelge:65"
+    },
+    {
+        id: 116,
+        type: 0,
+        text: "JDMFelge:66"
+    },
+    {
+        id: 117,
+        type: 0,
+        text: "NationFelge:1"
+    },
+    {
+        id: 118,
+        type: 0,
+        text: "NationFelge:2"
+    },
+    {
+        id: 119,
+        type: 0,
+        text: "NationFelge:3"
+    },
+    {
+        id: 120,
+        type: 0,
+        text: "NationFelge:4"
+    },
+    {
+        id: 121,
+        type: 0,
+        text: "NationFelge:5"
+    },
+    {
+        id: 122,
+        type: 0,
+        text: "NationFelge:6"
+    },
+    {
+        id: 123,
+        type: 0,
+        text: "NationFelge:7"
+    },
+    {
+        id: 124,
+        type: 0,
+        text: "NationFelge:8"
+    },
+    {
+        id: 125,
+        type: 0,
+        text: "NationFelge:9"
+    },
+    {
+        id: 126,
+        type: 0,
+        text: "NationFelge:10"
+    },
+    {
+        id: 127,
+        type: 0,
+        text: "NationFelge:11"
+    },
+    {
+        id: 128,
+        type: 0,
+        text: "NationFelge:12"
+    },
+    {
+        id: 129,
+        type: 0,
+        text: "NationFelge:13"
+    },
+    {
+        id: 130,
+        type: 0,
+        text: "NationFelge:14"
+    },
+    {
+        id: 131,
+        type: 0,
+        text: "NationFelge:15"
+    },
+    {
+        id: 132,
+        type: 0,
+        text: "NationFelge:16"
+    },
+    {
+        id: 133,
+        type: 0,
+        text: "NationFelge:17"
+    },
+    {
+        id: 134,
+        type: 0,
+        text: "NationFelge:18"
+    },
+    {
+        id: 135,
+        type: 0,
+        text: "NationFelge:19"
+    },
+    {
+        id: 136,
+        type: 0,
+        text: "NationFelge:20"
+    },
+    {
+        id: 137,
+        type: 0,
+        text: "NationFelge:21"
+    },
+    {
+        id: 138,
+        type: 0,
+        text: "NationFelge:22"
+    },
+    {
+        id: 139,
+        type: 0,
+        text: "NationFelge:23"
+    },
+    {
+        id: 140,
+        type: 0,
+        text: "NationFelge:24"
+    },
+    {
+        id: 141,
+        type: 0,
+        text: "NationFelge:25"
+    },
+    {
+        id: 142,
+        type: 0,
+        text: "NationFelge:26"
+    },
+    {
+        id: 143,
+        type: 0,
+        text: "NationFelge:27"
+    },
+    {
+        id: 144,
+        type: 0,
+        text: "NationFelge:28"
+    },
+    {
+        id: 145,
+        type: 0,
+        text: "NationFelge:29"
+    },
+    {
+        id: 146,
+        type: 0,
+        text: "NationFelge:30"
+    },
+    {
+        id: 147,
+        type: 0,
+        text: "NationFelge:31"
+    },
+    {
+        id: 148,
+        type: 0,
+        text: "NationFelge:32"
+    },
+    {
+        id: 149,
+        type: 0,
+        text: "NationFelge:33"
+    },
+    {
+        id: 150,
+        type: 0,
+        text: "NationFelge:34"
+    },
+    {
+        id: 151,
+        type: 0,
+        text: "NationFelge:35"
+    },
+    {
+        id: 152,
+        type: 0,
+        text: "NationFelge:36"
+    },
+    {
+        id: 153,
+        type: 0,
+        text: "NationFelge:37"
+    },
+    {
+        id: 154,
+        type: 0,
+        text: "NationFelge:38"
+    },
+    {
+        id: 155,
+        type: 0,
+        text: "NationFelge:39"
+    },
+    {
+        id: 156,
+        type: 0,
+        text: "NationFelge:40"
+    },
+    {
+        id: 157,
+        type: 0,
+        text: "NationFelge:41"
+    },
+    {
+        id: 158,
+        type: 0,
+        text: "NationFelge:42"
+    },
+    {
+        id: 159,
+        type: 0,
+        text: "NationFelge:43"
+    },
+    {
+        id: 160,
+        type: 0,
+        text: "NationFelge:44"
+    },
+    {
+        id: 161,
+        type: 0,
+        text: "NationFelge:45"
+    },
+    {
+        id: 162,
+        type: 0,
+        text: "NationFelge:46"
+    },
+    {
+        id: 163,
+        type: 0,
+        text: "NationFelge:47"
+    },
+    {
+        id: 164,
+        type: 0,
+        text: "NationFelge:48"
+    },
+    {
+        id: 165,
+        type: 0,
+        text: "NationFelge:49"
+    },
+    {
+        id: 166,
+        type: 0,
+        text: "NationFelge:50"
+    },
+    {
+        id: 167,
+        type: 0,
+        text: "NationFelge:51"
+    },
+    {
+        id: 168,
+        type: 0,
+        text: "NationFelge:52"
+    },
+    {
+        id: 169,
+        type: 0,
+        text: "NationFelge:53"
+    },
+    {
+        id: 170,
+        type: 0,
+        text: "NationFelge:54"
+    },
+    {
+        id: 171,
+        type: 0,
+        text: "NationFelge:55"
+    },
+    {
+        id: 172,
+        type: 0,
+        text: "NationFelge:56"
+    },
+    {
+        id: 173,
+        type: 0,
+        text: "NationFelge:57"
+    },
+    {
+        id: 174,
+        type: 0,
+        text: "NationFelge:58"
+    },
+    {
+        id: 175,
+        type: 0,
+        text: "NationFelge:59"
+    },
+    {
+        id: 176,
+        type: 0,
+        text: "NationFelge:60"
+    },
+    {
+        id: 177,
+        type: 0,
+        text: "NationFelge:61"
+    },
+    {
+        id: 178,
+        type: 0,
+        text: "NationFelge:62"
+    },
+    {
+        id: 179,
+        type: 0,
+        text: "NationFelge:63"
+    },
+    {
+        id: 180,
+        type: 0,
+        text: "NationFelge:64"
+    },
+    {
+        id: 181,
+        type: 0,
+        text: "NationFelge:65"
+    },
+    {
+        id: 182,
+        type: 0,
+        text: "NationFelge:66"
+    },
+    {
+        id: 183,
+        type: 0,
+        text: "NationFelge:67"
+    },
+    {
+        id: 184,
+        type: 0,
+        text: "NationFelge:68"
+    },
+    {
+        id: 185,
+        type: 0,
+        text: "NationFelge:69"
+    },
+    {
+        id: 186,
+        type: 0,
+        text: "NationFelge:70"
+    },
+    {
+        id: 187,
+        type: 0,
+        text: "NationFelge:71"
+    },
+    {
+        id: 188,
+        type: 0,
+        text: "NationFelge:72"
+    },
+    {
+        id: 189,
+        type: 0,
+        text: "NationFelge:73"
+    },
+    {
+        id: 190,
+        type: 0,
+        text: "NationFelge:74"
+    },
+    {
+        id: 191,
+        type: 0,
+        text: "NationFelge:75"
+    },
+    {
+        id: 192,
+        type: 0,
+        text: "NationFelge:76"
+    },
+    {
+        id: 193,
+        type: 0,
+        text: "NationFelge:77"
+    },
+    {
+        id: 194,
+        type: 0,
+        text: "NationFelge:78"
+    },
+    {
+        id: 195,
+        type: 0,
+        text: "NationFelge:79"
+    },
+    {
+        id: 196,
+        type: 0,
+        text: "NationFelge:80"
+    },
+    {
+        id: 197,
+        type: 0,
+        text: "NationFelge:81"
+    },
+    {
+        id: 198,
+        type: 0,
+        text: "NationFelge:82"
+    },
+    {
+        id: 199,
+        type: 0,
+        text: "NationFelge:83"
+    },
+    {
+        id: 200,
+        type: 0,
+        text: "NationFelge:84"
+    },
+    {
+        id: 201,
+        type: 0,
+        text: "NationFelge:85"
+    },
+    {
+        id: 202,
+        type: 0,
+        text: "NationFelge:86"
+    },
+    {
+        id: 203,
+        type: 0,
+        text: "NationFelge:87"
+    },
+    {
+        id: 204,
+        type: 0,
+        text: "NationFelge:88"
+    },
+    {
+        id: 205,
+        type: 0,
+        text: "NationFelge:89"
+    },
+    {
+        id: 206,
+        type: 0,
+        text: "NationFelge:90"
+    },
+    {
+        id: 207,
+        type: 0,
+        text: "NationFelge:91"
+    },
+    {
+        id: 208,
+        type: 0,
+        text: "NationFelge:92"
+    },
+    {
+        id: 209,
+        type: 0,
+        text: "NationFelge:93"
+    },
+    {
+        id: 210,
+        type: 0,
+        text: "NationFelge:94"
+    },
+    {
+        id: 211,
+        type: 0,
+        text: "NationFelge:95"
+    },
+    {
+        id: 212,
+        type: 0,
+        text: "NationFelge:96"
+    },
+    {
+        id: 213,
+        type: 0,
+        text: "NationFelge:97"
+    },
+    {
+        id: 214,
+        type: 0,
+        text: "NationFelge:98"
+    },
+    {
+        id: 215,
+        type: 0,
+        text: "NationFelge:99"
+    },
     // ---------- MUSCLE
     {
         id: 0,
@@ -860,6 +1685,16 @@ var wheelsArray = [
         id: 38,
         type: 3,
         text: "Cutter"
+    },
+    {
+        id: 39,
+        type: 3,
+        text: "SUVFelge1"
+    },
+    {
+        id: 40,
+        type: 3,
+        text: "SUVFelge2"
     },
     // ---------- OFFROAD
     {
@@ -1859,6 +2694,286 @@ var wheelsArray = [
         id: 40,
         type: 7,
         text: "Carbon S Racer"
+    },
+    {
+        id: 41,
+        type: 7,
+        text: "HighEndFelge : 1"
+    },
+    {
+        id: 42,
+        type: 7,
+        text: "HighEndFelge : 2"
+    },
+    {
+        id: 43,
+        type: 7,
+        text: "HighEndFelge : 3"
+    },
+    {
+        id: 44,
+        type: 7,
+        text: "HighEndFelge : 4"
+    },
+    {
+        id: 45,
+        type: 7,
+        text: "HighEndFelge : 5"
+    },
+    {
+        id: 46,
+        type: 7,
+        text: "HighEndFelge : 6"
+    },
+    {
+        id: 47,
+        type: 7,
+        text: "HighEndFelge : 7"
+    },
+    {
+        id: 48,
+        type: 7,
+        text: "HighEndFelge : 8"
+    },
+    {
+        id: 49,
+        type: 7,
+        text: "HighEndFelge : 9"
+    },
+    {
+        id: 50,
+        type: 7,
+        text: "HighEndFelge : 10"
+    },
+    {
+        id: 51,
+        type: 7,
+        text: "HighEndFelge : 11"
+    },
+    {
+        id: 52,
+        type: 7,
+        text: "HighEndFelge : 12"
+    },
+    {
+        id: 53,
+        type: 7,
+        text: "HighEndFelge : 13"
+    },
+    {
+        id: 54,
+        type: 7,
+        text: "HighEndFelge : 14"
+    },
+    {
+        id: 55,
+        type: 7,
+        text: "HighEndFelge : 15"
+    },
+    {
+        id: 56,
+        type: 7,
+        text: "HighEndFelge : 16"
+    },
+    {
+        id: 57,
+        type: 7,
+        text: "HighEndFelge : 17"
+    },
+    {
+        id: 58,
+        type: 7,
+        text: "HighEndFelge : 18"
+    },
+    {
+        id: 59,
+        type: 7,
+        text: "HighEndFelge : 19"
+    },
+    {
+        id: 60,
+        type: 7,
+        text: "HighEndFelge : 20"
+    },
+    {
+        id: 61,
+        type: 7,
+        text: "HighEndFelge : 21"
+    },
+    {
+        id: 62,
+        type: 7,
+        text: "HighEndFelge : 22"
+    },
+    {
+        id: 63,
+        type: 7,
+        text: "HighEndFelge : 23"
+    },
+    {
+        id: 64,
+        type: 7,
+        text: "HighEndFelge : 24"
+    },
+    {
+        id: 65,
+        type: 7,
+        text: "HighEndFelge : 25"
+    },
+    {
+        id: 66,
+        type: 7,
+        text: "HighEndFelge : 26"
+    },
+    {
+        id: 67,
+        type: 7,
+        text: "HighEndFelge : 27"
+    },
+    {
+        id: 68,
+        type: 7,
+        text: "HighEndFelge : 28"
+    },
+    {
+        id: 69,
+        type: 7,
+        text: "HighEndFelge : 29"
+    },
+    {
+        id: 70,
+        type: 7,
+        text: "HighEndFelge : 30"
+    },
+    {
+        id: 71,
+        type: 7,
+        text: "HighEndFelge : 31"
+    },
+    {
+        id: 72,
+        type: 7,
+        text: "HighEndFelge : 32"
+    },
+    {
+        id: 73,
+        type: 7,
+        text: "HighEndFelge : 33"
+    },
+    {
+        id: 74,
+        type: 7,
+        text: "HighEndFelge : 34"
+    },
+    {
+        id: 75,
+        type: 7,
+        text: "HighEndFelge : 35"
+    },
+    {
+        id: 76,
+        type: 7,
+        text: "HighEndFelge : 36"
+    },
+    {
+        id: 77,
+        type: 7,
+        text: "HighEndFelge : 37"
+    },
+    {
+        id: 78,
+        type: 7,
+        text: "HighEndFelge : 38"
+    },
+    {
+        id: 79,
+        type: 7,
+        text: "HighEndFelge : 39"
+    },
+    {
+        id: 80,
+        type: 7,
+        text: "HighEndFelge : 40"
+    },
+    {
+        id: 81,
+        type: 7,
+        text: "HighEndFelge : 41"
+    },
+    {
+        id: 82,
+        type: 7,
+        text: "HighEndFelge : 42"
+    },
+    {
+        id: 83,
+        type: 7,
+        text: "HighEndFelge : 43"
+    },
+    {
+        id: 84,
+        type: 7,
+        text: "HighEndFelge : 44"
+    },
+    {
+        id: 85,
+        type: 7,
+        text: "HighEndFelge : 45"
+    },
+    {
+        id: 86,
+        type: 7,
+        text: "HighEndFelge : 46"
+    },
+    {
+        id: 87,
+        type: 7,
+        text: "HighEndFelge : 47"
+    },
+    {
+        id: 88,
+        type: 7,
+        text: "HighEndFelge : 48"
+    },
+    {
+        id: 89,
+        type: 7,
+        text: "HighEndFelge : 49"
+    },
+    {
+        id: 90,
+        type: 7,
+        text: "HighEndFelge : 50"
+    },
+    {
+        id: 91,
+        type: 7,
+        text: "HighEndFelge : 51"
+    },
+    {
+        id: 92,
+        type: 7,
+        text: "HighEndFelge : 52"
+    },
+    {
+        id: 93,
+        type: 7,
+        text: "HighEndFelge : 53"
+    },
+    {
+        id: 94,
+        type: 7,
+        text: "HighEndFelge : 54"
+    },
+    {
+        id: 95,
+        type: 7,
+        text: "HighEndFelge : 55"
+    },
+    {
+        id: 96,
+        type: 7,
+        text: "HighEndFelge : 56"
     },
     // ---------- Bennys Original
     {
@@ -6859,7 +7974,7 @@ var wheelsArray = [
         id: 210,
         type: 12,
         text: "CG Mesh Meister"
-    }, 
+    }
 ];
 var colorsArray = [
     {
@@ -7672,6 +8787,10 @@ const app = Vue.createApp({
                 colors: "",
                 vehicle: ""
             },
+            tune: {
+                power: 1,
+                torque: 1
+            },
             vehicle: {
                 modkit: {
                     current: 1,
@@ -7846,18 +8965,18 @@ const app = Vue.createApp({
                     range: 6
                 },
                 extras: [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
                 ],
                 wheelsType: 0,
                 wheels: 0,
@@ -7917,6 +9036,12 @@ const app = Vue.createApp({
             },
             deep: true
         },
+        tune: {
+            handler (val) {
+                applyTune();
+            },
+            deep: true
+        },
         'vehicle.oldlivery': {
             handler (val) {
                 applyOldlivery();
@@ -7935,7 +9060,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function closeWebview() {
     alt.emit('T8UNE:client:exec', 'close');
 }
-function T8UNE_handleFromClient(task, dataJSON) {
+function T8UNE_handleFromClient(task, dataJSON, power, torque) {
     if (task == 'load_vehicle') {
         view.reset.vehicle = dataJSON;
         view.vehicle = JSON.parse(dataJSON);
@@ -7951,6 +9076,8 @@ function T8UNE_handleFromClient(task, dataJSON) {
             W: getFromArray(colorsArray, "text", view.vehicle.colors.W),
             R: getFromArray(wheelsArray, "wheel", view.vehicle.wheels)
         };
+        view.tune.power = power;
+        view.tune.torque = torque;
         setTimeout(function() {
             firstload = true;
         }, 500);
@@ -7977,6 +9104,10 @@ function applyTuning() {
         alt.emit('T8UNE:client:exec', 'update_vehicle', dataJSON);
     }
 }
+function applyTune() {
+    let dataJSON = JSON.stringify(view.tune);
+    alt.emit('T8UNE:client:exec', 'update_tune', dataJSON);
+}
 function applyOldlivery() {
     alt.emit('T8UNE:client:exec', 'update_oldlivery', view.vehicle.oldlivery);
 }
@@ -7994,34 +9125,34 @@ function getFromArray(array, type, var1, var2 = 0) {
     }
     return "auswählen";
 }
-function openWindow(window) {
+function openWindow(window1) {
     view.isOpen.performance = false;
     view.isOpen.colors = false;
     view.isOpen.kit = false;
     view.isOpen.kit2 = false;
     view.isOpen.extras = false;
     view.isOpen.jsonexchange = false;
-    if (window == "performance") {
+    if (window1 == "performance") {
         view.isOpen.performance = true;
         return;
     }
-    if (window == "colors") {
+    if (window1 == "colors") {
         view.isOpen.colors = true;
         return;
     }
-    if (window == "kit") {
+    if (window1 == "kit") {
         view.isOpen.kit = true;
         return;
     }
-    if (window == "kit2") {
+    if (window1 == "kit2") {
         view.isOpen.kit2 = true;
         return;
     }
-    if (window == "extras") {
+    if (window1 == "extras") {
         view.isOpen.extras = true;
         return;
     }
-    if (window == "jsonexchange") {
+    if (window1 == "jsonexchange") {
         view.isOpen.jsonexchange = true;
         return;
     }
