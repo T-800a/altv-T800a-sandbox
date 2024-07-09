@@ -138,7 +138,7 @@ alt.on("playerConnect", (player)=>{
             const playerCount = alt.Player.all.length;
             WEBVIEW.toastAll(`CONNECT: ${playerCount} players online`, `${player.name} has joined the server!`, 5, `black`);
             // chat.broadcast(`{1cacd4}${player.name} {ffffff}has {00ff00}joined {ffffff}the Server..  (${playerCount} players online)`);
-            chat.send(player, "{80eb34}Press {34dfeb}T {80eb34}and type {34dfeb}/help {80eb34}to see all available commands..");
+            chat.send(player, "{80eb34}Press {34dfeb}/ {80eb34}and type {34dfeb}/help {80eb34}to see all available commands..");
         }
         alt.clearTimeout(connectTimeout);
     }, 1000);
