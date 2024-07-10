@@ -37,7 +37,15 @@ alt.onServer("freeroam:switchInOutPlayer", (in_switch, instant_switch, switch_ty
     }
 });
 
-alt.on('connectionComplete', startupPlayV);
+alt.on('connectionComplete', ()=>{
+  startupPlayV(); 
+});
+
+alt.on('spawned', ()=>{
+  setTimeout(() => {
+    WEBVIEW.toast('Hallo Welt!', `Hallo ${ alt.Player.local.name }!` );
+  }, 1000 );
+});
 
 async function startupPlayV() {
   try {

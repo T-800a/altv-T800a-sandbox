@@ -124,16 +124,37 @@ alt.on("playerDisconnect", (player, reason)=>{
 chat.registerCmd("help", (player, args)=>{
     chat.send(player, "{ff0000}+-------------- {eb4034}HELP {ff0000}--------------");
     chat.send(player, "{ff0000}| {34abeb}/veh {40eb34}(model)   {ffffff} spawn a new vehicle");
-    chat.send(player, "{ff0000}| {34abeb}/vehRM   {ffffff} remove your current Vehicle");
-    chat.send(player, "{ff0000}| {34abeb}/t8veh   {ffffff} spawn a vehicle from menu");
-    chat.send(player, "{ff0000}| {34abeb}/vehSave {40eb34}(name) (licenseplate)   {ffffff} save your vehicles apperance");
-    chat.send(player, "{ff0000}| {34abeb}/vehLoad {40eb34}(name)   {ffffff} load a vehicles apperance");
+    chat.send(player, "{ff0000}| {34abeb}/vehicles   {ffffff} for all vehicle commands");
+    chat.send(player, "{ff0000}| {34abeb}/clothes   {ffffff} for all clothing commands");
     chat.send(player, "{ff0000}| {34abeb}/tp {40eb34}(targetPlayer)   {ffffff} teleport to player");
     chat.send(player, "{ff0000}| {34abeb}/model {40eb34}(modelName)   {ffffff} change player model");
     chat.send(player, "{ff0000}| {34abeb}/weapons   {ffffff} get all weapons");
     chat.send(player, "{ff0000}| {34abeb}/heal   {ffffff} heal the player");
     chat.send(player, "{ff0000}| {34abeb}/time {40eb34}(hh) (mm) (ss) {ff0000}|| {34abeb}/weather {40eb34}(weather) (transition time)");
 });
+
+chat.registerCmd("vehicles", (player, args)=>{
+    chat.send(player, "{ff0000}+-------------- {eb4034}HELP VEHICLES {ff0000}--------------");
+    chat.send(player, "{ff0000}| {34abeb}/veh {40eb34}(model)   {ffffff} spawn a new vehicle");
+    chat.send(player, "{ff0000}| {34abeb}/t8veh   {ffffff} spawn a vehicle from a menu");
+    chat.send(player, "{ff0000}| {34abeb}/vehRM   {ffffff} remove your current Vehicle");
+    chat.send(player, "{ff0000}| {34abeb}/vehList   {ffffff} Lists all saved Vehicles");
+    chat.send(player, "{ff0000}| {34abeb}/vehSave {40eb34}(name) (licenseplate)   {ffffff} save current vehicle");
+    chat.send(player, "{ff0000}| {34abeb}/vehLoad {40eb34}(name)   {ffffff} load a vehicles apperance/tuning");
+    chat.send(player, "{ff0000}| {34abeb}/vehDelete {40eb34}(name)   {ffffff} deletes a saved vehicle");
+
+    
+});
+
+chat.registerCmd("clothes", (player, args)=>{
+    chat.send(player, "{ff0000}+-------------- {eb4034}HELP CLOTHES {ff0000}--------------");
+    chat.send(player, "{ff0000}| {34abeb}/clothList   {ffffff} Lists all saved Vehicles");
+    chat.send(player, "{ff0000}| {34abeb}/clothSave {40eb34}(outfit) (replace:yes)   {ffffff} save your apperance");
+    chat.send(player, "{ff0000}| {34abeb}/clothLoad {40eb34}(outfit)   {ffffff} load a saved apperance");
+    chat.send(player, "{ff0000}| {34abeb}/clothDelete {40eb34}(name)   {ffffff} deletes a saved outfit");
+    chat.send(player, "{ff0000}| {ffffff} the oufit 'default' will load on connect/spawn");
+});
+
 chat.registerCmd("pos", (player, args)=>{
     if (args && args.length < 3) {
         chat.send(player, "Usage: /pos x y z");
@@ -272,6 +293,8 @@ chat.registerCmd("vehSave", (player, args)=>{
         model: player.vehicle.model,
         data: getVehicleMods( player )
     });
+
+    WEBVIEW.toast( player, `VEHICLES: ${name}`, `A Vehicle with the ${name} was saved.`, 5,`success`);
 });
 
 chat.registerCmd("vehLoad", (player, args)=>{
@@ -321,10 +344,12 @@ chat.registerCmd("vehDelete", (player, args)=>{
     let DBname = `${player.socialID}-${name}`;
 
     if (!DBV.has(DBname)) {
-        WEBVIEW.toast( player, `VEHICLES: ${name}`, `A apperance with the ${name} does not exist.`, 5,`warning`);
+        WEBVIEW.toast( player, `VEHICLES: ${name}`, `A Vehicle with the ${name} does not exist.`, 5,`warning`);
         // chat.send(player, `>> es existiert kein ein Eintrag unter dem Namen ${name}`);
         return;
     }
+
+    WEBVIEW.toast( player, `VEHICLES: ${name}`, `A Vehicle with the ${name} was deleted.`, 5,`success`);
     DBV.delete(DBname);
 });
 
@@ -388,6 +413,8 @@ chat.registerCmd("weather", (player, args)=>{
 // ------------------------------------------------------------------------------------------------------------------------------
 //     C L O T H   COMMANDS
 
+
+
 chat.registerCmd("clothSave", (player, args)=>{
 
     if (args.length === 0 ) {
@@ -437,8 +464,22 @@ chat.registerCmd("clothSave", (player, args)=>{
         outfit: outfit,
     });
 
+    WEBVIEW.toast( player, `OUTFITS: ${outfitname}`, `A outfit with the ${outfitname} was saved.`, 5,`success`);
     alt.log(`~y~/clothSave~w~ > player  ~g~'${player.name}'~w~ saved his cloth`);
 });
+
+chat.registerCmd("clothList", (player, args)=>{
+    chat.send(player, "You saved the following outfits:");
+
+    let clothList:any = DBC.JSON();
+    // alt.log( typeof vehList ); 
+
+    for (const element in clothList) {
+        if( clothList[element].soID == player.socialID ){
+            chat.send(player, `outfit name: ${clothList[element].name }` );
+        }
+    }
+}); 
 
 chat.registerCmd("clothLoad", (player, args)=>{
 
@@ -459,6 +500,31 @@ chat.registerCmd("clothLoad", (player, args)=>{
 
     alt.log(`~y~/clothLoad~w~ > player ~g~'${player.name}'~w~ loaded his cloth`);
 });
+
+chat.registerCmd("clothDelete", (player, args)=>{
+    if (args.length === 0) {
+        chat.send(player, "Usage: /clothDelete (name)");
+        return;
+    }
+    let name = args[0];
+    let DBname = `${player.socialID}-${name}`;
+
+    if ( name == "default" ) {
+        WEBVIEW.toast( player, `OUTFITS: ${name}`, `You can not delete the ${name} outfit.`, 5,`danger`);
+        return;
+    }
+
+    if (!DBC.has(DBname)) {
+        WEBVIEW.toast( player, `OUTFITS: ${name}`, `A apperance with the ${name} does not exist.`, 5,`warning`);
+        return;
+    }
+    DBC.delete(DBname);
+    WEBVIEW.toast( player, `OUTFITS: ${name}`, `A apperance with the ${name} was deleted.`, 5,`success`);
+});
+
+
+
+
 
 chat.registerCmd("ui", (player, args)=>{
     if (args[0] === "stop" ) {
