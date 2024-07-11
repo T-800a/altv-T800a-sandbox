@@ -1,6 +1,7 @@
 {
     "basic-spawn": {
         "player": "xxxxxxxxxx",
+        "playerModel": 1885233650,
         "hwID": "xxxxxxxxxx",
         "soID": "xxxxxxxxxx",
         "name": "basic-spawn",
@@ -161,6 +162,7 @@
     },
     "306387997-default": {
         "player": "t800a",
+        "playerModel": 1885233650,
         "hwID": "6062229313467836830",
         "soID": "306387997",
         "name": "default",
@@ -170,7 +172,7 @@
                     "id": 0,
                     "name": "Head",
                     "data": {
-                        "drawable": 12,
+                        "drawable": 44,
                         "texture": 0,
                         "palette": 2
                     }
@@ -490,7 +492,7 @@
                     "id": 0,
                     "name": "Head",
                     "data": {
-                        "drawable": 12,
+                        "drawable": 44,
                         "texture": 0,
                         "palette": 2
                     }
@@ -562,8 +564,8 @@
                     "id": 8,
                     "name": "Undershirts",
                     "data": {
-                        "drawable": 0,
-                        "texture": 18,
+                        "drawable": 98,
+                        "texture": 14,
                         "palette": 2
                     }
                 },

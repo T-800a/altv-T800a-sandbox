@@ -250,15 +250,7 @@
                 "data": ""
             },
             {
-                "name": "Teleport",
-                "img": "img/senden.png",
-                "keepOpen": true,
-                "target": "T8INT",
-                "call": "teleport",
-                "data": ""
-            },
-            {
-                "name": "Sub-Menu",
+                "name": "Teleport Punkte:",
                 "img": "img/senden.png",
                 "keepOpen": false,
                 "target": "submenu",
@@ -268,23 +260,47 @@
         ]
     },
     "F3_submenu": {
-        "titel": "T8M - Menu | Submenu",
+        "titel": "Teleport Punkte",
         "items": [
             {
-                "name": "Hallo",
-                "img": "img/idee.png",
-                "keepOpen": false,
-                "target": "none",
-                "call": "",
-                "data": ""
+                "name": "Stadtpark",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": { "x": 161.3476, "y": -1004.016, "z": 28.9 }
             },
             {
-                "name": "Welt",
-                "img": "img/idee.png",
-                "keepOpen": false,
-                "target": "",
-                "call": "",
-                "data": ""
+                "name": "Mirrorpark",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": {  "x": 1020.0155, "y": -680.6884, "z": 56.1 }
+            },
+            {
+                "name": "Yellow Jack Inn",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": { "x": 1991.2589, "y": 3072.7642, "z": 46.5 }
+            },
+            {
+                "name": "Del Perro Pier",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": { "x": -1599.4417, "y": -1041.5183, "z": 12.5 }
+            },
+            {
+                "name": "Teleport Random",
+                "img": "img/senden.png",
+                "keepOpen": true,
+                "target": "T8INT",
+                "call": "teleport",
+                "data": false
             },
             {
                 "name": "Zurück",

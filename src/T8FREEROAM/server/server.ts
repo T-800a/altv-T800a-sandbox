@@ -15,17 +15,8 @@ WEBVIEW.init( "T8UI" );
 
 const DBV = new JSONdb('./JSONdb/db-vehicles.json');
 const DBC = new JSONdb('./JSONdb/db-player-clothes.json');
-
-const spawns = [
-    {
-        x: 1055.9204,
-        y: -715.712,
-        z: 56.2666
-    }
-];
-const spawnModels = [
-    "MP_M_Freemode_01"
-];
+const spawns = [{ x: 161.3476, y: -1004.016, z: 28.9 }]; // Stadtpark
+const spawnModel = "MP_M_Freemode_01";
 const weapons = [
     "dagger", "bat", "bottle", "crowbar", "flashlight", "golfclub", "hammer", "hatchet", "knuckle", "knife", "machete", "switchblade", "nightstick","wrench", "battleaxe", "poolcue", "stone_hatchet",
     "pistol", "pistol_mk2", "combatpistol", "appistol", "stungun", "pistol50", "snspistol", "snspistol_mk2", "heavypistol", "vintagepistol", "flaregun", "marksmanpistol", "revolver", "revolver_mk2", "doubleaction", "raypistol",
@@ -54,7 +45,7 @@ alt.on("playerConnect", (player)=>{
     alt.log(`~r~>> ~w~hwID: ~y~${player.hwidHash}`);
     alt.log(`~r~>> ~w~soID: ~y~${player.socialID}`);
 
-    player.model = spawnModels[getRandomListEntry(spawnModels)];
+    player.model = spawnModel;
     player.setMeta("vehicles", []);
     const spawn = spawns[getRandomListEntry(spawns)];
     player.spawn(spawn.x, spawn.y, spawn.z, 0);
@@ -458,6 +449,7 @@ chat.registerCmd("clothSave", (player, args)=>{
 
     DBC.set(dbname, {
         player: player.name,
+        playerModel : player.model,
         hwID: player.hwidHash,
         soID: player.socialID,
         name: outfitname,
@@ -553,6 +545,8 @@ function loadClothesDB( player:any, outfitname:string, basic:boolean = false ){
     
     let clothes = entry.outfit.clothes;
     let props = entry.outfit.props;
+
+    player.model = entry.playerModel;
 
     // alt.log(`>> ${JSON.stringify(clothes)}`);
     // alt.log(`>> ${JSON.stringify(props)}`);

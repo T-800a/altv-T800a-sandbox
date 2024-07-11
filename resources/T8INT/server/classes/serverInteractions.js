@@ -36,7 +36,7 @@ export class ServerInteractions {
         }
         // 
         alt.onClient('T8INT:CLI>SRV:interaction', (player, call, data, intResult)=>{
-            alt.log(`T8INT >> ${player.name} >> interaction >> call: ${call} >> data: ${data} >> intResult: ${JSON.stringify(intResult)}`);
+            alt.log(`T8INT >> ${player.name} >> interaction >> call: ${call} >> data: ${JSON.stringify(data)} >> intResult: ${JSON.stringify(intResult)}`);
             this[call](player, call, data, intResult);
         });
     }
@@ -131,7 +131,7 @@ export class ServerInteractions {
         ]);
         this.notifyPlayer(player, 'Information', `Du hast eine(n) ${data} gekauft.`);
     }
-    teleport(player) {
+    teleport(player, call, data) {
         const spawns = [
             {
                 x: -695.1956176757812,
@@ -164,8 +164,14 @@ export class ServerInteractions {
                 z: 27.7464599609375
             }
         ];
-        let random = spawns[Math.floor(Math.random() * spawns.length)];
-        player.pos = random;
+        let spwanPos = spawns[Math.floor(Math.random() * spawns.length)];
+        // alt.log(`T8INT >> ${player.name} >> teleport >> type of data: ${ typeof data }`);
+        // alt.log(`T8INT >> ${player.name} >> teleport >> data: ${JSON.stringify(data)}`);
+        if (typeof data == typeof null) {
+            spwanPos = data;
+        }
+        alt.log(`T8INT >> ${player.name} >> teleport >> ${JSON.stringify(spwanPos)}`);
+        player.pos = spwanPos;
     }
     vehicle_repair(player, call, data, intResult) {
         let veh = alt.Vehicle.getByID(intResult.entityID);

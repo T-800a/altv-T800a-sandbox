@@ -13,14 +13,12 @@ const DBV = new JSONdb('./JSONdb/db-vehicles.json');
 const DBC = new JSONdb('./JSONdb/db-player-clothes.json');
 const spawns = [
     {
-        x: 1055.9204,
-        y: -715.712,
-        z: 56.2666
+        x: 187.6860,
+        y: -842.2701,
+        z: 30.5
     }
 ];
-const spawnModels = [
-    "MP_M_Freemode_01"
-];
+const spawnModel = "MP_M_Freemode_01";
 const weapons = [
     "dagger",
     "bat",
@@ -127,7 +125,7 @@ alt.on("playerConnect", (player)=>{
     alt.log(`~r~>> ~w~new player ~g~'${player.name}'~w~ connected...`);
     alt.log(`~r~>> ~w~hwID: ~y~${player.hwidHash}`);
     alt.log(`~r~>> ~w~soID: ~y~${player.socialID}`);
-    player.model = spawnModels[getRandomListEntry(spawnModels)];
+    player.model = spawnModel;
     player.setMeta("vehicles", []);
     const spawn = spawns[getRandomListEntry(spawns)];
     player.spawn(spawn.x, spawn.y, spawn.z, 0);
@@ -347,6 +345,7 @@ chat.registerCmd("vehSave", (player, args)=>{
         model: player.vehicle.model,
         data: getVehicleMods(player)
     });
+    WEBVIEW.toast(player, `VEHICLES: ${name}`, `A Vehicle with the ${name} was saved.`, 5, `success`);
 });
 chat.registerCmd("vehLoad", (player, args)=>{
     if (args.length === 0) {
@@ -386,10 +385,11 @@ chat.registerCmd("vehDelete", (player, args)=>{
     let name = args[0];
     let DBname = `${player.socialID}-${name}`;
     if (!DBV.has(DBname)) {
-        WEBVIEW.toast(player, `VEHICLES: ${name}`, `A apperance with the ${name} does not exist.`, 5, `warning`);
+        WEBVIEW.toast(player, `VEHICLES: ${name}`, `A Vehicle with the ${name} does not exist.`, 5, `warning`);
         // chat.send(player, `>> es existiert kein ein Eintrag unter dem Namen ${name}`);
         return;
     }
+    WEBVIEW.toast(player, `VEHICLES: ${name}`, `A Vehicle with the ${name} was deleted.`, 5, `success`);
     DBV.delete(DBname);
 });
 chat.registerCmd("rims", (player, args)=>{
@@ -545,11 +545,13 @@ chat.registerCmd("clothSave", (player, args)=>{
     };
     DBC.set(dbname, {
         player: player.name,
+        playerModel: player.model,
         hwID: player.hwidHash,
         soID: player.socialID,
         name: outfitname,
         outfit: outfit
     });
+    WEBVIEW.toast(player, `OUTFITS: ${outfitname}`, `A outfit with the ${outfitname} was saved.`, 5, `success`);
     alt.log(`~y~/clothSave~w~ > player  ~g~'${player.name}'~w~ saved his cloth`);
 });
 chat.registerCmd("clothList", (player, args)=>{
@@ -584,7 +586,7 @@ chat.registerCmd("clothDelete", (player, args)=>{
     let name = args[0];
     let DBname = `${player.socialID}-${name}`;
     if (name == "default") {
-        WEBVIEW.toast(player, `OUTFITS: ${name}`, `You can not delte the ${name} outfit.`, 5, `error`);
+        WEBVIEW.toast(player, `OUTFITS: ${name}`, `You can not delete the ${name} outfit.`, 5, `danger`);
         return;
     }
     if (!DBC.has(DBname)) {
@@ -592,6 +594,7 @@ chat.registerCmd("clothDelete", (player, args)=>{
         return;
     }
     DBC.delete(DBname);
+    WEBVIEW.toast(player, `OUTFITS: ${name}`, `A apperance with the ${name} was deleted.`, 5, `success`);
 });
 chat.registerCmd("ui", (player, args)=>{
     if (args[0] === "stop") {
@@ -616,6 +619,7 @@ function loadClothesDB(player, outfitname, basic = false) {
     // alt.log(`>> ${JSON.stringify(outfit)}`);
     let clothes = entry.outfit.clothes;
     let props = entry.outfit.props;
+    player.model = entry.playerModel;
     // alt.log(`>> ${JSON.stringify(clothes)}`);
     // alt.log(`>> ${JSON.stringify(props)}`);
     entry.outfit.clothes.forEach((item)=>{
