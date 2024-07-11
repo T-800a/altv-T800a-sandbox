@@ -13,11 +13,11 @@ const DBV = new JSONdb('./JSONdb/db-vehicles.json');
 const DBC = new JSONdb('./JSONdb/db-player-clothes.json');
 const spawns = [
     {
-        x: 187.6860,
-        y: -842.2701,
-        z: 30.5
+        x: 161.3476,
+        y: -1004.016,
+        z: 28.9
     }
-];
+]; // Stadtpark
 const spawnModel = "MP_M_Freemode_01";
 const weapons = [
     "dagger",

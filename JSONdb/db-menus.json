@@ -251,7 +251,7 @@
             },
             {
                 "name": "Teleport Punkte:",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": false,
                 "target": "submenu",
                 "call": "",
@@ -264,7 +264,7 @@
         "items": [
             {
                 "name": "Stadtpark",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": true,
                 "target": "T8INT",
                 "call": "teleport",
@@ -272,7 +272,7 @@
             },
             {
                 "name": "Mirrorpark",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": true,
                 "target": "T8INT",
                 "call": "teleport",
@@ -280,7 +280,7 @@
             },
             {
                 "name": "Yellow Jack Inn",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": true,
                 "target": "T8INT",
                 "call": "teleport",
@@ -288,7 +288,7 @@
             },
             {
                 "name": "Del Perro Pier",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": true,
                 "target": "T8INT",
                 "call": "teleport",
@@ -296,7 +296,7 @@
             },
             {
                 "name": "Teleport Random",
-                "img": "img/senden.png",
+                "img": "img/teleport.png",
                 "keepOpen": true,
                 "target": "T8INT",
                 "call": "teleport",
@@ -304,7 +304,7 @@
             },
             {
                 "name": "Zurück",
-                "img": "img/empty.png",
+                "img": "img/back.png",
                 "keepOpen": false,
                 "target": "submenu",
                 "call": "",
