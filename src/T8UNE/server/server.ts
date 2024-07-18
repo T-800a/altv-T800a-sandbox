@@ -183,7 +183,7 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
    veh.repair();
 
    veh.dirtLevel = 0;
-   veh.numberPlateText = "LS ACAB"
+   // veh.numberPlateText = "LS ACAB"
    veh.windowTint = vehData.windows.current;
    veh.numberPlateIndex = vehData.plates.current;
    veh.setWheels( vehData.wheelsType, vehData.wheels );
@@ -197,10 +197,17 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
 
    veh.roofLivery       = vehData.rooflivery;
 
+   try {
+      veh.modKit = 1;
+   } catch (error) {
+      veh.modKit = 0;
+      console.log(error);
+   }
+
    if ( veh.modKitsCount > 0 ){
 
-      if ( veh.modKitsCount === 1 ){ veh.modKit = 1; };
-      if ( veh.modKitsCount === 2 ){ veh.modKit = 2; };
+      // if ( veh.modKitsCount === 1 ){ veh.modKit = 1; };
+      // if ( veh.modKitsCount === 2 ){ veh.modKit = 2; };
 
       veh.setMod( 11, vehData.engine.current );
       veh.setMod( 12, vehData.brakes.current );
