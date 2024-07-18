@@ -8976,6 +8976,7 @@ const app = Vue.createApp({
                     0,
                     0,
                     0,
+                    0,
                     0
                 ],
                 wheelsType: 0,
@@ -8990,6 +8991,14 @@ const app = Vue.createApp({
                     W: null
                 }
             },
+            extras: [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
             wheels_sel: wheelsArray,
             wheels_grp: wheelsTypeArray,
             color_grps: color_grps,
@@ -9081,6 +9090,9 @@ function T8UNE_handleFromClient(task, dataJSON, power, torque) {
         setTimeout(function() {
             firstload = true;
         }, 500);
+    }
+    if (task == 'set_extras') {
+        view.extras = dataJSON;
     }
 }
 function resetCar() {

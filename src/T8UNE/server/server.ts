@@ -78,8 +78,9 @@ alt.onClient('T8UNE:server:sendVehicle', ( player, vehicleID ) => {
       plates:        { current: veh.numberPlateIndex, range: 5 },
       windows:       { current: veh.windowTint, range: 6 },
 
-      extras:        [  getExt( veh, 1 ), getExt( veh, 2 ), getExt( veh, 3 ), getExt( veh, 4 ),  getExt( veh, 5 ),  getExt( veh, 6 ),
-                        getExt( veh, 7 ), getExt( veh, 8 ), getExt( veh, 9 ), getExt( veh, 10 ), getExt( veh, 11 ), getExt( veh, 12 ) ],
+      extras:        [  getExt( veh, 0 ), getExt( veh, 1 ), getExt( veh, 2 ), getExt( veh, 3 ), getExt( veh, 4 ),  getExt( veh, 5 ),  getExt( veh, 6 ),
+                        getExt( veh, 7 ), getExt( veh, 8 ), getExt( veh, 9 ), getExt( veh, 10 ), getExt( veh, 11 ), getExt( veh, 12 ), getExt( veh, 13 ), 
+                        getExt( veh, 14 ), getExt( veh, 15 ), getExt( veh, 16 ), getExt( veh, 17 ), getExt( veh, 18 ), getExt( veh, 19 ), getExt( veh, 20 ) ],
 
       wheelsType:    veh.wheelType,
       wheels:        veh.frontWheels,
@@ -248,6 +249,6 @@ alt.onClient('T8UNE:server:updateVehicle', ( player, vehicleID, dataJSON:string 
       // for ( let n = 1; n < 13; n++ ){ veh.setExtra( n, [ n - 1 ]); };
    };
 
-   let n = 1;
+   let n = -1;
    vehData.extras.forEach(( extra ) => { veh.setExtra( n, setExt( extra )); n++; });
 });

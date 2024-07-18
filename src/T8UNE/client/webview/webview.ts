@@ -1886,7 +1886,7 @@ const app = Vue.createApp({
             plates:        { current: 0, range: 5 },
             windows:       { current: 0, range: 6 },
 
-            extras:        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            extras:        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
 
             wheelsType:    0,
             wheels:        0,
@@ -1902,6 +1902,8 @@ const app = Vue.createApp({
                W: null
             },
          },
+
+         extras: [ 0, 0, 0, 0, 0, 0 ],
 
          wheels_sel: wheelsArray,
          wheels_grp: wheelsTypeArray,
@@ -2005,6 +2007,10 @@ function T8UNE_handleFromClient( task:string, dataJSON, power, torque ) {
       view.tune.torque = torque;
 
       setTimeout(function() { firstload = true; }, 500 );
+   };
+
+   if ( task == 'set_extras' ){
+      view.extras = dataJSON;
    };
 };
 

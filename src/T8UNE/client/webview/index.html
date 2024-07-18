@@ -301,7 +301,7 @@
             <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[10] = !vehicle.extras[10];">Extra 11: {{vehicle.extras[10]}}</button></div>
             <div class="item"></div>
             <div class="item"><button style="width:100%; text-align: center;" v-on:click="vehicle.extras[11] = !vehicle.extras[11];">Extra 12: {{vehicle.extras[11]}}</button></div>
-            -->
+            
             <div class="item">Extra 1</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[0]"></div><div class="item"></div>
             <div class="item">Extra 2</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[1]"></div><div class="item"></div>
             <div class="item">Extra 3</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[2]"></div><div class="item"></div>
@@ -314,6 +314,21 @@
             <div class="item">Extra 10</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[9]"></div><div class="item"></div>
             <div class="item">Extra 11</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[10]"></div><div class="item"></div>
             <div class="item">Extra 12</div><div class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[11]"></div><div class="item"></div>
+         -->
+            <template v-for="( extra, index ) in extras">
+               <div v-if="extra > -1" class="item">Extra {{ index }}</div>
+               <div v-if="extra > -1" class="item"><input type="range" min="0" max="1" step="1" v-model="vehicle.extras[index]"></div>
+               <div v-if="extra > -1" class="item"></div>
+            </template>
+
+         <!-- 
+            <div class="item tripple">view.extras</div>
+            <div class="item tripple">{{ extras }}</div>
+
+            <div class="item tripple">view.vehicle.extras</div>
+            <div class="item tripple">{{ vehicle.extras }}</div>
+
+         -->   
 
          </div>
 

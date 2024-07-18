@@ -28,6 +28,20 @@ function T8UNE_handleFromWebview(task, data) {
     }
     if (task == "load_vehicle" && alt.Player.local.vehicle) {
         alt.emitServer('T8UNE:server:sendVehicle', alt.Player.local.vehicle.id);
+        let existing_extras = [];
+        for(let i = 0; i <= 20; i++){
+            if (natives.doesExtraExist(alt.Player.local.vehicle, i)) {
+                if (natives.isVehicleExtraTurnedOn(alt.Player.local.vehicle, i)) {
+                    existing_extras.push(1);
+                } else {
+                    existing_extras.push(0);
+                }
+            } else {
+                existing_extras.push(-1);
+            }
+        }
+        alt.log(`>> T8UNE:Webview:exec >> set_extras > ${existing_extras} `);
+        webview.emit('T8UNE:Webview:exec', 'set_extras', existing_extras);
     }
     if (task == "update_vehicle" && alt.Player.local.vehicle) {
         alt.emitServer('T8UNE:server:updateVehicle', alt.Player.local.vehicle.id, data);

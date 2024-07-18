@@ -2,8 +2,6 @@
 import * as alt from "alt-server";
 //@ts-ignore
 import * as chat from "alt:chat";
-//@ts-ignore
-import * as ParkedVehicleSpawner from "alt:ParkedVehicleSpawner";
 import JSONdb from 'simple-json-db';
 import { T8WebViewServer } from './classes/webview.js';
 import { getVehicleMods, setVehicleMods } from './classes/vehicle.js';
@@ -136,7 +134,7 @@ alt.on("playerConnect", (player)=>{
             const playerCount = alt.Player.all.length;
             WEBVIEW.toastAll(`CONNECT: ${playerCount} players online`, `${player.name} has joined the server!`, 5, `black`);
             // chat.broadcast(`{1cacd4}${player.name} {ffffff}has {00ff00}joined {ffffff}the Server..  (${playerCount} players online)`);
-            chat.send(player, "{80eb34}Press {34dfeb}/ {80eb34}and type {34dfeb}/help {80eb34}to see all available commands..");
+            chat.send(player, "{80eb34}Press {34dfeb}[ T ] {80eb34} or {34dfeb}[ / ] {80eb34}and type {34dfeb}/help {80eb34}to see all available commands.");
         }
         alt.clearTimeout(connectTimeout);
     }, 1000);
@@ -190,17 +188,17 @@ alt.on("playerDisconnect", (player, reason)=>{
 // =============================== Commands Begin ==================================================
 chat.registerCmd("help", (player, args)=>{
     chat.send(player, "{ff0000}+-------------- {eb4034}HELP {ff0000}--------------");
-    chat.send(player, "{ff0000}| {34abeb}/veh {40eb34}(model)   {ffffff} spawn a new vehicle");
-    chat.send(player, "{ff0000}| {34abeb}/vehicles   {ffffff} for all vehicle commands");
-    chat.send(player, "{ff0000}| {34abeb}/clothes   {ffffff} for all clothing commands");
+    chat.send(player, "{ff0000}| {34abeb}/vehicles {ffffff} help for all vehicle commands");
+    chat.send(player, "{ff0000}| {34abeb}/clothes {ffffff}  help for all clothing commands");
     chat.send(player, "{ff0000}| {34abeb}/tp {40eb34}(targetPlayer)   {ffffff} teleport to player");
     chat.send(player, "{ff0000}| {34abeb}/model {40eb34}(modelName)   {ffffff} change player model");
     chat.send(player, "{ff0000}| {34abeb}/weapons   {ffffff} get all weapons");
     chat.send(player, "{ff0000}| {34abeb}/heal   {ffffff} heal the player");
     chat.send(player, "{ff0000}| {34abeb}/time {40eb34}(hh) (mm) (ss) {ff0000}|| {34abeb}/weather {40eb34}(weather) (transition time)");
+    chat.send(player, "{ff0000}| {34abeb}/clr   {ffffff} clear YOUR chat");
 });
 chat.registerCmd("vehicles", (player, args)=>{
-    chat.send(player, "{ff0000}+-------------- {eb4034}HELP VEHICLES {ff0000}--------------");
+    chat.send(player, "{ff0000}+-------------- {eb4034} HELP VEHICLES {ff0000}--------------");
     chat.send(player, "{ff0000}| {34abeb}/veh {40eb34}(model)   {ffffff} spawn a new vehicle");
     chat.send(player, "{ff0000}| {34abeb}/t8veh   {ffffff} spawn a vehicle from a menu");
     chat.send(player, "{ff0000}| {34abeb}/vehRM   {ffffff} remove your current Vehicle");
@@ -208,9 +206,10 @@ chat.registerCmd("vehicles", (player, args)=>{
     chat.send(player, "{ff0000}| {34abeb}/vehSave {40eb34}(name) (licenseplate)   {ffffff} save current vehicle");
     chat.send(player, "{ff0000}| {34abeb}/vehLoad {40eb34}(name)   {ffffff} load a vehicles apperance/tuning");
     chat.send(player, "{ff0000}| {34abeb}/vehDelete {40eb34}(name)   {ffffff} deletes a saved vehicle");
+    chat.send(player, "{ff0000}| {34abeb}/vehLP {40eb34}(licenseplate)   {ffffff} set licenseplate");
 });
 chat.registerCmd("clothes", (player, args)=>{
-    chat.send(player, "{ff0000}+-------------- {eb4034}HELP CLOTHES {ff0000}--------------");
+    chat.send(player, "{ff0000}+-------------- {34abeb} HELP CLOTHES {ff0000}--------------");
     chat.send(player, "{ff0000}| {34abeb}/clothList   {ffffff} Lists all saved Vehicles");
     chat.send(player, "{ff0000}| {34abeb}/clothSave {40eb34}(outfit) (replace:yes)   {ffffff} save your apperance");
     chat.send(player, "{ff0000}| {34abeb}/clothLoad {40eb34}(outfit)   {ffffff} load a saved apperance");
@@ -231,6 +230,15 @@ chat.registerCmd("pos", (player, args)=>{
 });
 chat.registerCmd("noclip", (player, args)=>{
     alt.emit('freecam:Toggle', player);
+});
+chat.registerCmd("players", (player, args)=>{
+    chat.send(player, "The Following players are online:");
+    let allPlayers = alt.Player.all;
+    let msg = "";
+    allPlayers.forEach(function(p) {
+        msg = msg + `{ff0000} | {ffffff} ${p.name}  `;
+    });
+    chat.send(player, msg);
 });
 chat.registerCmd("tp", (player, args)=>{
     if (args && args.length === 0) {
@@ -263,6 +271,7 @@ chat.registerCmd("gender", (player, args)=>{
         player.model = "MP_M_Freemode_01";
         return;
     }
+    player.model = "MP_M_Freemode_01";
 });
 chat.registerCmd("weapon", (player, args)=>{
     if (args.length === 0) {
@@ -304,6 +313,15 @@ chat.registerCmd("vehRM", (player, args)=>{
         player.vehicle.destroy();
     }
 });
+chat.registerCmd("vehLP", (player, args)=>{
+    if (args.length === 0) {
+        chat.send(player, "Usage: /vehLP (Licence Plate)");
+        return;
+    }
+    if (player.vehicle) {
+        player.vehicle.numberPlateText = args[0];
+    }
+});
 chat.registerCmd("vehList", (player, args)=>{
     chat.send(player, "You saved the following vehicles:");
     let vehList = DBV.JSON();
@@ -326,7 +344,7 @@ chat.registerCmd("vehSave", (player, args)=>{
     }
     let name = args[0];
     let DBname = `${player.socialID}-${name}`;
-    let licencePlate = "LS-KEKW";
+    let licencePlate = player.vehicle.numberPlateText;
     if (args.length > 1) {
         licencePlate = args[1];
     }
@@ -630,5 +648,3 @@ function loadClothesDB(player, outfitname, basic = false) {
     });
     return false;
 }
-// =============================== Commands End ====================================================
-ParkedVehicleSpawner.spawn(500);
